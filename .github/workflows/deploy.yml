@@ -1,0 +1,230 @@
+name: Build and Deploy Full Repository to Hostinger
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+defaults:
+  run:
+    shell: pwsh
+
+jobs:
+  build:
+    name: Build and Prepare Artifacts
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - name: Set Up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install Frontend Dependencies
+        run: npm ci --no-audit --no-fund
+
+      - name: Build Frontend
+        run: npm run build
+
+      - name: Upload Build Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-assets
+          path: public/build/
+          include-hidden-files: true
+          if-no-files-found: error
+          retention-days: 7
+
+      - name: Set Up PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.4'
+          extensions: mbstring, xml, ctype, iconv, intl, pdo, pdo_sqlite, pdo_mysql, zip, fileinfo, gd
+          coverage: none
+
+      - name: Install Composer Dependencies
+        run: composer install --no-dev --prefer-dist --optimize-autoloader --no-progress --no-interaction
+
+      - name: Prepare Full Repository with Build Output
+        run: |
+          $repositoryDirectory = Join-Path $env:RUNNER_TEMP 'repository-with-dist'
+          $repositoryArchive = Join-Path $env:RUNNER_TEMP 'repository.tar'
+          New-Item -ItemType Directory -Path $repositoryDirectory -ErrorAction Stop | Out-Null
+
+          # archive tracked files so local credentials and temporary files stay out
+          git archive --format=tar --output=$repositoryArchive HEAD
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          tar -xf $repositoryArchive -C $repositoryDirectory
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+
+          # copy compiled Vite frontend assets
+          Copy-Item -LiteralPath public/build -Destination (Join-Path $repositoryDirectory 'public/build') -Recurse -ErrorAction Stop
+
+          # copy production PHP vendor dependencies
+          Copy-Item -LiteralPath vendor -Destination (Join-Path $repositoryDirectory 'vendor') -Recurse -ErrorAction Stop
+
+      - name: Upload Full Repository Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: repository-with-dist
+          path: ${{ runner.temp }}/repository-with-dist/
+          include-hidden-files: true
+          if-no-files-found: error
+          retention-days: 7
+
+  deploy:
+    name: Upload Repository and Build to Hostinger
+    needs: build
+    if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    concurrency:
+      group: hostinger-production-deploy
+      cancel-in-progress: false
+    env:
+      SSH_HOST: ${{ secrets.SSH_HOST }}
+      SSH_PORT: ${{ secrets.SSH_PORT || '65002' }}
+      SSH_USER: ${{ secrets.SSH_USER }}
+      SSHPASS: ${{ secrets.SSH_PASS || secrets.SSH_PASSWORD }}
+      DEPLOY_PATH: ${{ secrets.DEPLOY_PATH || '/home/u167361189/domains/toyspixels.com/public_html/laravel' }}
+
+    steps:
+      - name: Download Full Repository Artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: repository-with-dist
+          path: deployment/
+
+      - name: Prepare Document Root
+        run: |
+          Write-Host "Laravel + Vite workspace is ready for deployment."
+
+      - name: Validate SSH Settings
+        run: |
+          foreach ($name in @('SSH_HOST', 'SSH_USER', 'SSHPASS')) {
+            if ([string]::IsNullOrWhiteSpace([Environment]::GetEnvironmentVariable($name))) {
+              throw "Missing deployment secret: $name (SSHPASS uses SSH_PASS or SSH_PASSWORD)."
+            }
+          }
+          if ($env:SSH_HOST -notmatch '^[a-zA-Z0-9][a-zA-Z0-9.-]*$') { throw 'Invalid SSH_HOST.' }
+          if ($env:SSH_USER -notmatch '^[a-zA-Z0-9_][a-zA-Z0-9_.-]*$') { throw 'Invalid SSH_USER.' }
+          if ($env:SSH_PORT -notmatch '^\d{1,5}$' -or [int]$env:SSH_PORT -lt 1 -or [int]$env:SSH_PORT -gt 65535) {
+            throw 'Invalid SSH_PORT.'
+          }
+
+      - name: Install Deployment Tools
+        run: |
+          sudo apt-get update -qq
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          sudo apt-get install -y --no-install-recommends rsync sshpass
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+
+      - name: Configure SSH
+        run: |
+          $sshDirectory = Join-Path $env:HOME '.ssh'
+          New-Item -ItemType Directory -Path $sshDirectory -Force -ErrorAction Stop | Out-Null
+          chmod 700 $sshDirectory
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+
+          $hostKeys = @(ssh-keyscan -H -T 15 -p $env:SSH_PORT $env:SSH_HOST 2>$null)
+          if ($LASTEXITCODE -ne 0 -or $hostKeys.Count -eq 0) {
+            throw 'Unable to retrieve the SSH host key. Verify SSH_HOST and SSH_PORT.'
+          }
+          $hostKeys | Set-Content -LiteralPath (Join-Path $sshDirectory 'known_hosts') -Encoding utf8 -ErrorAction Stop
+          @"
+          Host production
+            HostName $env:SSH_HOST
+            Port $env:SSH_PORT
+            User $env:SSH_USER
+            StrictHostKeyChecking yes
+            UserKnownHostsFile $sshDirectory/known_hosts
+            PreferredAuthentications password,keyboard-interactive
+            PubkeyAuthentication no
+            ConnectTimeout 15
+            ServerAliveInterval 15
+            ServerAliveCountMax 3
+          "@ | Set-Content -LiteralPath (Join-Path $sshDirectory 'config') -Encoding utf8 -ErrorAction Stop
+          chmod 600 (Join-Path $sshDirectory 'config') (Join-Path $sshDirectory 'known_hosts')
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+
+      - name: Check and Prepare Server Environment
+        run: |
+          $readinessScript = @'
+          set -euo pipefail
+          target="$1"
+          fail() { echo "::error::$1" >&2; exit 1; }
+          command -v rsync >/dev/null || fail "rsync is unavailable for the SSH user."
+          mkdir -p "$target"
+          [[ -d "$target" && -w "$target" && -x "$target" ]] || fail "The upload destination is missing or not writable."
+
+          # Pastikan direktori runtime Laravel tersedia di server
+          mkdir -p "$target/storage/app/public" \
+                   "$target/storage/framework/cache/data" \
+                   "$target/storage/framework/sessions" \
+                   "$target/storage/framework/views" \
+                   "$target/storage/logs" \
+                   "$target/bootstrap/cache"
+
+          # Berikan hak akses writable untuk direktori cache dan storage
+          chmod -R 775 "$target/storage" "$target/bootstrap/cache" 2>/dev/null || chmod -R 777 "$target/storage" "$target/bootstrap/cache" 2>/dev/null || true
+          '@
+          $readinessScript | sshpass -e ssh production bash -s -- $env:DEPLOY_PATH
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+
+      - name: Upload Repository and Compiled Application
+        run: |
+          $rsyncArguments = @(
+            '-rlz', '--delay-updates', '--chmod=D755,F644',
+            '--exclude=/.env', '--exclude=/.env.*',
+            '--exclude=/database/database.sqlite*',
+            '--exclude=/storage/app/public/*',
+            '--exclude=/storage/logs/*',
+            '--exclude=/storage/framework/cache/data/*',
+            '--exclude=/storage/framework/sessions/*',
+            '--exclude=/storage/framework/views/*',
+            '-e', 'sshpass -e ssh',
+            'deployment/', "production:$env:DEPLOY_PATH/"
+          )
+          rsync @rsyncArguments
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          Write-Output "Laravel and Vite application uploaded to $env:DEPLOY_PATH."
+
+      - name: Optimize Laravel on Production
+        run: |
+          $optimizeScript = @'
+          set -euo pipefail
+          target="$1"
+          if command -v php >/dev/null 2>&1; then
+            cd "$target"
+            php artisan optimize:clear 2>/dev/null || true
+            php artisan view:clear 2>/dev/null || true
+            php artisan config:clear 2>/dev/null || true
+          fi
+          '@
+          $optimizeScript | sshpass -e ssh production bash -s -- $env:DEPLOY_PATH
+          if ($LASTEXITCODE -ne 0) {
+            Write-Warning "Laravel cache clear exited with code $LASTEXITCODE. Continuing."
+          }
+
+      - name: Clear SSH Configuration
+        if: always()
+        run: |
+          $sshDirectory = Join-Path $env:HOME '.ssh'
+          foreach ($file in @('config', 'known_hosts')) {
+            $filePath = Join-Path $sshDirectory $file
+            if (Test-Path -LiteralPath $filePath) {
+              Remove-Item -LiteralPath $filePath -Force -ErrorAction Stop
+            }
+          }

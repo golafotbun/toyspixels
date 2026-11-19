@@ -1361,7 +1361,7 @@
                         <a href="{{ url('/post/' . $prod['slug']) }}" class="py-2.5 px-3 rounded-xl border border-slate-200 hover:border-[#1677d2] bg-white hover:bg-blue-50/60 text-[#0B1A30] hover:text-[#1677d2] text-xs font-bold transition-all text-center flex items-center justify-center gap-1 active:scale-95">
                             <span>Cek Detail</span>
                         </a>
-                        <a href="{{ $prod['affiliate_url'] }}" target="_blank" rel="noopener nofollow" class="py-2.5 px-3 rounded-xl bg-[#1677d2] hover:bg-[#125ea7] text-white text-xs font-black transition-all text-center flex items-center justify-center gap-1 shadow-sm hover:shadow active:scale-95">
+                        <a href="{{ $prod['affiliate_url'] }}" target="_blank" rel="noopener nofollow" class="py-2.5 px-3 rounded-xl bg-[#EE4D2D] hover:bg-[#d83f21] text-white text-xs font-black transition-all text-center flex items-center justify-center gap-1 shadow-sm hover:shadow active:scale-95">
                             <span>Beli Langsung</span>
                         </a>
                     </div>

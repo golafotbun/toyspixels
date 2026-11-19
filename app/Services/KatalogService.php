@@ -245,7 +245,10 @@ class KatalogService
 
     public static function all(): Collection
     {
-        return collect(self::$products);
+        return collect(self::$products)->map(function ($item) {
+            $item['shopee_url'] = $item['shopee_url'] ?? $item['affiliate_url'];
+            return $item;
+        });
     }
 
     public static function findBySlug(string $slug): ?array
@@ -254,6 +257,7 @@ class KatalogService
 
         foreach (self::$products as $product) {
             if ($product['slug'] === $normalized) {
+                $product['shopee_url'] = $product['shopee_url'] ?? $product['affiliate_url'];
                 return $product;
             }
         }

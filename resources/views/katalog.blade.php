@@ -79,7 +79,7 @@
             <!-- Center: Navigation Links -->
             <nav class="hidden md:flex items-center gap-7 lg:gap-9 text-xs lg:text-sm font-extrabold tracking-wider text-white/90">
                 <a href="{{ url('/') }}#hero-section" class="hover:text-[#E3FF73] transition-colors">HOME</a>
-                <a href="{{ url('/top-toys') }}" class="hover:text-[#E3FF73] transition-colors">TOP TOYS</a>
+                <a href="{{ url('/topproduk') }}" class="hover:text-[#E3FF73] transition-colors">TOP PRODUK</a>
                 <a href="{{ url('/') }}#kategori" class="hover:text-[#E3FF73] transition-colors">KATEGORI</a>
                 <a href="{{ url('/katalog') }}" class="text-[#E3FF73] border-b-2 border-[#E3FF73] pb-1 transition-colors">KATALOG</a>
                 <a href="{{ url('/') }}#news-review" class="hover:text-[#E3FF73] transition-colors">NEWS & REVIEW</a>
@@ -146,345 +146,50 @@
                 </div>
             </div>
 
-            <!-- Product Grid: 12 Produk -->
+            <!-- Product Grid: 12 Produk Resmi Katalog -->
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 sm:gap-7">
-                
-                <!-- PRODUK 1: Gundam PG Unleashed RX-78-2 (Mainan) -->
-                <div class="cat-prod-item bg-white rounded-2xl p-4 sm:p-5 border border-slate-200/80 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.06)] hover:shadow-xl transition-all duration-300 flex flex-col justify-between group" data-group="mainan">
+                @php
+                    $katalogList = $products ?? \App\Services\KatalogService::all();
+                @endphp
+                @foreach($katalogList as $prod)
+                <div class="cat-prod-item bg-white rounded-2xl p-4 sm:p-5 border border-slate-200/80 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.06)] hover:shadow-xl transition-all duration-300 flex flex-col justify-between group" data-group="{{ in_array('mainan', $prod['tags'] ?? []) ? 'mainan' : 'technology' }}">
                     <div>
-                        <div class="relative aspect-square w-full rounded-2xl bg-[#F8FAFC] border-2 border-slate-100 group-hover:border-blue-200/80 flex items-center justify-center p-4 sm:p-5 mb-4 overflow-hidden group-hover:bg-slate-50 transition-all shadow-[inset_0_1px_3px_rgba(0,0,0,0.02)]">
-                            <img src="{{ asset('images/toys/gundam.jpg') }}" alt="Gundam PG Unleashed RX-78-2" class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500 rounded-xl">
-                        </div>
-                        <a href="{{ url('/katalog/mainan') }}" class="text-[10px] font-black text-[#1677d2] hover:text-[#0B1A30] uppercase tracking-wider inline-flex items-center gap-1 mb-1 transition-colors">
-                            <span>Gunpla & Action Figures</span>
-                            
+                        <!-- Bingkai Foto Thumbnail (Klik menuju artikel) -->
+                        <a href="{{ url('/post/' . $prod['slug']) }}" class="block relative aspect-square w-full rounded-2xl bg-[#F8FAFC] border-2 border-slate-100 group-hover:border-blue-200/80 flex items-center justify-center p-4 sm:p-5 mb-4 overflow-hidden group-hover:bg-slate-50 transition-all shadow-[inset_0_1px_3px_rgba(0,0,0,0.02)]">
+                            <img src="{{ asset($prod['image']) }}" alt="{{ $prod['title'] }}" class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500 rounded-xl">
                         </a>
+                        <!-- Kategori resmi -->
+                        <a href="{{ $prod['category_url'] }}" class="text-[10px] font-black text-[#1677d2] hover:text-[#0B1A30] uppercase tracking-wider inline-flex items-center gap-1 mb-1 transition-colors">
+                            <span>{{ $prod['category_name'] }}</span>
+                        </a>
+                        <!-- Judul Produk (Klik menuju artikel) -->
                         <h3 class="font-bold text-sm sm:text-base text-[#0B1A30] line-clamp-1 group-hover:text-[#1677d2] transition-colors leading-snug">
-                            Gundam PG Unleashed RX-78-2
+                            <a href="{{ url('/post/' . $prod['slug']) }}" class="hover:underline">
+                                {{ $prod['title'] }}
+                            </a>
                         </h3>
-                        <div class="mt-2">
-                            <span class="text-base sm:text-lg font-black text-[#0B1A30]">Rp 3.250.000</span>
+                        <!-- Harga & Rating -->
+                        <div class="mt-2 flex items-baseline justify-between">
+                            <span class="text-base sm:text-lg font-black text-[#0B1A30]">Rp {{ $prod['price'] }}</span>
+                            <span class="text-xs font-bold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-full">⭐ {{ $prod['rating'] }}</span>
                         </div>
                     </div>
-                    <div class="mt-4 pt-3.5 border-t border-slate-100 grid grid-cols-2 gap-2">
-                        <a href="https://tokopedia.com" target="_blank" rel="noopener nofollow" class="py-2.5 px-3 rounded-xl border border-slate-200 hover:border-[#1677d2] bg-white hover:bg-blue-50/60 text-[#0B1A30] hover:text-[#1677d2] text-xs font-bold transition-all text-center flex items-center justify-center gap-1">
-                            <span>Tokopedia</span>
-                        </a>
-                        <a href="https://shopee.co.id" target="_blank" rel="noopener nofollow" class="py-2.5 px-3 rounded-xl bg-[#1677d2] hover:bg-[#125ea7] text-white text-xs font-black transition-all text-center flex items-center justify-center gap-1 shadow-sm">
-                            <span>Shopee</span>
-                            
+                    <!-- Action Buttons: Cek Detail (Ke Artikel) & Shopee (Link Shopee Resmi Sesuai di Artikel) -->
+                    <div class="mt-4 pt-3.5 border-t border-slate-100 flex flex-col gap-2">
+                        <div class="grid grid-cols-2 gap-2">
+                            <a href="{{ url('/post/' . $prod['slug']) }}" class="py-2.5 px-3 rounded-xl border border-slate-200 hover:border-[#1677d2] bg-white hover:bg-blue-50/60 text-[#0B1A30] hover:text-[#1677d2] text-xs font-bold transition-all text-center flex items-center justify-center gap-1 active:scale-95">
+                                <span>Cek Detail</span>
+                            </a>
+                            <a href="{{ $prod['affiliate_url'] ?? $prod['shopee_url'] }}" target="_blank" rel="noopener nofollow" class="py-2.5 px-3 rounded-xl bg-[#EE4D2D] hover:bg-[#d83f21] text-white text-xs font-black transition-all text-center flex items-center justify-center gap-1 shadow-sm hover:shadow active:scale-95">
+                                <span>Shopee</span>
+                            </a>
+                        </div>
+                        <a href="{{ $prod['tokopedia_url'] ?? 'https://tokopedia.com' }}" target="_blank" rel="noopener nofollow" class="text-[11px] font-bold text-slate-400 hover:text-[#03AC0E] text-center transition-colors">
+                            Tersedia di Tokopedia ➔
                         </a>
                     </div>
                 </div>
-
-                <!-- PRODUK 2: Tamiya Avante Black Special 4WD (Mainan) -->
-                <div class="cat-prod-item bg-white rounded-2xl p-4 sm:p-5 border border-slate-200/80 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.06)] hover:shadow-xl transition-all duration-300 flex flex-col justify-between group" data-group="mainan">
-                    <div>
-                        <div class="relative aspect-square w-full rounded-2xl bg-[#F8FAFC] border-2 border-slate-100 group-hover:border-blue-200/80 flex items-center justify-center p-4 sm:p-5 mb-4 overflow-hidden group-hover:bg-slate-50 transition-all shadow-[inset_0_1px_3px_rgba(0,0,0,0.02)]">
-                            <img src="{{ asset('images/toys/tamiya.jpg') }}" alt="Tamiya Avante Black Special 4WD" class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500 rounded-xl">
-                        </div>
-                        <a href="{{ url('/katalog/mainan') }}" class="text-[10px] font-black text-[#1677d2] hover:text-[#0B1A30] uppercase tracking-wider inline-flex items-center gap-1 mb-1 transition-colors">
-                            <span>Mini 4WD & Racing</span>
-                            
-                        </a>
-                        <h3 class="font-bold text-sm sm:text-base text-[#0B1A30] line-clamp-1 group-hover:text-[#1677d2] transition-colors leading-snug">
-                            Tamiya Avante Black Special 4WD
-                        </h3>
-                        <div class="mt-2">
-                            <span class="text-base sm:text-lg font-black text-[#0B1A30]">Rp 289.000</span>
-                        </div>
-                    </div>
-                    <div class="mt-4 pt-3.5 border-t border-slate-100 grid grid-cols-2 gap-2">
-                        <a href="https://tokopedia.com" target="_blank" rel="noopener nofollow" class="py-2.5 px-3 rounded-xl border border-slate-200 hover:border-[#1677d2] bg-white hover:bg-blue-50/60 text-[#0B1A30] hover:text-[#1677d2] text-xs font-bold transition-all text-center flex items-center justify-center gap-1">
-                            <span>Tokopedia</span>
-                        </a>
-                        <a href="https://shopee.co.id" target="_blank" rel="noopener nofollow" class="py-2.5 px-3 rounded-xl bg-[#1677d2] hover:bg-[#125ea7] text-white text-xs font-black transition-all text-center flex items-center justify-center gap-1 shadow-sm">
-                            <span>Shopee</span>
-                            
-                        </a>
-                    </div>
-                </div>
-
-                <!-- PRODUK 3: LEGO Star Wars Millennium Falcon (Mainan) -->
-                <div class="cat-prod-item bg-white rounded-2xl p-4 sm:p-5 border border-slate-200/80 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.06)] hover:shadow-xl transition-all duration-300 flex flex-col justify-between group" data-group="mainan">
-                    <div>
-                        <div class="relative aspect-square w-full rounded-2xl bg-[#F8FAFC] border-2 border-slate-100 group-hover:border-blue-200/80 flex items-center justify-center p-4 sm:p-5 mb-4 overflow-hidden group-hover:bg-slate-50 transition-all shadow-[inset_0_1px_3px_rgba(0,0,0,0.02)]">
-                            <img src="{{ asset('images/toys/lego.jpg') }}" alt="LEGO Star Wars Millennium Falcon" class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500 rounded-xl">
-                        </div>
-                        <a href="{{ url('/katalog/mainan') }}" class="text-[10px] font-black text-[#1677d2] hover:text-[#0B1A30] uppercase tracking-wider inline-flex items-center gap-1 mb-1 transition-colors">
-                            <span>Building Blocks & LEGO</span>
-                            
-                        </a>
-                        <h3 class="font-bold text-sm sm:text-base text-[#0B1A30] line-clamp-1 group-hover:text-[#1677d2] transition-colors leading-snug">
-                            LEGO Star Wars Millennium Falcon
-                        </h3>
-                        <div class="mt-2">
-                            <span class="text-base sm:text-lg font-black text-[#0B1A30]">Rp 2.450.000</span>
-                        </div>
-                    </div>
-                    <div class="mt-4 pt-3.5 border-t border-slate-100 grid grid-cols-2 gap-2">
-                        <a href="https://tokopedia.com" target="_blank" rel="noopener nofollow" class="py-2.5 px-3 rounded-xl border border-slate-200 hover:border-[#1677d2] bg-white hover:bg-blue-50/60 text-[#0B1A30] hover:text-[#1677d2] text-xs font-bold transition-all text-center flex items-center justify-center gap-1">
-                            <span>Tokopedia</span>
-                        </a>
-                        <a href="https://shopee.co.id" target="_blank" rel="noopener nofollow" class="py-2.5 px-3 rounded-xl bg-[#1677d2] hover:bg-[#125ea7] text-white text-xs font-black transition-all text-center flex items-center justify-center gap-1 shadow-sm">
-                            <span>Shopee</span>
-                            
-                        </a>
-                    </div>
-                </div>
-
-                <!-- PRODUK 4: Pop Mart Labubu Monster Art Toy (Mainan) -->
-                <div class="cat-prod-item bg-white rounded-2xl p-4 sm:p-5 border border-slate-200/80 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.06)] hover:shadow-xl transition-all duration-300 flex flex-col justify-between group" data-group="mainan">
-                    <div>
-                        <div class="relative aspect-square w-full rounded-2xl bg-[#F8FAFC] border-2 border-slate-100 group-hover:border-blue-200/80 flex items-center justify-center p-4 sm:p-5 mb-4 overflow-hidden group-hover:bg-slate-50 transition-all shadow-[inset_0_1px_3px_rgba(0,0,0,0.02)]">
-                            <img src="{{ asset('images/toys/labubu.jpg') }}" alt="Pop Mart Labubu Monster Art Toy" class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500 rounded-xl">
-                        </div>
-                        <a href="{{ url('/katalog/mainan') }}" class="text-[10px] font-black text-[#1677d2] hover:text-[#0B1A30] uppercase tracking-wider inline-flex items-center gap-1 mb-1 transition-colors">
-                            <span>Designer Art Toys</span>
-                            
-                        </a>
-                        <h3 class="font-bold text-sm sm:text-base text-[#0B1A30] line-clamp-1 group-hover:text-[#1677d2] transition-colors leading-snug">
-                            Pop Mart Labubu Monster Art Toy
-                        </h3>
-                        <div class="mt-2">
-                            <span class="text-base sm:text-lg font-black text-[#0B1A30]">Rp 189.000</span>
-                        </div>
-                    </div>
-                    <div class="mt-4 pt-3.5 border-t border-slate-100 grid grid-cols-2 gap-2">
-                        <a href="https://tokopedia.com" target="_blank" rel="noopener nofollow" class="py-2.5 px-3 rounded-xl border border-slate-200 hover:border-[#1677d2] bg-white hover:bg-blue-50/60 text-[#0B1A30] hover:text-[#1677d2] text-xs font-bold transition-all text-center flex items-center justify-center gap-1">
-                            <span>Tokopedia</span>
-                        </a>
-                        <a href="https://shopee.co.id" target="_blank" rel="noopener nofollow" class="py-2.5 px-3 rounded-xl bg-[#1677d2] hover:bg-[#125ea7] text-white text-xs font-black transition-all text-center flex items-center justify-center gap-1 shadow-sm">
-                            <span>Shopee</span>
-                            
-                        </a>
-                    </div>
-                </div>
-
-                <!-- PRODUK 5: Beyblade X Dran Sword Starter Set (Mainan) -->
-                <div class="cat-prod-item bg-white rounded-2xl p-4 sm:p-5 border border-slate-200/80 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.06)] hover:shadow-xl transition-all duration-300 flex flex-col justify-between group" data-group="mainan">
-                    <div>
-                        <div class="relative aspect-square w-full rounded-2xl bg-[#F8FAFC] border-2 border-slate-100 group-hover:border-blue-200/80 flex items-center justify-center p-4 sm:p-5 mb-4 overflow-hidden group-hover:bg-slate-50 transition-all shadow-[inset_0_1px_3px_rgba(0,0,0,0.02)]">
-                            <img src="{{ asset('images/toys/beyblade.jpg') }}" alt="Beyblade X Dran Sword Starter Set" class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500 rounded-xl">
-                        </div>
-                        <a href="{{ url('/katalog/mainan') }}" class="text-[10px] font-black text-[#1677d2] hover:text-[#0B1A30] uppercase tracking-wider inline-flex items-center gap-1 mb-1 transition-colors">
-                            <span>Spinning Tops & Battle</span>
-                            
-                        </a>
-                        <h3 class="font-bold text-sm sm:text-base text-[#0B1A30] line-clamp-1 group-hover:text-[#1677d2] transition-colors leading-snug">
-                            Beyblade X Dran Sword Starter Set
-                        </h3>
-                        <div class="mt-2">
-                            <span class="text-base sm:text-lg font-black text-[#0B1A30]">Rp 219.000</span>
-                        </div>
-                    </div>
-                    <div class="mt-4 pt-3.5 border-t border-slate-100 grid grid-cols-2 gap-2">
-                        <a href="https://tokopedia.com" target="_blank" rel="noopener nofollow" class="py-2.5 px-3 rounded-xl border border-slate-200 hover:border-[#1677d2] bg-white hover:bg-blue-50/60 text-[#0B1A30] hover:text-[#1677d2] text-xs font-bold transition-all text-center flex items-center justify-center gap-1">
-                            <span>Tokopedia</span>
-                        </a>
-                        <a href="https://shopee.co.id" target="_blank" rel="noopener nofollow" class="py-2.5 px-3 rounded-xl bg-[#1677d2] hover:bg-[#125ea7] text-white text-xs font-black transition-all text-center flex items-center justify-center gap-1 shadow-sm">
-                            <span>Shopee</span>
-                            
-                        </a>
-                    </div>
-                </div>
-
-                <!-- PRODUK 6: Rubik GAN 12 MagLev 3x3 Speedcube (Mainan) -->
-                <div class="cat-prod-item bg-white rounded-2xl p-4 sm:p-5 border border-slate-200/80 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.06)] hover:shadow-xl transition-all duration-300 flex flex-col justify-between group" data-group="mainan">
-                    <div>
-                        <div class="relative aspect-square w-full rounded-2xl bg-[#F8FAFC] border-2 border-slate-100 group-hover:border-blue-200/80 flex items-center justify-center p-4 sm:p-5 mb-4 overflow-hidden group-hover:bg-slate-50 transition-all shadow-[inset_0_1px_3px_rgba(0,0,0,0.02)]">
-                            <img src="{{ asset('images/toys/rubiks.jpg') }}" alt="Rubik GAN 12 MagLev 3x3 Speedcube" class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500 rounded-xl">
-                        </div>
-                        <a href="{{ url('/katalog/mainan') }}" class="text-[10px] font-black text-[#1677d2] hover:text-[#0B1A30] uppercase tracking-wider inline-flex items-center gap-1 mb-1 transition-colors">
-                            <span>Puzzle & Speedcube</span>
-                            
-                        </a>
-                        <h3 class="font-bold text-sm sm:text-base text-[#0B1A30] line-clamp-1 group-hover:text-[#1677d2] transition-colors leading-snug">
-                            Rubik GAN 12 MagLev 3x3 Speedcube
-                        </h3>
-                        <div class="mt-2">
-                            <span class="text-base sm:text-lg font-black text-[#0B1A30]">Rp 420.000</span>
-                        </div>
-                    </div>
-                    <div class="mt-4 pt-3.5 border-t border-slate-100 grid grid-cols-2 gap-2">
-                        <a href="https://tokopedia.com" target="_blank" rel="noopener nofollow" class="py-2.5 px-3 rounded-xl border border-slate-200 hover:border-[#1677d2] bg-white hover:bg-blue-50/60 text-[#0B1A30] hover:text-[#1677d2] text-xs font-bold transition-all text-center flex items-center justify-center gap-1">
-                            <span>Tokopedia</span>
-                        </a>
-                        <a href="https://shopee.co.id" target="_blank" rel="noopener nofollow" class="py-2.5 px-3 rounded-xl bg-[#1677d2] hover:bg-[#125ea7] text-white text-xs font-black transition-all text-center flex items-center justify-center gap-1 shadow-sm">
-                            <span>Shopee</span>
-                            
-                        </a>
-                    </div>
-                </div>
-
-                <!-- PRODUK 7: Sony PlayStation 5 Slim Digital (Technology) -->
-                <div class="cat-prod-item bg-white rounded-2xl p-4 sm:p-5 border border-slate-200/80 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.06)] hover:shadow-xl transition-all duration-300 flex flex-col justify-between group" data-group="technology">
-                    <div>
-                        <div class="relative aspect-square w-full rounded-2xl bg-[#F8FAFC] border-2 border-slate-100 group-hover:border-blue-200/80 flex items-center justify-center p-4 sm:p-5 mb-4 overflow-hidden group-hover:bg-slate-50 transition-all shadow-[inset_0_1px_3px_rgba(0,0,0,0.02)]">
-                            <img src="{{ asset('images/toys/playstation.jpg') }}" alt="Sony PlayStation 5 Slim Digital" class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500 rounded-xl">
-                        </div>
-                        <a href="{{ url('/katalog/teknologi') }}" class="text-[10px] font-black text-[#1677d2] hover:text-[#0B1A30] uppercase tracking-wider inline-flex items-center gap-1 mb-1 transition-colors">
-                            <span>Gaming Console</span>
-                            
-                        </a>
-                        <h3 class="font-bold text-sm sm:text-base text-[#0B1A30] line-clamp-1 group-hover:text-[#1677d2] transition-colors leading-snug">
-                            Sony PlayStation 5 Slim Digital
-                        </h3>
-                        <div class="mt-2">
-                            <span class="text-base sm:text-lg font-black text-[#0B1A30]">Rp 7.899.000</span>
-                        </div>
-                    </div>
-                    <div class="mt-4 pt-3.5 border-t border-slate-100 grid grid-cols-2 gap-2">
-                        <a href="https://tokopedia.com" target="_blank" rel="noopener nofollow" class="py-2.5 px-3 rounded-xl border border-slate-200 hover:border-[#1677d2] bg-white hover:bg-blue-50/60 text-[#0B1A30] hover:text-[#1677d2] text-xs font-bold transition-all text-center flex items-center justify-center gap-1">
-                            <span>Tokopedia</span>
-                        </a>
-                        <a href="https://shopee.co.id" target="_blank" rel="noopener nofollow" class="py-2.5 px-3 rounded-xl bg-[#1677d2] hover:bg-[#125ea7] text-white text-xs font-black transition-all text-center flex items-center justify-center gap-1 shadow-sm">
-                            <span>Shopee</span>
-                            
-                        </a>
-                    </div>
-                </div>
-
-                <!-- PRODUK 8: Apple AirPods Max Wireless ANC (Technology) -->
-                <div class="cat-prod-item bg-white rounded-2xl p-4 sm:p-5 border border-slate-200/80 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.06)] hover:shadow-xl transition-all duration-300 flex flex-col justify-between group" data-group="technology">
-                    <div>
-                        <div class="relative aspect-square w-full rounded-2xl bg-[#F8FAFC] border-2 border-slate-100 group-hover:border-blue-200/80 flex items-center justify-center p-4 sm:p-5 mb-4 overflow-hidden group-hover:bg-slate-50 transition-all shadow-[inset_0_1px_3px_rgba(0,0,0,0.02)]">
-                            <img src="https://images.unsplash.com/photo-1546435770-a3e426bf472b?w=600&auto=format&fit=crop&q=80" alt="Apple AirPods Max Wireless ANC" class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500 rounded-xl">
-                        </div>
-                        <a href="{{ url('/katalog/teknologi') }}" class="text-[10px] font-black text-[#1677d2] hover:text-[#0B1A30] uppercase tracking-wider inline-flex items-center gap-1 mb-1 transition-colors">
-                            <span>Audio & Headphone</span>
-                            
-                        </a>
-                        <h3 class="font-bold text-sm sm:text-base text-[#0B1A30] line-clamp-1 group-hover:text-[#1677d2] transition-colors leading-snug">
-                            Apple AirPods Max Wireless ANC
-                        </h3>
-                        <div class="mt-2">
-                            <span class="text-base sm:text-lg font-black text-[#0B1A30]">Rp 7.499.000</span>
-                        </div>
-                    </div>
-                    <div class="mt-4 pt-3.5 border-t border-slate-100 grid grid-cols-2 gap-2">
-                        <a href="https://tokopedia.com" target="_blank" rel="noopener nofollow" class="py-2.5 px-3 rounded-xl border border-slate-200 hover:border-[#1677d2] bg-white hover:bg-blue-50/60 text-[#0B1A30] hover:text-[#1677d2] text-xs font-bold transition-all text-center flex items-center justify-center gap-1">
-                            <span>Tokopedia</span>
-                        </a>
-                        <a href="https://shopee.co.id" target="_blank" rel="noopener nofollow" class="py-2.5 px-3 rounded-xl bg-[#1677d2] hover:bg-[#125ea7] text-white text-xs font-black transition-all text-center flex items-center justify-center gap-1 shadow-sm">
-                            <span>Shopee</span>
-                            
-                        </a>
-                    </div>
-                </div>
-
-                <!-- PRODUK 9: Logitech MX Master 3S Ergonomic Mouse (Technology) -->
-                <div class="cat-prod-item bg-white rounded-2xl p-4 sm:p-5 border border-slate-200/80 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.06)] hover:shadow-xl transition-all duration-300 flex flex-col justify-between group" data-group="technology">
-                    <div>
-                        <div class="relative aspect-square w-full rounded-2xl bg-[#F8FAFC] border-2 border-slate-100 group-hover:border-blue-200/80 flex items-center justify-center p-4 sm:p-5 mb-4 overflow-hidden group-hover:bg-slate-50 transition-all shadow-[inset_0_1px_3px_rgba(0,0,0,0.02)]">
-                            <img src="https://images.unsplash.com/photo-1615663245857-ac93bb7c39e7?w=600&auto=format&fit=crop&q=80" alt="Logitech MX Master 3S Ergonomic Mouse" class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500 rounded-xl">
-                        </div>
-                        <a href="{{ url('/katalog/teknologi') }}" class="text-[10px] font-black text-[#1677d2] hover:text-[#0B1A30] uppercase tracking-wider inline-flex items-center gap-1 mb-1 transition-colors">
-                            <span>Computer Accessories</span>
-                            
-                        </a>
-                        <h3 class="font-bold text-sm sm:text-base text-[#0B1A30] line-clamp-1 group-hover:text-[#1677d2] transition-colors leading-snug">
-                            Logitech MX Master 3S Ergonomic Mouse
-                        </h3>
-                        <div class="mt-2">
-                            <span class="text-base sm:text-lg font-black text-[#0B1A30]">Rp 1.399.000</span>
-                        </div>
-                    </div>
-                    <div class="mt-4 pt-3.5 border-t border-slate-100 grid grid-cols-2 gap-2">
-                        <a href="https://tokopedia.com" target="_blank" rel="noopener nofollow" class="py-2.5 px-3 rounded-xl border border-slate-200 hover:border-[#1677d2] bg-white hover:bg-blue-50/60 text-[#0B1A30] hover:text-[#1677d2] text-xs font-bold transition-all text-center flex items-center justify-center gap-1">
-                            <span>Tokopedia</span>
-                        </a>
-                        <a href="https://shopee.co.id" target="_blank" rel="noopener nofollow" class="py-2.5 px-3 rounded-xl bg-[#1677d2] hover:bg-[#125ea7] text-white text-xs font-black transition-all text-center flex items-center justify-center gap-1 shadow-sm">
-                            <span>Shopee</span>
-                            
-                        </a>
-                    </div>
-                </div>
-
-                <!-- PRODUK 10: Keychron Q1 Pro Mechanical Keyboard (Technology) -->
-                <div class="cat-prod-item bg-white rounded-2xl p-4 sm:p-5 border border-slate-200/80 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.06)] hover:shadow-xl transition-all duration-300 flex flex-col justify-between group" data-group="technology">
-                    <div>
-                        <div class="relative aspect-square w-full rounded-2xl bg-[#F8FAFC] border-2 border-slate-100 group-hover:border-blue-200/80 flex items-center justify-center p-4 sm:p-5 mb-4 overflow-hidden group-hover:bg-slate-50 transition-all shadow-[inset_0_1px_3px_rgba(0,0,0,0.02)]">
-                            <img src="https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=600&auto=format&fit=crop&q=80" alt="Keychron Q1 Pro Mechanical Keyboard" class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500 rounded-xl">
-                        </div>
-                        <a href="{{ url('/katalog/teknologi') }}" class="text-[10px] font-black text-[#1677d2] hover:text-[#0B1A30] uppercase tracking-wider inline-flex items-center gap-1 mb-1 transition-colors">
-                            <span>Mechanical Keyboards</span>
-                            
-                        </a>
-                        <h3 class="font-bold text-sm sm:text-base text-[#0B1A30] line-clamp-1 group-hover:text-[#1677d2] transition-colors leading-snug">
-                            Keychron Q1 Pro Mechanical Keyboard
-                        </h3>
-                        <div class="mt-2">
-                            <span class="text-base sm:text-lg font-black text-[#0B1A30]">Rp 2.199.000</span>
-                        </div>
-                    </div>
-                    <div class="mt-4 pt-3.5 border-t border-slate-100 grid grid-cols-2 gap-2">
-                        <a href="https://tokopedia.com" target="_blank" rel="noopener nofollow" class="py-2.5 px-3 rounded-xl border border-slate-200 hover:border-[#1677d2] bg-white hover:bg-blue-50/60 text-[#0B1A30] hover:text-[#1677d2] text-xs font-bold transition-all text-center flex items-center justify-center gap-1">
-                            <span>Tokopedia</span>
-                        </a>
-                        <a href="https://shopee.co.id" target="_blank" rel="noopener nofollow" class="py-2.5 px-3 rounded-xl bg-[#1677d2] hover:bg-[#125ea7] text-white text-xs font-black transition-all text-center flex items-center justify-center gap-1 shadow-sm">
-                            <span>Shopee</span>
-                            
-                        </a>
-                    </div>
-                </div>
-
-                <!-- PRODUK 11: Nintendo Switch OLED Mario Red (Technology) -->
-                <div class="cat-prod-item bg-white rounded-2xl p-4 sm:p-5 border border-slate-200/80 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.06)] hover:shadow-xl transition-all duration-300 flex flex-col justify-between group" data-group="technology">
-                    <div>
-                        <div class="relative aspect-square w-full rounded-2xl bg-[#F8FAFC] border-2 border-slate-100 group-hover:border-blue-200/80 flex items-center justify-center p-4 sm:p-5 mb-4 overflow-hidden group-hover:bg-slate-50 transition-all shadow-[inset_0_1px_3px_rgba(0,0,0,0.02)]">
-                            <img src="{{ asset('images/toys/nintendo.jpg') }}" alt="Nintendo Switch OLED Mario Red Edition" class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500 rounded-xl">
-                        </div>
-                        <a href="{{ url('/katalog/teknologi') }}" class="text-[10px] font-black text-[#1677d2] hover:text-[#0B1A30] uppercase tracking-wider inline-flex items-center gap-1 mb-1 transition-colors">
-                            <span>Handheld Gaming</span>
-                            
-                        </a>
-                        <h3 class="font-bold text-sm sm:text-base text-[#0B1A30] line-clamp-1 group-hover:text-[#1677d2] transition-colors leading-snug">
-                            Nintendo Switch OLED Mario Red
-                        </h3>
-                        <div class="mt-2">
-                            <span class="text-base sm:text-lg font-black text-[#0B1A30]">Rp 4.650.000</span>
-                        </div>
-                    </div>
-                    <div class="mt-4 pt-3.5 border-t border-slate-100 grid grid-cols-2 gap-2">
-                        <a href="https://tokopedia.com" target="_blank" rel="noopener nofollow" class="py-2.5 px-3 rounded-xl border border-slate-200 hover:border-[#1677d2] bg-white hover:bg-blue-50/60 text-[#0B1A30] hover:text-[#1677d2] text-xs font-bold transition-all text-center flex items-center justify-center gap-1">
-                            <span>Tokopedia</span>
-                        </a>
-                        <a href="https://shopee.co.id" target="_blank" rel="noopener nofollow" class="py-2.5 px-3 rounded-xl bg-[#1677d2] hover:bg-[#125ea7] text-white text-xs font-black transition-all text-center flex items-center justify-center gap-1 shadow-sm">
-                            <span>Shopee</span>
-                            
-                        </a>
-                    </div>
-                </div>
-
-                <!-- PRODUK 12: Samsung Galaxy Tab S9 Ultra 5G (Technology) -->
-                <div class="cat-prod-item bg-white rounded-2xl p-4 sm:p-5 border border-slate-200/80 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.06)] hover:shadow-xl transition-all duration-300 flex flex-col justify-between group" data-group="technology">
-                    <div>
-                        <div class="relative aspect-square w-full rounded-2xl bg-[#F8FAFC] border-2 border-slate-100 group-hover:border-blue-200/80 flex items-center justify-center p-4 sm:p-5 mb-4 overflow-hidden group-hover:bg-slate-50 transition-all shadow-[inset_0_1px_3px_rgba(0,0,0,0.02)]">
-                            <img src="https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?w=600&auto=format&fit=crop&q=80" alt="Samsung Galaxy Tab S9 Ultra 5G" class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500 rounded-xl">
-                        </div>
-                        <a href="{{ url('/katalog/teknologi') }}" class="text-[10px] font-black text-[#1677d2] hover:text-[#0B1A30] uppercase tracking-wider inline-flex items-center gap-1 mb-1 transition-colors">
-                            <span>Mobile & Tablet</span>
-                            
-                        </a>
-                        <h3 class="font-bold text-sm sm:text-base text-[#0B1A30] line-clamp-1 group-hover:text-[#1677d2] transition-colors leading-snug">
-                            Samsung Galaxy Tab S9 Ultra 5G
-                        </h3>
-                        <div class="mt-2">
-                            <span class="text-base sm:text-lg font-black text-[#0B1A30]">Rp 16.999.000</span>
-                        </div>
-                    </div>
-                    <div class="mt-4 pt-3.5 border-t border-slate-100 grid grid-cols-2 gap-2">
-                        <a href="https://tokopedia.com" target="_blank" rel="noopener nofollow" class="py-2.5 px-3 rounded-xl border border-slate-200 hover:border-[#1677d2] bg-white hover:bg-blue-50/60 text-[#0B1A30] hover:text-[#1677d2] text-xs font-bold transition-all text-center flex items-center justify-center gap-1">
-                            <span>Tokopedia</span>
-                        </a>
-                        <a href="https://shopee.co.id" target="_blank" rel="noopener nofollow" class="py-2.5 px-3 rounded-xl bg-[#1677d2] hover:bg-[#125ea7] text-white text-xs font-black transition-all text-center flex items-center justify-center gap-1 shadow-sm">
-                            <span>Shopee</span>
-                            
-                        </a>
-                    </div>
-                </div>
-
+                @endforeach
             </div>
 
             <!-- Bottom Action Banner to Categories -->
@@ -521,7 +226,6 @@
     <script>
         function setKatalogFilter(group) {
             const items = document.querySelectorAll('.cat-prod-item');
-            const btnAll = document.getElementById('tabBtnAll');
 
             items.forEach(item => {
                 if (group === 'all' || item.getAttribute('data-group') === group) {

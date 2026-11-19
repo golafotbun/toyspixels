@@ -160,4 +160,26 @@ class CatalogSectionTest extends TestCase
         $this->get('/mainan')->assertRedirect('/katalogmainan');
         $this->get('/teknologi')->assertRedirect('/katalogteknologi');
     }
+
+    /**
+     * Test catalog products contain specific Shopee affiliate links matching their articles.
+     */
+    public function test_catalog_pages_contain_specific_shopee_links_from_articles(): void
+    {
+        $response = $this->get('/katalog');
+        $response->assertStatus(200);
+
+        // Verify specific Shopee links match the article affiliate_url
+        $response->assertSee('https://shopee.co.id/gundam-pg-unleashed-rx78-2');
+        $response->assertSee('https://shopee.co.id/tamiya-avante-black-special');
+        $response->assertSee('https://shopee.co.id/lego-star-wars-millennium-falcon');
+        $response->assertSee('https://shopee.co.id/pop-mart-labubu-monster');
+        $response->assertSee('https://shopee.co.id/sony-playstation-5-slim-digital');
+        $response->assertSee('https://shopee.co.id/samsung-galaxy-tab-s9-ultra');
+
+        // Verify article links exist on the card
+        $response->assertSee('/post/gundam-pg-unleashed-rx-78-2');
+        $response->assertSee('/post/tamiya-avante-black-special-4wd');
+        $response->assertSee('Cek Detail');
+    }
 }

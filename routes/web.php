@@ -52,19 +52,23 @@ Route::get('/artikel/{slug}', function (string $slug) {
 
 // Katalog & Halaman Kategori Tahap 5
 Route::get('/katalog', function () {
-    return view('katalog');
+    $products = KatalogService::all();
+    return view('katalog', compact('products'));
 })->name('katalog');
 
 Route::get('/semuaproduk', function () {
-    return view('katalog');
+    $products = KatalogService::all();
+    return view('katalog', compact('products'));
 })->name('semuaproduk');
 
 Route::get('/katalog/mainan', function () {
-    return view('katalog-mainan');
+    $products = KatalogService::filterByTag('mainan');
+    return view('katalog-mainan', compact('products'));
 })->name('katalog.mainan');
 
 Route::get('/katalogmainan', function () {
-    return view('katalog-mainan');
+    $products = KatalogService::filterByTag('mainan');
+    return view('katalog-mainan', compact('products'));
 })->name('katalogmainan');
 
 Route::get('/mainan', function () {
@@ -72,11 +76,13 @@ Route::get('/mainan', function () {
 });
 
 Route::get('/katalog/teknologi', function () {
-    return view('katalog-teknologi');
+    $products = KatalogService::filterByTag('technology');
+    return view('katalog-teknologi', compact('products'));
 })->name('katalog.teknologi');
 
 Route::get('/katalogteknologi', function () {
-    return view('katalog-teknologi');
+    $products = KatalogService::filterByTag('technology');
+    return view('katalog-teknologi', compact('products'));
 })->name('katalogteknologi');
 
 Route::get('/teknologi', function () {

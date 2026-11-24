@@ -17,9 +17,10 @@ class TopToysPageTest extends TestCase
 
         $response->assertStatus(200);
 
-        // Verify custom link toyspixels.com/topproduk on button
+        // Verify custom link toyspixels.com/topproduk on button and header navigation
         $response->assertSee('https://toyspixels.com/topproduk');
         $response->assertSee('Lihat Semua Top Toys');
+        $response->assertSee('<a href="https://toyspixels.com/topproduk" class="hover:text-[#E3FF73] transition-colors">TOP PRODUK</a>', escape: false);
 
         $content = $response->getContent();
         $tahap3Start = strpos($content, 'id="top-toys"');

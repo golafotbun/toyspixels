@@ -12,7 +12,7 @@
     <meta property="og:description" content="Daftar mainan favorit dan terlaris dengan rating tertinggi pilihan orang tua, anak, dan kolektor bulan ini.">
     <meta property="og:image" content="{{ asset('images/toys/gundam.jpg') }}">
     <meta property="og:type" content="website">
-    <link rel="canonical" href="{{ url('/top-toys') }}">
+    <link rel="canonical" href="https://toyspixels.com/topproduk">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -79,7 +79,7 @@
             <!-- Center: Navigation Links -->
             <nav class="hidden md:flex items-center gap-7 lg:gap-9 text-xs lg:text-sm font-extrabold tracking-wider text-white/90">
                 <a href="{{ url('/') }}#hero-section" class="hover:text-[#E3FF73] transition-colors">HOME</a>
-                <a href="{{ url('/top-toys') }}" class="text-[#E3FF73] border-b-2 border-[#E3FF73] pb-1 transition-colors">TOP TOYS</a>
+                <a href="https://toyspixels.com/topproduk" class="text-[#E3FF73] border-b-2 border-[#E3FF73] pb-1 transition-colors">TOP PRODUK</a>
                 <a href="{{ url('/') }}#kategori" class="hover:text-[#E3FF73] transition-colors">KATEGORI</a>
                 <a href="{{ url('/') }}#all-products" class="hover:text-[#E3FF73] transition-colors">SEMUA PRODUK</a>
                 <a href="{{ url('/') }}#news-review" class="hover:text-[#E3FF73] transition-colors">NEWS & REVIEW</a>

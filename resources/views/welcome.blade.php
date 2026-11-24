@@ -621,7 +621,7 @@
             <!-- Center: Navigation Links (Matching tahap 2.png layout) -->
             <nav class="hidden md:flex items-center gap-7 lg:gap-9 text-xs lg:text-sm font-extrabold tracking-wider text-white/90">
                 <a href="#hero-section" class="text-[#E3FF73] hover:text-white transition-colors">HOME</a>
-                <a href="#top-toys" class="hover:text-[#E3FF73] transition-colors">TOP TOYS</a>
+                <a href="https://toyspixels.com/topproduk" class="hover:text-[#E3FF73] transition-colors">TOP PRODUK</a>
                 <a href="#kategori" class="hover:text-[#E3FF73] transition-colors">KATEGORI</a>
                 <a href="#all-products" class="hover:text-[#E3FF73] transition-colors">SEMUA PRODUK</a>
                 <a href="#news-review" class="hover:text-[#E3FF73] transition-colors">NEWS & REVIEW</a>
@@ -650,8 +650,8 @@
                 <a href="#hero-section" onclick="toggleNavDrawer()" class="py-1.5 hover:text-[#E3FF73] flex items-center gap-2">
                     <span>🏠</span> HOME
                 </a>
-                <a href="#top-toys" onclick="toggleNavDrawer()" class="py-1.5 hover:text-[#E3FF73] flex items-center gap-2">
-                    <span>🔥</span> TOP TOYS
+                <a href="https://toyspixels.com/topproduk" class="py-1.5 hover:text-[#E3FF73] flex items-center gap-2">
+                    <span>⭐</span> TOP PRODUK
                 </a>
                 <a href="#kategori" onclick="toggleNavDrawer()" class="py-1.5 hover:text-[#E3FF73] flex items-center gap-2">
                     <span>🧩</span> KATEGORI PRODUK

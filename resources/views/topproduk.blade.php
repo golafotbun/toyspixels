@@ -115,7 +115,7 @@
             <!-- Center: Navigation Links (Matching pages top produk.jpg style) -->
             <nav class="hidden md:flex items-center gap-7 lg:gap-9 text-xs lg:text-sm font-extrabold tracking-wider text-slate-700">
                 <a href="{{ url('/') }}" class="hover:text-[#00C853] transition-colors">HOME</a>
-                <a href="{{ url('/topproduk') }}" class="text-[#00C853] font-black border-b-2 border-[#00C853] pb-1 transition-colors">TOP PRODUK</a>
+                <a href="https://toyspixels.com/topproduk" class="text-[#00C853] font-black border-b-2 border-[#00C853] pb-1 transition-colors">TOP PRODUK</a>
                 <a href="{{ url('/') }}#kategori" class="hover:text-[#00C853] transition-colors">KATEGORI</a>
                 <a href="{{ url('/katalog') }}" class="hover:text-[#00C853] transition-colors">KATALOG</a>
                 <a href="{{ url('/') }}#news-review" class="hover:text-[#00C853] transition-colors">NEWS &amp; REVIEW</a>
@@ -147,7 +147,7 @@
                 <a href="{{ url('/') }}" class="py-1.5 hover:text-[#00C853] flex items-center gap-2">
                     <span>🏠</span> HOME
                 </a>
-                <a href="{{ url('/topproduk') }}" class="py-1.5 text-[#00C853] flex items-center gap-2">
+                <a href="https://toyspixels.com/topproduk" class="py-1.5 text-[#00C853] flex items-center gap-2">
                     <span>⭐</span> TOP PRODUK
                 </a>
                 <a href="{{ url('/') }}#kategori" class="py-1.5 hover:text-[#00C853] flex items-center gap-2">
@@ -517,7 +517,7 @@
                 </div>
                 <div class="flex items-center gap-6 text-xs font-bold text-slate-400">
                     <a href="{{ url('/') }}" class="hover:text-white transition-colors">Beranda</a>
-                    <a href="{{ url('/topproduk') }}" class="text-[#00C853] hover:text-white transition-colors">Top Produk</a>
+                    <a href="https://toyspixels.com/topproduk" class="text-[#00C853] hover:text-white transition-colors">Top Produk</a>
                     <a href="{{ url('/') }}#kategori" class="hover:text-white transition-colors">Kategori</a>
                     <a href="{{ url('/katalog') }}" class="hover:text-white transition-colors">Katalog</a>
                     <a href="{{ url('/') }}#faq" class="hover:text-white transition-colors">FAQ</a>

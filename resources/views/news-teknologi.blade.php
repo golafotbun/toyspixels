@@ -79,7 +79,7 @@
             <!-- Center: Navigation Links -->
             <nav class="hidden md:flex items-center gap-7 lg:gap-9 text-xs lg:text-sm font-extrabold tracking-wider text-white/90">
                 <a href="{{ url('/') }}#hero-section" class="hover:text-[#E3FF73] transition-colors">HOME</a>
-                <a href="{{ url('/topproduk') }}" class="hover:text-[#E3FF73] transition-colors">TOP TOYS</a>
+                <a href="https://toyspixels.com/topproduk" class="hover:text-[#E3FF73] transition-colors">TOP PRODUK</a>
                 <a href="{{ url('/') }}#kategori" class="hover:text-[#E3FF73] transition-colors">KATEGORI</a>
                 <a href="{{ url('/katalog') }}" class="hover:text-[#E3FF73] transition-colors">KATALOG</a>
                 <a href="{{ url('/newsteknologi') }}" class="text-[#E3FF73] border-b-2 border-[#E3FF73] pb-1 transition-colors">NEWS & REVIEW</a>

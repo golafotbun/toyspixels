@@ -7,7 +7,7 @@ use Tests\TestCase;
 class TopToysPageTest extends TestCase
 {
     /**
-     * Test the homepage contains the custom link toyspixel.com/topproduk,
+     * Test the homepage contains the custom link toyspixels.com/topproduk,
      * exactly 7 products ordered by post date (oldest date = rank #1),
      * and no fire/lightning icons or discount/strikethrough prices.
      */
@@ -17,8 +17,8 @@ class TopToysPageTest extends TestCase
 
         $response->assertStatus(200);
 
-        // Verify custom link toyspixel.com/topproduk on button
-        $response->assertSee('https://toyspixel.com/topproduk');
+        // Verify custom link toyspixels.com/topproduk on button
+        $response->assertSee('https://toyspixels.com/topproduk');
         $response->assertSee('Lihat Semua Top Toys');
 
         $content = $response->getContent();

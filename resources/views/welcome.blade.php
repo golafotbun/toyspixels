@@ -941,7 +941,7 @@
                         Daftar mainan favorit dan terlaris dengan rating tertinggi pilihan orang tua, anak, dan kolektor bulan ini.
                     </p>
                     <div class="mt-5 flex flex-wrap items-center gap-3">
-                        <a href="https://toyspixel.com/topproduk" class="inline-flex items-center gap-2.5 px-6 py-3 rounded-full bg-[#1677d2] hover:bg-[#1264b3] text-white font-extrabold text-xs sm:text-sm shadow-[0_8px_20px_-4px_rgba(22,119,210,0.35)] hover:shadow-[0_12px_24px_-4px_rgba(22,119,210,0.5)] transition-all hover:-translate-y-0.5 active:translate-y-0 group">
+                        <a href="https://toyspixels.com/topproduk" class="inline-flex items-center gap-2.5 px-6 py-3 rounded-full bg-[#1677d2] hover:bg-[#1264b3] text-white font-extrabold text-xs sm:text-sm shadow-[0_8px_20px_-4px_rgba(22,119,210,0.35)] hover:shadow-[0_12px_24px_-4px_rgba(22,119,210,0.5)] transition-all hover:-translate-y-0.5 active:translate-y-0 group">
                             <span>Lihat Semua Top Toys</span>
                             <span class="w-6 h-6 rounded-full bg-white/20 flex items-center justify-center text-xs group-hover:translate-x-0.5 transition-transform">➔</span>
                         </a>
@@ -1791,7 +1791,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="https://toyspixel.com/topproduk" class="hover:text-[#E3FF73] transition-colors flex items-center gap-2">
+                            <a href="https://toyspixels.com/topproduk" class="hover:text-[#E3FF73] transition-colors flex items-center gap-2">
                                 Top 7 Produk Terpopuler
                             </a>
                         </li>
@@ -1896,7 +1896,7 @@
                     <span>•</span>
                     <a href="{{ url('/katalog') }}" class="hover:text-white transition-colors">Katalog</a>
                     <span>•</span>
-                    <a href="https://toyspixel.com/topproduk" class="hover:text-white transition-colors">Top Produk</a>
+                    <a href="https://toyspixels.com/topproduk" class="hover:text-white transition-colors">Top Produk</a>
                     <span>•</span>
                     <a href="{{ url('/') }}#faq" class="hover:text-white transition-colors">FAQ</a>
                 </div>

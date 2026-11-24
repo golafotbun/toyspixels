@@ -12,7 +12,7 @@
     <meta property="og:description" content="Katalog kurasi produk top toys pilihan terbaik dan terpopuler di ToysPixel.">
     <meta property="og:image" content="{{ asset('images/brand/logo-landscape.png') }}">
     <meta property="og:type" content="website">
-    <link rel="canonical" href="https://toyspixel.com/topproduk">
+    <link rel="canonical" href="https://toyspixels.com/topproduk">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">

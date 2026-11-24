@@ -12,7 +12,7 @@
     <meta property="og:description" content="{{ $post['subtitle'] }}">
     <meta property="og:image" content="{{ asset($post['thumbnail']) }}">
     <meta property="og:type" content="article">
-    <link rel="canonical" href="https://toyspixel.com/topproduk/{{ $post['slug'] }}">
+    <link rel="canonical" href="https://toyspixels.com/topproduk/{{ $post['slug'] }}">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -57,7 +57,7 @@
                 <span>Artikel Review Resmi: <strong>{{ $post['title'] }}</strong></span>
             </div>
             <div class="flex items-center gap-4 text-[11px]">
-                <a href="https://toyspixel.com/topproduk" class="text-[#E3FF73] hover:underline font-bold flex items-center gap-1">
+                <a href="https://toyspixels.com/topproduk" class="text-[#E3FF73] hover:underline font-bold flex items-center gap-1">
                     <span>← Kembali ke Semua Top Produk</span>
                 </a>
                 <span class="text-slate-400 hidden sm:inline">Official Affiliate Shopee & Tokopedia</span>
@@ -79,7 +79,7 @@
             <!-- Center: Navigation Links -->
             <nav class="hidden md:flex items-center gap-7 lg:gap-9 text-xs lg:text-sm font-extrabold tracking-wider text-white/90">
                 <a href="{{ url('/') }}#hero-section" class="hover:text-[#E3FF73] transition-colors">HOME</a>
-                <a href="https://toyspixel.com/topproduk" class="text-[#E3FF73] border-b-2 border-[#E3FF73] pb-1 transition-colors">TOP PRODUK</a>
+                <a href="https://toyspixels.com/topproduk" class="text-[#E3FF73] border-b-2 border-[#E3FF73] pb-1 transition-colors">TOP PRODUK</a>
                 <a href="{{ url('/') }}#kategori" class="hover:text-[#E3FF73] transition-colors">KATEGORI</a>
                 <a href="{{ url('/katalog') }}" class="hover:text-[#E3FF73] transition-colors">KATALOG</a>
                 <a href="{{ url('/') }}#news-review" class="hover:text-[#E3FF73] transition-colors">NEWS & REVIEW</a>
@@ -88,7 +88,7 @@
 
             <!-- Right: Action Button -->
             <div class="flex items-center gap-3">
-                <a href="https://toyspixel.com/topproduk" class="bg-white/20 hover:bg-white/30 text-white text-xs font-extrabold px-4 py-2 rounded-full transition-all">
+                <a href="https://toyspixels.com/topproduk" class="bg-white/20 hover:bg-white/30 text-white text-xs font-extrabold px-4 py-2 rounded-full transition-all">
                     Semua Top Produk
                 </a>
                 <a href="{{ url('/') }}" class="bg-[#E3FF73] hover:bg-[#d6f556] text-[#0A1628] font-black text-xs sm:text-sm px-5 sm:px-6 py-2.5 rounded-full shadow-md hover:shadow-lg transition-all flex items-center gap-2 uppercase tracking-wide">
@@ -107,7 +107,7 @@
             <nav class="flex items-center gap-2 text-xs text-slate-500 font-bold mb-6">
                 <a href="{{ url('/') }}" class="hover:text-[#1677d2]">Beranda</a>
                 <span>/</span>
-                <a href="https://toyspixel.com/topproduk" class="hover:text-[#1677d2]">Top Produk</a>
+                <a href="https://toyspixels.com/topproduk" class="hover:text-[#1677d2]">Top Produk</a>
                 <span>/</span>
                 <span class="text-[#0B1A30] truncate">{{ $post['title'] }}</span>
             </nav>
@@ -196,7 +196,7 @@
                         <a href="{{ $post['tokopedia_url'] }}" target="_blank" rel="noopener nofollow" class="w-full sm:w-auto px-7 py-3 rounded-xl bg-[#03AC0E] hover:bg-[#02970c] text-white font-extrabold text-xs shadow-md transition-all text-center flex items-center justify-center gap-2">
                             <span>Beli di Tokopedia Official</span>
                         </a>
-                        <a href="https://toyspixel.com/topproduk" class="w-full sm:w-auto px-5 py-3 rounded-xl bg-white border border-slate-200 hover:border-[#1677d2] text-slate-700 hover:text-[#1677d2] text-xs font-bold transition-all text-center">
+                        <a href="https://toyspixels.com/topproduk" class="w-full sm:w-auto px-5 py-3 rounded-xl bg-white border border-slate-200 hover:border-[#1677d2] text-slate-700 hover:text-[#1677d2] text-xs font-bold transition-all text-center">
                             ← Kembali ke Daftar Top Produk
                         </a>
                     </div>

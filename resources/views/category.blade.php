@@ -76,7 +76,7 @@
             <!-- Center Navigation Links -->
             <nav class="hidden md:flex items-center gap-8 text-xs font-black tracking-widest text-slate-300">
                 <a href="{{ url('/') }}" class="hover:text-[#E3FF73] transition-colors">BERANDA</a>
-                <a href="https://toyspixel.com/topproduk" class="hover:text-[#E3FF73] transition-colors">TOP PRODUK</a>
+                <a href="https://toyspixels.com/topproduk" class="hover:text-[#E3FF73] transition-colors">TOP PRODUK</a>
                 <a href="{{ url('/katalog') }}" class="hover:text-[#E3FF73] transition-colors">KATALOG</a>
                 <a href="{{ url('/') }}#faq" class="hover:text-[#E3FF73] transition-colors">FAQ</a>
             </nav>
@@ -235,7 +235,7 @@
                     <h4 class="font-extrabold text-white uppercase tracking-wider mb-3">Navigasi Utama</h4>
                     <ul class="space-y-2 text-slate-400">
                         <li><a href="{{ url('/') }}" class="hover:text-[#E3FF73] transition-colors">Beranda</a></li>
-                        <li><a href="https://toyspixel.com/topproduk" class="hover:text-[#E3FF73] transition-colors">Top Produk</a></li>
+                        <li><a href="https://toyspixels.com/topproduk" class="hover:text-[#E3FF73] transition-colors">Top Produk</a></li>
                         <li><a href="{{ url('/katalog') }}" class="hover:text-[#E3FF73] transition-colors">Katalog</a></li>
                         <li><a href="{{ url('/') }}#faq" class="hover:text-[#E3FF73] transition-colors">FAQ</a></li>
                     </ul>

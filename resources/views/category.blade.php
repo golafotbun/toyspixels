@@ -101,8 +101,6 @@
             <div class="text-xs text-slate-300 font-bold flex items-center gap-2 mb-6">
                 <a href="{{ url('/') }}" class="hover:text-[#E3FF73] transition-colors">Beranda</a>
                 <span>/</span>
-                <a href="{{ url('/') }}#kategori" class="hover:text-[#E3FF73] transition-colors">Kategori</a>
-                <span>/</span>
                 <span class="text-[#E3FF73]">{{ $category['title'] }}</span>
             </div>
 

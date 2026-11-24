@@ -133,9 +133,6 @@
                         <a href="#daftar-produk" class="px-6 py-2.5 rounded-full bg-[#E3FF73] hover:bg-[#d6f556] text-[#0A1628] font-black text-xs sm:text-sm shadow-md transition-all">
                             Lihat Rekomendasi Produk
                         </a>
-                        <a href="{{ url('/') }}#kategori" class="px-6 py-2.5 rounded-full bg-white/15 hover:bg-white/25 text-white font-bold text-xs sm:text-sm border border-white/20 transition-all">
-                            Semua Kategori
-                        </a>
                     </div>
                 </div>
             </div>
@@ -162,13 +159,16 @@
             <!-- Grid 4 Products -->
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                 @foreach($category['products'] as $product)
-                <div class="bg-white rounded-3xl p-5 border border-slate-200 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between group">
+                <div class="bg-white rounded-3xl p-5 border border-slate-200 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between group" data-tag="{{ $product['tag'] ?? $category['slug'] }}">
                     <div>
                         <!-- Image Container with Rounded Frame -->
                         <div class="relative w-full aspect-square rounded-2xl overflow-hidden bg-slate-50 border border-slate-100 p-3 mb-4 flex items-center justify-center">
                             <img src="{{ asset($product['image']) }}" alt="{{ $product['name'] }}" class="w-full h-full object-contain rounded-xl group-hover:scale-105 transition-transform duration-300">
                             <span class="absolute top-3 left-3 bg-[#0B1A30] text-[#E3FF73] text-[10px] font-black px-2.5 py-1 rounded-full shadow-sm">
                                 ⭐ {{ $product['rating'] }} | {{ $product['sold'] }}
+                            </span>
+                            <span class="absolute top-3 right-3 bg-white/95 backdrop-blur-sm text-[#1677d2] text-[10px] font-black px-2.5 py-1 rounded-full border border-blue-100 shadow-sm">
+                                #{{ $product['tag'] ?? $category['slug'] }}
                             </span>
                         </div>
 

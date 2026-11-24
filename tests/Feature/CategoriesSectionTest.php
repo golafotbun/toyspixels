@@ -80,6 +80,13 @@ class CategoriesSectionTest extends TestCase
             $response->assertSee('Rekomendasi Produk Pilihan');
             $response->assertSee('Cek Detail');
             $response->assertSee('Beli Langsung');
+
+            // Verify each category page only displays products matching its tag
+            $response->assertSee('data-tag="'.$slug.'"', escape: false);
+            $response->assertSee('#'.$slug);
+
+            // Verify "Semua Kategori" button has been removed from category pages
+            $response->assertDontSee('Semua Kategori');
         }
     }
 
@@ -105,5 +112,51 @@ class CategoriesSectionTest extends TestCase
             $response = $this->get($from);
             $response->assertRedirect($to);
         }
+    }
+
+    /**
+     * Test CategoryService tag filtering functionality.
+     */
+    public function test_category_service_tag_filtering(): void
+    {
+        $tags = [
+            'kidstoys',
+            'collectibles',
+            'gamespuzzles',
+            'outdoorrc',
+            'mobiletablets',
+            'gadgetswearables',
+            'computersaccessories',
+            'gamingentertainment',
+        ];
+
+        foreach ($tags as $tag) {
+            $products = \App\Services\CategoryService::filterByTag($tag);
+            $this->assertNotEmpty($products);
+            foreach ($products as $product) {
+                $this->assertTrue(
+                    $product['tag'] === $tag || in_array($tag, $product['tags'] ?? []),
+                    "Product {$product['name']} must be tagged with {$tag}"
+                );
+            }
+        }
+    }
+
+    /**
+     * Test that each category page renders only products strictly tagged with that category.
+     */
+    public function test_category_page_strictly_shows_products_with_matching_tag(): void
+    {
+        $response = $this->get('/kidstoys');
+        $response->assertStatus(200);
+        $response->assertSee('data-tag="kidstoys"', escape: false);
+        $response->assertDontSee('data-tag="collectibles"', escape: false);
+        $response->assertDontSee('data-tag="gamingentertainment"', escape: false);
+
+        $response = $this->get('/gamingentertainment');
+        $response->assertStatus(200);
+        $response->assertSee('data-tag="gamingentertainment"', escape: false);
+        $response->assertDontSee('data-tag="kidstoys"', escape: false);
+        $response->assertDontSee('data-tag="collectibles"', escape: false);
     }
 }

@@ -182,4 +182,80 @@ class CatalogSectionTest extends TestCase
         $response->assertSee('/post/tamiya-avante-black-special-4wd');
         $response->assertSee('Cek Detail');
     }
+
+    /**
+     * Test pages semuaproduk strictly renders 12 products tagged with semuaproduk.
+     */
+    public function test_pages_semuaproduk_has_tag_semuaproduk_and_twelve_items(): void
+    {
+        $response = $this->get('/semuaproduk');
+        $response->assertStatus(200);
+        $response->assertSee('PAGES SEMUAPRODUK', escape: false);
+        $response->assertSee('data-tag="semuaproduk"', escape: false);
+        $response->assertSee('#semuaproduk');
+
+        // Check both toy and tech products exist in all products
+        $response->assertSee('Gundam PG Unleashed RX-78-2');
+        $response->assertSee('Sony PlayStation 5 Slim Digital');
+        $response->assertSee('Tamiya Avante Black Special 4WD');
+        $response->assertSee('Nintendo Switch OLED Mario Red');
+
+        // Assert 12 items returned by KatalogService filter
+        $items = \App\Services\KatalogService::filterByTag('semuaproduk');
+        $this->assertCount(12, $items);
+    }
+
+    /**
+     * Test pages produkmainan strictly renders 6 products tagged with produkmainan.
+     */
+    public function test_pages_produkmainan_has_tag_produkmainan_and_six_items(): void
+    {
+        $response = $this->get('/katalogmainan');
+        $response->assertStatus(200);
+        $response->assertSee('PAGES PRODUKMAINAN', escape: false);
+        $response->assertSee('data-tag="produkmainan"', escape: false);
+        $response->assertSee('#produkmainan');
+
+        // Check toy products exist
+        $response->assertSee('Gundam PG Unleashed RX-78-2');
+        $response->assertSee('Tamiya Avante Black Special 4WD');
+        $response->assertSee('LEGO Star Wars Millennium Falcon');
+        $response->assertSee('Pop Mart Labubu Monster Art Toy');
+        $response->assertSee('Beyblade X Dran Sword Starter Set');
+        $response->assertSee('Rubik GAN 12 MagLev 3x3 Speedcube');
+
+        // Check tech products do NOT exist in mainan grid
+        $response->assertDontSee('data-tag="produkteknologi"', escape: false);
+
+        // Assert 6 items returned by KatalogService filter
+        $items = \App\Services\KatalogService::filterByTag('produkmainan');
+        $this->assertCount(6, $items);
+    }
+
+    /**
+     * Test pages produkteknologi strictly renders 6 products tagged with produkteknologi.
+     */
+    public function test_pages_produkteknologi_has_tag_produkteknologi_and_six_items(): void
+    {
+        $response = $this->get('/katalogteknologi');
+        $response->assertStatus(200);
+        $response->assertSee('PAGES PRODUKTEKNOLOGI', escape: false);
+        $response->assertSee('data-tag="produkteknologi"', escape: false);
+        $response->assertSee('#produkteknologi');
+
+        // Check tech products exist
+        $response->assertSee('Sony PlayStation 5 Slim Digital');
+        $response->assertSee('Apple AirPods Max Wireless ANC');
+        $response->assertSee('Logitech MX Master 3S Ergonomic Mouse');
+        $response->assertSee('Keychron Q1 Pro Mechanical Keyboard');
+        $response->assertSee('Nintendo Switch OLED Mario Red');
+        $response->assertSee('Samsung Galaxy Tab S9 Ultra 5G');
+
+        // Check toy products do NOT exist in technology grid
+        $response->assertDontSee('data-tag="produkmainan"', escape: false);
+
+        // Assert 6 items returned by KatalogService filter
+        $items = \App\Services\KatalogService::filterByTag('produkteknologi');
+        $this->assertCount(6, $items);
+    }
 }

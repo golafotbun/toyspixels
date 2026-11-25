@@ -50,24 +50,24 @@ Route::get('/artikel/{slug}', function (string $slug) {
     return redirect()->route('post.show', ['slug' => $slug]);
 });
 
-// Katalog & Halaman Kategori Tahap 5
+// Tahap 5: Pages Semuaproduk, Pages Produkmainan, Pages Produkteknologi
 Route::get('/katalog', function () {
-    $products = KatalogService::all();
+    $products = KatalogService::filterByTag('semuaproduk');
     return view('katalog', compact('products'));
 })->name('katalog');
 
 Route::get('/semuaproduk', function () {
-    $products = KatalogService::all();
+    $products = KatalogService::filterByTag('semuaproduk');
     return view('katalog', compact('products'));
 })->name('semuaproduk');
 
 Route::get('/katalog/mainan', function () {
-    $products = KatalogService::filterByTag('mainan');
+    $products = KatalogService::filterByTag('produkmainan');
     return view('katalog-mainan', compact('products'));
 })->name('katalog.mainan');
 
 Route::get('/katalogmainan', function () {
-    $products = KatalogService::filterByTag('mainan');
+    $products = KatalogService::filterByTag('produkmainan');
     return view('katalog-mainan', compact('products'));
 })->name('katalogmainan');
 
@@ -76,12 +76,12 @@ Route::get('/mainan', function () {
 });
 
 Route::get('/katalog/teknologi', function () {
-    $products = KatalogService::filterByTag('technology');
+    $products = KatalogService::filterByTag('produkteknologi');
     return view('katalog-teknologi', compact('products'));
 })->name('katalog.teknologi');
 
 Route::get('/katalogteknologi', function () {
-    $products = KatalogService::filterByTag('technology');
+    $products = KatalogService::filterByTag('produkteknologi');
     return view('katalog-teknologi', compact('products'));
 })->name('katalogteknologi');
 

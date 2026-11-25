@@ -10,7 +10,10 @@ class KatalogService
      * Data 12 Produk Resmi Tahap 5 (Katalog Lengkap).
      * Setiap produk memiliki kategori resmi dari 8 kategori Tahap 4,
      * format harga di bawah artikel (contoh harga : 3.250.000),
-     * link beli langsung afiliasi, serta tag artikel (semua, mainan, technology).
+     * link beli langsung afiliasi, serta tag artikel:
+     * - semuaproduk (seluruh 12 produk)
+     * - produkmainan (6 produk mainan)
+     * - produkteknologi (6 produk teknologi)
      */
     protected static array $products = [
         [
@@ -28,7 +31,8 @@ class KatalogService
             'image' => 'images/toys/gundam.jpg',
             'affiliate_url' => 'https://shopee.co.id/gundam-pg-unleashed-rx78-2',
             'tokopedia_url' => 'https://tokopedia.com',
-            'tags' => ['semua', 'mainan', 'collectibles'],
+            'tag' => 'produkmainan',
+            'tags' => ['semua', 'mainan', 'collectibles', 'semuaproduk', 'produkmainan'],
             'summary' => 'Model kit skala 1/60 flagship Bandai dengan artikulasi sendi 5-tahap, inner skeleton metalik, dan sistem pencahayaan LED mutakhir.',
             'content' => 'Gundam Perfect Grade Unleashed RX-78-2 merupakan mahakarya tertinggi dalam lini gunpla skala 1/60. Mengusung konsep evolusi 5 tahap perakitan mulai dari rangka batin multi-lapisan, detail etsa logam, kubah LED bertenaga magnet, hingga armor luar dengan mekanism open-hatch yang mengagumkan. Setiap sendi memiliki rentang artikulasi dinamis yang memungkinkan pose ikonik seperti Last Shooting.',
         ],
@@ -47,7 +51,8 @@ class KatalogService
             'image' => 'images/toys/tamiya.jpg',
             'affiliate_url' => 'https://shopee.co.id/tamiya-avante-black-special',
             'tokopedia_url' => 'https://tokopedia.com',
-            'tags' => ['semua', 'mainan', 'collectibles'],
+            'tag' => 'produkmainan',
+            'tags' => ['semua', 'mainan', 'collectibles', 'semuaproduk', 'produkmainan'],
             'summary' => 'Kit balap legendaris Tamiya original dengan sasis VS chassis, ban spiked high grip, dan gold coilover damper autentik.',
             'content' => 'Tamiya Avante Black Special hadir dengan paduan bodi transparan smoke black yang misterius dipadu stiker neon kuning menyala. Didukung sasis VS chassis berbobot ringan namun berdaya tahan tinggi, velg berdiameter besar, serta ban spiked khusus yang menjamin cengkeraman maksimal saat melaju di tikungan sirkuit.',
         ],
@@ -66,7 +71,8 @@ class KatalogService
             'image' => 'images/toys/lego.jpg',
             'affiliate_url' => 'https://shopee.co.id/lego-star-wars-millennium-falcon',
             'tokopedia_url' => 'https://tokopedia.com',
-            'tags' => ['semua', 'mainan', 'kidstoys'],
+            'tag' => 'produkmainan',
+            'tags' => ['semua', 'mainan', 'kidstoys', 'semuaproduk', 'produkmainan'],
             'summary' => 'Set balok LEGO Star Wars original dengan 1.351 keping, kokpit terangkat, rotating gun turrets, dan 7 minifigure karakter ikonik.',
             'content' => 'LEGO Star Wars Millennium Falcon menghadirkan pengalaman merakit kapal luar angkasa legendaris terlengkap. Dilengkapi panel bodi atas yang dapat dibuka untuk mengakses interior ruang kargo, meja catur holografik Dejarik, serta stasiun meriam ganda atas-bawah yang bisa diputar 360 derajat.',
         ],
@@ -85,7 +91,8 @@ class KatalogService
             'image' => 'images/toys/labubu.jpg',
             'affiliate_url' => 'https://shopee.co.id/pop-mart-labubu-monster',
             'tokopedia_url' => 'https://tokopedia.com',
-            'tags' => ['semua', 'mainan', 'collectibles'],
+            'tag' => 'produkmainan',
+            'tags' => ['semua', 'mainan', 'collectibles', 'semuaproduk', 'produkmainan'],
             'summary' => 'Figur vinyl Pop Mart Labubu The Monsters original bersertifikat resmi, tren viral global kolektor hobi dan figur seni.',
             'content' => 'Koleksi art toy fenomenal dari Pop Mart karya ilustrator Kasing Lung. Seri The Monsters menampilkan karakter Labubu dengan senyum bertaring nakal yang khas, detail pewarnaan matte halus, serta sentuhan tekstur vinyl berkualitas tinggi yang cocok menghiasi meja kerja maupun lemari pajangan koleksi.',
         ],
@@ -104,7 +111,8 @@ class KatalogService
             'image' => 'images/toys/beyblade.jpg',
             'affiliate_url' => 'https://shopee.co.id/beyblade-x-dran-sword',
             'tokopedia_url' => 'https://tokopedia.com',
-            'tags' => ['semua', 'mainan', 'kidstoys'],
+            'tag' => 'produkmainan',
+            'tags' => ['semua', 'mainan', 'kidstoys', 'semuaproduk', 'produkmainan'],
             'summary' => 'Starter pack Beyblade X Takara Tomy original dengan teknologi X-Dash gear rail untuk putaran super agresif di stadium turnamen.',
             'content' => 'Generasi ke-4 gasing pertarungan Beyblade X menghadirkan inovasi Xtreme Gear Sports. Bagian bit gigi bawah berinteraksi langsung dengan rel stadium untuk memicu akselerasi ekstrim X-Dash, menghasilkan tabrakan spektakuler dan Xtreme Finish yang memukau.',
         ],
@@ -123,7 +131,8 @@ class KatalogService
             'image' => 'images/toys/rubiks.jpg',
             'affiliate_url' => 'https://shopee.co.id/rubik-gan-12-maglev-3x3',
             'tokopedia_url' => 'https://tokopedia.com',
-            'tags' => ['semua', 'mainan', 'gamespuzzles'],
+            'tag' => 'produkmainan',
+            'tags' => ['semua', 'mainan', 'gamespuzzles', 'semuaproduk', 'produkmainan'],
             'summary' => 'Speedcube magnetik profesional dengan teknologi suspensi magnet MagLev tanpa per, auto-aligning 30 derajat, dan bobot ultra ringan.',
             'content' => 'GAN 12 MagLev merupakan kubus kecepatan 3x3 kasta tertinggi yang digunakan juara speedcubing dunia. Mengganti per pegas konvensional dengan dua magnet berlawanan kutub (Magnetic Levitation), menghasilkan putaran yang sangat licin, senyap, dengan fitur auto-aligning 30 derajat.',
         ],
@@ -142,7 +151,8 @@ class KatalogService
             'image' => 'images/toys/playstation.jpg',
             'affiliate_url' => 'https://shopee.co.id/sony-playstation-5-slim-digital',
             'tokopedia_url' => 'https://tokopedia.com',
-            'tags' => ['semua', 'technology', 'gamingentertainment'],
+            'tag' => 'produkteknologi',
+            'tags' => ['semua', 'technology', 'gamingentertainment', 'semuaproduk', 'produkteknologi'],
             'summary' => 'Konsol next-gen resmi Sony dengan SSD ultra cepat 1TB, ray tracing 4K 120Hz, dan controller DualSense haptic feedback.',
             'content' => 'PlayStation 5 Slim hadir dalam desain 30% lebih ramping dengan penyimpanan internal yang ditingkatkan menjadi 1TB SSD kencang. Didukung teknologi audio 3D Tempest, ray tracing realistis, dan stik nirkabel DualSense dengan umpan balik haptic mendalam serta adaptive trigger.',
         ],
@@ -161,7 +171,8 @@ class KatalogService
             'image' => 'https://images.unsplash.com/photo-1546435770-a3e426bf472b?w=600&auto=format&fit=crop&q=80',
             'affiliate_url' => 'https://shopee.co.id/apple-airpods-max-anc',
             'tokopedia_url' => 'https://tokopedia.com',
-            'tags' => ['semua', 'technology', 'gadgetswearables'],
+            'tag' => 'produkteknologi',
+            'tags' => ['semua', 'technology', 'gadgetswearables', 'semuaproduk', 'produkteknologi'],
             'summary' => 'Headphone over-ear premium dengan Active Noise Cancellation kelas dunia, Transparency mode, dan Spatial Audio dinamis.',
             'content' => 'AirPods Max memadukan fidelity audio tinggi dengan peredam kebisingan aktif terdepan di industri. Kanopi jaring breathable pada headband dan ear cushion berbahan busa memori akustik memberikan kenyamanan mendengarkan musik berjam-jam tanpa rasa lelah.',
         ],
@@ -180,7 +191,8 @@ class KatalogService
             'image' => 'https://images.unsplash.com/photo-1615663245857-ac93bb7c39e7?w=600&auto=format&fit=crop&q=80',
             'affiliate_url' => 'https://shopee.co.id/logitech-mx-master-3s',
             'tokopedia_url' => 'https://tokopedia.com',
-            'tags' => ['semua', 'technology', 'computersaccessories'],
+            'tag' => 'produkteknologi',
+            'tags' => ['semua', 'technology', 'computersaccessories', 'semuaproduk', 'produkteknologi'],
             'summary' => 'Mouse nirkabel ergonomis profesional dengan sensor 8K DPI track-on-glass, scroll magnetik MagSpeed, dan klik senyap 90%.',
             'content' => 'Logitech MX Master 3S adalah standar tertinggi mouse produktivitas para profesional dan desainer kreatif. Mengusung sensor optik 8.000 DPI yang dapat melacak di segala permukaan termasuk kaca tebal, scroll elektromagnetik MagSpeed super cepat (1.000 baris/detik), dan tombol Quiet Clicks yang meredam 90% suara klik.',
         ],
@@ -199,7 +211,8 @@ class KatalogService
             'image' => 'https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=600&auto=format&fit=crop&q=80',
             'affiliate_url' => 'https://shopee.co.id/keychron-q1-pro-keyboard',
             'tokopedia_url' => 'https://tokopedia.com',
-            'tags' => ['semua', 'technology', 'computersaccessories'],
+            'tag' => 'produkteknologi',
+            'tags' => ['semua', 'technology', 'computersaccessories', 'semuaproduk', 'produkteknologi'],
             'summary' => 'Keyboard mekanikal premium bodi full aluminium CNC dengan konektivitas nirkabel Bluetooth 5.1, QMK/VIA support, dan hot-swappable switch.',
             'content' => 'Keychron Q1 Pro hadir dengan bodi aluminium CNC presisi tinggi berdesain gasket ganda untuk sensasi ketukan yang empuk dan bersuara padat (thocky). Mendukung remap tombol tak terbatas melalui web app QMK/VIA dan konektivitas nirkabel hingga 3 perangkat secara simultan.',
         ],
@@ -218,7 +231,8 @@ class KatalogService
             'image' => 'images/toys/nintendo.jpg',
             'affiliate_url' => 'https://shopee.co.id/nintendo-switch-oled-mario-red',
             'tokopedia_url' => 'https://tokopedia.com',
-            'tags' => ['semua', 'technology', 'gamingentertainment'],
+            'tag' => 'produkteknologi',
+            'tags' => ['semua', 'technology', 'gamingentertainment', 'semuaproduk', 'produkteknologi'],
             'summary' => 'Konsol hybrid edisi spesial Mario Red dengan layar OLED 7 inci cerah, stand lebar fleksibel, audio jernih, dan penyimpanan 64GB.',
             'content' => 'Nintendo Switch edisi Mario Red membalut unit konsol, dock, dan joy-con dalam nuansa merah ikonik Super Mario. Dilengkapi layar OLED 7 inci yang kaya warna kontras tinggi, port LAN kabel internal pada dock, serta dudukan meja yang dapat disesuaikan sudutnya secara fleksibel.',
         ],
@@ -237,12 +251,16 @@ class KatalogService
             'image' => 'https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?w=600&auto=format&fit=crop&q=80',
             'affiliate_url' => 'https://shopee.co.id/samsung-galaxy-tab-s9-ultra',
             'tokopedia_url' => 'https://tokopedia.com',
-            'tags' => ['semua', 'technology', 'mobiletablets'],
+            'tag' => 'produkteknologi',
+            'tags' => ['semua', 'technology', 'mobiletablets', 'semuaproduk', 'produkteknologi'],
             'summary' => 'Tablet flagship layar Dynamic AMOLED 2X 14.6 inci, prosesor Snapdragon 8 Gen 2, rating anti air IP68, dan sudah termasuk S-Pen latensi ultra rendah.',
             'content' => 'Galaxy Tab S9 Ultra mendefinisikan ulang produktivitas dan hiburan kelas atas. Menampilkan layar raksasa Dynamic AMOLED 2X 14.6 inci 120Hz yang sangat memukau, dapur pacu Snapdragon 8 Gen 2 for Galaxy, ketahanan air dan debu IP68 pertama di seri flagship tab, serta dukungan stylus S-Pen bawaan berlatensi 2.8ms.',
         ],
     ];
 
+    /**
+     * Mengambil semua produk dengan format url shopee.
+     */
     public static function all(): Collection
     {
         return collect(self::$products)->map(function ($item) {
@@ -251,6 +269,9 @@ class KatalogService
         });
     }
 
+    /**
+     * Mencari produk berdasarkan slug.
+     */
     public static function findBySlug(string $slug): ?array
     {
         $normalized = strtolower(trim($slug));
@@ -265,16 +286,51 @@ class KatalogService
         return null;
     }
 
+    /**
+     * Filter produk katalog berdasarkan tag tertentu (semuaproduk, produkmainan, produkteknologi, mainan, technology, dll).
+     */
     public static function filterByTag(string $tag): Collection
     {
         $normalized = strtolower(trim($tag));
 
-        if ($normalized === 'all' || $normalized === 'semua') {
+        if ($normalized === 'all') {
             return self::all();
         }
 
         return self::all()->filter(function ($item) use ($normalized) {
-            return in_array($normalized, $item['tags'] ?? []);
-        });
+            return in_array($normalized, $item['tags'] ?? []) || ($item['tag'] ?? null) === $normalized;
+        })->values();
+    }
+
+    /**
+     * Alias helper filter by tag.
+     */
+    public static function byTag(string $tag): Collection
+    {
+        return self::filterByTag($tag);
+    }
+
+    /**
+     * Helper khusus: Ambil seluruh produk ber-tag semuaproduk.
+     */
+    public static function allProduk(): Collection
+    {
+        return self::filterByTag('semuaproduk');
+    }
+
+    /**
+     * Helper khusus: Ambil produk mainan ber-tag produkmainan.
+     */
+    public static function produkMainan(): Collection
+    {
+        return self::filterByTag('produkmainan');
+    }
+
+    /**
+     * Helper khusus: Ambil produk teknologi ber-tag produkteknologi.
+     */
+    public static function produkTeknologi(): Collection
+    {
+        return self::filterByTag('produkteknologi');
     }
 }

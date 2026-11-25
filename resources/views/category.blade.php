@@ -189,10 +189,10 @@
 
                         <!-- 2 Buttons: Cek Detail & Beli Langsung -->
                         <div class="grid grid-cols-2 gap-2">
-                            <a href="{{ $product['shopee_url'] }}" target="_blank" rel="noopener noreferrer" class="px-3 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-extrabold text-xs text-center transition-colors">
+                            <a href="{{ $product['detail_url'] ?? $product['shopee_url'] }}" {{ isset($product['detail_url']) ? '' : 'target="_blank" rel="noopener noreferrer"' }} class="px-3 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-extrabold text-xs text-center transition-colors">
                                 Cek Detail
                             </a>
-                            <a href="{{ $product['tokopedia_url'] }}" target="_blank" rel="noopener noreferrer" class="px-3 py-2 rounded-xl bg-[#1677d2] hover:bg-[#1264b3] text-white font-extrabold text-xs text-center shadow-sm transition-colors">
+                            <a href="{{ $product['affiliate_url'] ?? $product['shopee_url'] ?? $product['tokopedia_url'] }}" target="_blank" rel="noopener noreferrer" class="px-3 py-2 rounded-xl bg-[#1677d2] hover:bg-[#1264b3] text-white font-extrabold text-xs text-center shadow-sm transition-colors">
                                 Beli Langsung
                             </a>
                         </div>

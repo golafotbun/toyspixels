@@ -193,6 +193,27 @@ class TopProdukService
             'summary' => 'Figur transformasi diecast skala kolektor Takara Tomy Transformers Masterpiece MPM-12 Optimus Prime dengan sendi artikulasi berat dan cat premium.',
             'content' => 'Optimus Prime Masterpiece MPM-12 adalah interpretasi terbaik dari pemimpin Autobot berlisensi resmi. Mampu bertransformasi sempurna dari truk semi-cabover klasik menjadi robot setinggi 28cm dalam 49 langkah konversi rekayasa presisi tinggi. Menggunakan part berbahan diecast metal, Matrix of Leadership berlapis chrome di rongga dada, dan senjata Ion Blaster otentik.',
         ],
+        [
+            'id' => 10,
+            'slug' => 'post-1',
+            'title' => 'Sony PlayStation 5 Console Gaming & Collectible Edition',
+            'subtitle' => 'Konsol gaming next-gen dengan visual 4K ultra-smooth, SSD super cepat, kontroler DualSense haptic feedback, dan edisi koleksi terlengkap',
+            'age' => 'Gaming 12+',
+            'type' => 'Gaming Console',
+            'age_type' => 'Gaming 12+/Gaming Console',
+            'price' => 'Rp 14.630.000',
+            'raw_price' => 14630000,
+            'thumbnail' => 'images/toys/playstation.jpg',
+            'post_date' => '2026-11-25',
+            'tag' => 'top produk',
+            'rating' => '4.9',
+            'sold' => '2.8rb+',
+            'shopee_url' => 'https://s.shopee.co.id/Lp4WI31xi',
+            'affiliate_url' => 'https://s.shopee.co.id/Lp4WI31xi',
+            'tokopedia_url' => 'https://tokopedia.com',
+            'summary' => 'Konsol gaming generasi terbaru yang menggabungkan performa gaming kelas atas, visual 4K HDR memukau, kontroler DualSense revolusioner, serta menjadi barang koleksi wajib bagi para pecinta game dan hobi pop culture.',
+            'content' => 'Sony PlayStation 5 Console Gaming & Collectible Edition menghadirkan standar baru dalam dunia gaming dan hiburan interaktif. Ditenagai prosesor kustom AMD Zen 2 berkecepatan tinggi dan arsitektur grafis RDNA 2, konsol ini mampu menjalankan game pada resolusi 4K dengan frame rate hingga 120 FPS serta teknologi Ray Tracing real-time untuk pencahayaan fotorealistis.',
+        ],
     ];
 
     /**

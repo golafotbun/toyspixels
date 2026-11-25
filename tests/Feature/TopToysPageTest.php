@@ -37,8 +37,12 @@ class TopToysPageTest extends TestCase
         $this->assertStringNotContainsString('-24%', $tahap3Html, 'Tahap 3 tidak boleh memiliki badge diskon');
         $this->assertStringNotContainsString('line-through', $tahap3Html, 'Tahap 3 tidak boleh memiliki harga coret');
 
-        // Verify #1 is Gundam Barbatos with blue card, correct details & price
+        // Verify #1 is the latest product (Post 1) with blue card, correct details & price
         $this->assertStringContainsString('#1', $tahap3Html);
+        $this->assertStringContainsString('Sony PlayStation 5', $tahap3Html);
+        $this->assertStringContainsString('Rp 14.630.000', $tahap3Html);
+
+        // Verify top products include Gundam Barbatos with correct details & price
         $this->assertStringContainsString('Gundam Barbatos', $tahap3Html);
         $this->assertStringContainsString('14+', $tahap3Html);
         $this->assertStringContainsString('GUNPLA MG', $tahap3Html);
@@ -47,7 +51,7 @@ class TopToysPageTest extends TestCase
 
         // Verify 7 products exist and rank up to #7
         $this->assertStringContainsString('#7', $tahap3Html);
-        $this->assertStringContainsString('Beyblade X Stadium', $tahap3Html);
+        $this->assertStringContainsString('LEGO Ferrari F40', $tahap3Html);
         // Ensure #8 is NOT in the homepage slider (as only top 7 are shown)
         $this->assertStringNotContainsString('#8', $tahap3Html);
     }

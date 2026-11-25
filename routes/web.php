@@ -3,6 +3,7 @@
 use App\Services\CategoryService;
 use App\Services\KatalogService;
 use App\Services\NewsService;
+use App\Services\PostService;
 use App\Services\TopProdukService;
 use Illuminate\Support\Facades\Route;
 
@@ -36,19 +37,27 @@ Route::get('/top-toys', function () {
     return redirect()->route('topproduk');
 })->name('top-toys');
 
-// Route Post / Artikel Produk (Tahap 5 Cek Detail)
+// Route Post / Artikel Produk (Tahap 5 Cek Detail & Post 1)
 Route::get('/post/{slug}', function (string $slug) {
-    $post = KatalogService::findBySlug($slug);
+    $post = PostService::findBySlug($slug) ?? KatalogService::findBySlug($slug);
     if (! $post) {
         abort(404);
     }
-    $relatedPosts = KatalogService::all()->where('slug', '!==', $slug)->take(3);
+    $relatedPosts = KatalogService::all()->where('slug', '!==', $post['slug'])->take(3);
 
     return view('post-detail', compact('post', 'relatedPosts'));
 })->name('post.show');
 
+Route::get('/post', function () {
+    return redirect()->route('post.show', ['slug' => 'post-1']);
+});
+
 Route::get('/artikel/{slug}', function (string $slug) {
     return redirect()->route('post.show', ['slug' => $slug]);
+});
+
+Route::get('/artikel', function () {
+    return redirect()->route('post.show', ['slug' => 'post-1']);
 });
 
 // Tahap 5: Pages Semuaproduk, Pages Produkmainan, Pages Produkteknologi

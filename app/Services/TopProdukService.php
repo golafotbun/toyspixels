@@ -218,23 +218,27 @@ class TopProdukService
 
     /**
      * Ambil semua post yang memiliki tag 'top produk',
-     * diurutkan berdasarkan tanggal post paling lama (urutan 1) ke yang lebih baru.
+     * diurutkan berdasarkan tanggal post paling baru (paling update di urutan awal).
      */
     public static function all(): Collection
     {
         return collect(self::$posts)
             ->filter(fn ($post) => strtolower($post['tag']) === 'top produk')
-            ->sortBy('post_date')
+            ->sortByDesc('post_date')
             ->values();
     }
 
     /**
      * Ambil 7 produk teratas untuk ditampilkan di Homepage (Tahap 3).
-     * Sesuai ketentuan: tanggal paling lama adalah urutan 1.
+     * Sesuai ketentuan Tahap 3: tanggal awal (urutan 1 Barbatos s.d. 7 Beyblade).
      */
     public static function topSeven(): Collection
     {
-        return self::all()->take(7);
+        return collect(self::$posts)
+            ->filter(fn ($post) => strtolower($post['tag']) === 'top produk')
+            ->sortBy('post_date')
+            ->take(7)
+            ->values();
     }
 
     /**

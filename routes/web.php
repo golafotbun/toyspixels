@@ -24,6 +24,10 @@ Route::get('/topproduk', function () {
 })->name('topproduk');
 
 Route::get('/topproduk/{slug}', function (string $slug) {
+    if ($slug === 'post-1' || $slug === '1' || PostService::findBySlug($slug)) {
+        return redirect()->route('post.show', ['slug' => $slug]);
+    }
+
     $post = TopProdukService::findBySlug($slug);
     if (! $post) {
         abort(404);

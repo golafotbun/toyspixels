@@ -23,7 +23,7 @@ class TopProdukService
             'price' => 'Rp 329.000',
             'raw_price' => 329000,
             'thumbnail' => 'images/toys/gundam.jpg',
-            'post_date' => '2026-11-01',
+            'post_date' => '2026-11-24',
             'tag' => 'top produk',
             'rating' => '4.9',
             'sold' => '2.8rb+',
@@ -43,7 +43,7 @@ class TopProdukService
             'price' => 'Rp 289.000',
             'raw_price' => 289000,
             'thumbnail' => 'images/toys/tamiya.jpg',
-            'post_date' => '2026-11-02',
+            'post_date' => '2026-11-23',
             'tag' => 'top produk',
             'rating' => '4.9',
             'sold' => '3.1rb+',
@@ -63,7 +63,7 @@ class TopProdukService
             'price' => 'Rp 7.890.000',
             'raw_price' => 7890000,
             'thumbnail' => 'images/toys/playstation.jpg',
-            'post_date' => '2026-11-03',
+            'post_date' => '2026-11-22',
             'tag' => 'top produk',
             'rating' => '4.9',
             'sold' => '1.9rb+',
@@ -83,7 +83,7 @@ class TopProdukService
             'price' => 'Rp 189.000',
             'raw_price' => 189000,
             'thumbnail' => 'images/toys/labubu.jpg',
-            'post_date' => '2026-11-04',
+            'post_date' => '2026-11-21',
             'tag' => 'top produk',
             'rating' => '5.0',
             'sold' => '6.5rb+',
@@ -103,7 +103,7 @@ class TopProdukService
             'price' => 'Rp 119.000',
             'raw_price' => 119000,
             'thumbnail' => 'images/toys/hotwheels.jpg',
-            'post_date' => '2026-11-05',
+            'post_date' => '2026-11-20',
             'tag' => 'top produk',
             'rating' => '4.9',
             'sold' => '4.8rb+',
@@ -123,7 +123,7 @@ class TopProdukService
             'price' => 'Rp 349.000',
             'raw_price' => 349000,
             'thumbnail' => 'images/toys/lego.jpg',
-            'post_date' => '2026-11-06',
+            'post_date' => '2026-11-18',
             'tag' => 'top produk',
             'rating' => '4.9',
             'sold' => '3.7rb+',
@@ -143,7 +143,7 @@ class TopProdukService
             'price' => 'Rp 219.000',
             'raw_price' => 219000,
             'thumbnail' => 'images/toys/beyblade.jpg',
-            'post_date' => '2026-11-07',
+            'post_date' => '2026-11-19',
             'tag' => 'top produk',
             'rating' => '5.0',
             'sold' => '5.2rb+',
@@ -217,16 +217,64 @@ class TopProdukService
     ];
 
     /**
-     * Ambil semua post yang memiliki tag 'top produk',
-     * dengan post paling update (Post 1) di urutan paling awal (#1).
+     * Ambil semua post yang memiliki tag 'top produk' / 'topproduk',
+     * diurutkan berdasarkan post paling update (post_date descending) di posisi No. 1.
+     * Mengintegrasikan data dari PostService dan koleksi TopProduk.
      */
     public static function all(): Collection
     {
-        $posts = collect(self::$posts)->filter(fn ($post) => strtolower($post['tag']) === 'top produk');
-        $latest = $posts->firstWhere('slug', 'post-1');
-        $others = $posts->where('slug', '!==', 'post-1')->values();
+        // 1. Ambil post dari PostService yang memiliki tag 'topproduk' / 'top produk'
+        $customPosts = PostService::all()->filter(function ($p) {
+            $tag = strtolower($p['tag'] ?? '');
+            $tags = array_map('strtolower', $p['tags'] ?? []);
+            return in_array('topproduk', $tags) || in_array('top produk', $tags) || $tag === 'top produk' || $tag === 'topproduk';
+        })->map(function ($p) {
+            return [
+                'id' => $p['id'],
+                'slug' => $p['slug'],
+                'title' => $p['title'],
+                'subtitle' => $p['subtitle'],
+                'age' => $p['age'] ?? 'Gaming 12+',
+                'type' => $p['type'] ?? 'Gaming Console',
+                'age_type' => ($p['age'] ?? 'Gaming 12+') . '/' . ($p['type'] ?? 'Gaming Console'),
+                'price' => str_starts_with($p['price'], 'Rp') ? $p['price'] : 'Rp ' . $p['price'],
+                'raw_price' => $p['raw_price'] ?? 14630000,
+                'thumbnail' => $p['image'],
+                'image' => $p['image'],
+                'post_date' => $p['post_date'] ?? '2026-11-25',
+                'tag' => 'top produk',
+                'tags' => $p['tags'] ?? ['topproduk'],
+                'rating' => $p['rating'] ?? '4.9',
+                'sold' => $p['sold'] ?? '2.8rb+',
+                'shopee_url' => $p['affiliate_url'] ?? ($p['shopee_url'] ?? ''),
+                'affiliate_url' => $p['affiliate_url'] ?? ($p['shopee_url'] ?? ''),
+                'detail_url' => url('/post/' . $p['slug']),
+                'tokopedia_url' => $p['tokopedia_url'] ?? 'https://tokopedia.com',
+                'summary' => $p['summary'] ?? '',
+                'content' => $p['content'] ?? '',
+            ];
+        });
 
-        return collect([$latest])->filter()->concat($others)->values();
+        // 2. Ambil produk dari TopProdukService::$posts
+        $topPosts = collect(self::$posts)->filter(function ($p) {
+            $tag = strtolower($p['tag'] ?? '');
+            $tags = array_map('strtolower', $p['tags'] ?? []);
+            return in_array('topproduk', $tags) || in_array('top produk', $tags) || $tag === 'top produk' || $tag === 'topproduk';
+        })->map(function ($p) {
+            if ($p['slug'] === 'post-1') {
+                $p['detail_url'] = url('/post/' . $p['slug']);
+            }
+            return $p;
+        });
+
+        // 3. Gabungkan, hilangkan duplikat slug (utamakan PostService),
+        // dan urutkan berdasarkan tanggal paling update (post_date descending)
+        return $customPosts->concat($topPosts)
+            ->unique('slug')
+            ->sortByDesc(function ($item) {
+                return $item['post_date'] ?? '2026-11-01';
+            })
+            ->values();
     }
 
     /**

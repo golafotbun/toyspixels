@@ -92,4 +92,23 @@ class PostDetailTest extends TestCase
         $this->assertCount(1, PostService::filterByTag('katalogmainan'));
         $this->assertCount(1, PostService::filterByTag('katalogteknologi'));
     }
+
+    /**
+     * Test /topproduk/post-1 redirects to /post/post-1 and top produk cards link directly to post-1.
+     */
+    public function test_topproduk_links_directly_to_post_detail(): void
+    {
+        $response = $this->get('/topproduk/post-1');
+        $response->assertRedirect('/post/post-1');
+
+        $homeResponse = $this->get('/');
+        $homeResponse->assertStatus(200);
+        $homeContent = $homeResponse->getContent();
+        $this->assertStringContainsString('href="http://localhost:8000/post/post-1"', $homeContent);
+
+        $topResponse = $this->get('/topproduk');
+        $topResponse->assertStatus(200);
+        $topContent = $topResponse->getContent();
+        $this->assertStringContainsString('href="http://localhost:8000/post/post-1"', $topContent);
+    }
 }

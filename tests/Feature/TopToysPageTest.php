@@ -51,7 +51,7 @@ class TopToysPageTest extends TestCase
 
         // Verify 7 products exist and rank up to #7
         $this->assertStringContainsString('#7', $tahap3Html);
-        $this->assertStringContainsString('LEGO Ferrari F40', $tahap3Html);
+        $this->assertStringContainsString('Beyblade X Stadium', $tahap3Html);
         // Ensure #8 is NOT in the homepage slider (as only top 7 are shown)
         $this->assertStringNotContainsString('#8', $tahap3Html);
     }

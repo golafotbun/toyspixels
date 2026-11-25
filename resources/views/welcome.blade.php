@@ -1234,7 +1234,7 @@
                                     <img src="{{ asset($prod['thumbnail']) }}" alt="{{ $prod['title'] }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
                                     <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent pointer-events-none"></div>
                                     
-                                    <a href="{{ url('/topproduk/' . $prod['slug']) }}" class="absolute bottom-3.5 inset-x-3.5 bg-white/90 hover:bg-white text-slate-950 backdrop-blur-md border border-white/80 font-black text-xs py-2.5 px-4 rounded-full flex items-center justify-between shadow-lg transition-all active:scale-95 group/btn">
+                                    <a href="{{ $prod['detail_url'] ?? (str_starts_with($prod['slug'], 'post-') ? url('/post/' . $prod['slug']) : url('/topproduk/' . $prod['slug'])) }}" class="absolute bottom-3.5 inset-x-3.5 bg-white/90 hover:bg-white text-slate-950 backdrop-blur-md border border-white/80 font-black text-xs py-2.5 px-4 rounded-full flex items-center justify-between shadow-lg transition-all active:scale-95 group/btn">
                                         <span class="tracking-wide">Lihat Selengkapnya</span>
                                         <span class="w-6 h-6 rounded-full bg-slate-950 text-white flex items-center justify-center text-[10px] group-hover/btn:translate-x-0.5 transition-transform">➔</span>
                                     </a>
@@ -1269,7 +1269,7 @@
                                     <img src="{{ asset($prod['thumbnail']) }}" alt="{{ $prod['title'] }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
                                     <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent pointer-events-none"></div>
                                     
-                                    <a href="{{ url('/topproduk/' . $prod['slug']) }}" class="absolute bottom-3.5 inset-x-3.5 bg-white/90 hover:bg-white text-slate-950 backdrop-blur-md border border-white/80 font-black text-xs py-2.5 px-4 rounded-full flex items-center justify-between shadow-lg transition-all active:scale-95 group/btn">
+                                    <a href="{{ $prod['detail_url'] ?? (str_starts_with($prod['slug'], 'post-') ? url('/post/' . $prod['slug']) : url('/topproduk/' . $prod['slug'])) }}" class="absolute bottom-3.5 inset-x-3.5 bg-white/90 hover:bg-white text-slate-950 backdrop-blur-md border border-white/80 font-black text-xs py-2.5 px-4 rounded-full flex items-center justify-between shadow-lg transition-all active:scale-95 group/btn">
                                         <span class="tracking-wide">Lihat Selengkapnya</span>
                                         <span class="w-6 h-6 rounded-full bg-slate-950 text-white flex items-center justify-center text-[10px] group-hover/btn:translate-x-0.5 transition-transform">➔</span>
                                     </a>

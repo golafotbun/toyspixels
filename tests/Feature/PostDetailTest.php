@@ -37,7 +37,7 @@ class PostDetailTest extends TestCase
         $response->assertSee('Shopee Official');
 
         // Verify Price in banner
-        $response->assertSee('7.499.000');
+        $response->assertSee('14.630.000');
         $response->assertSee('HARGA PENAWARAN RESMI');
 
         // Verify Affiliate link

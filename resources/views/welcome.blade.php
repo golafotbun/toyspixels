@@ -608,24 +608,184 @@
     <!-- TAHAP 2: MAIN NAVIGATION HEADER (PERSIS REFERENSI TAHAP 2.PNG)  -->
     <!-- Left: toyspixels.com Logo | Center: Links | Right: Neon Button -->
     <!-- ============================================================== -->
-    <header class="sticky top-0 z-40 bg-[#1677d2]/90 backdrop-blur-md border-b border-white/20 text-white transition-all shadow-sm">
+    <header class="sticky top-0 z-50 bg-[#1677d2]/95 backdrop-blur-md border-b border-white/20 text-white transition-all shadow-sm">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-4">
             
             <!-- Left: Brand Logo Landscape inside white pill capsule -->
-            <a href="/" class="flex items-center gap-2 group">
+            <a href="/" class="flex items-center gap-2 group shrink-0">
                 <div class="bg-white/95 px-3.5 py-1.5 rounded-xl shadow-md border border-white/40 flex items-center group-hover:scale-105 transition-transform">
                     <img src="{{ asset('images/brand/logo-landscape.png') }}" alt="toyspixels.com" class="h-8 sm:h-9 object-contain">
                 </div>
             </a>
 
-            <!-- Center: Navigation Links (Matching tahap 2.png layout) -->
-            <nav class="hidden md:flex items-center gap-7 lg:gap-9 text-xs lg:text-sm font-extrabold tracking-wider text-white/90">
-                <a href="#hero-section" class="text-[#E3FF73] hover:text-white transition-colors">HOME</a>
-                <a href="https://toyspixels.com/topproduk" class="hover:text-[#E3FF73] transition-colors">TOP PRODUK</a>
-                <a href="#kategori" class="hover:text-[#E3FF73] transition-colors">KATEGORI</a>
-                <a href="#all-products" class="hover:text-[#E3FF73] transition-colors">SEMUA PRODUK</a>
-                <a href="#news-review" class="hover:text-[#E3FF73] transition-colors">NEWS & REVIEW</a>
-                <a href="#faq" class="hover:text-[#E3FF73] transition-colors">FAQ</a>
+            <!-- Center: Navigation Links with Dropdown Sub-Menus (Tahap 8) -->
+            <nav class="hidden md:flex items-center gap-6 lg:gap-8 text-xs lg:text-sm font-extrabold tracking-wider text-white/90">
+                
+                <!-- 1. HOME -->
+                <div class="relative group py-2">
+                    <a href="#hero-section" class="text-[#E3FF73] hover:text-white transition-colors">HOME</a>
+                    <div class="absolute left-0 top-full pt-2 w-56 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 pointer-events-none group-hover:pointer-events-auto">
+                        <div class="bg-white rounded-2xl shadow-2xl border border-slate-200/90 p-2 text-[#0B1A30]">
+                            <a href="#hero-section" class="block px-3.5 py-2.5 rounded-xl hover:bg-blue-50/80 group/sub transition-colors">
+                                <div class="text-xs font-bold text-slate-800 group-hover/sub:text-[#1677d2] transition-colors">Beranda Utama</div>
+                                <div class="text-[10px] text-slate-400 font-normal">Banner, promo &amp; highlight</div>
+                            </a>
+                            <a href="#mengapa-toyspixel" class="block px-3.5 py-2.5 rounded-xl hover:bg-blue-50/80 group/sub transition-colors">
+                                <div class="text-xs font-bold text-slate-800 group-hover/sub:text-[#1677d2] transition-colors">Mengapa ToysPixel</div>
+                                <div class="text-[10px] text-slate-400 font-normal">Kurasi &amp; jaminan original</div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2. TOP PRODUK -->
+                <div class="relative group py-2">
+                    <a href="https://toyspixels.com/topproduk" class="hover:text-[#E3FF73] transition-colors">TOP PRODUK</a>
+                    <div class="absolute left-0 top-full pt-2 w-72 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 pointer-events-none group-hover:pointer-events-auto">
+                        <div class="bg-white rounded-2xl shadow-2xl border border-slate-200/90 p-2.5 text-[#0B1A30]">
+                            <a href="https://toyspixels.com/topproduk" class="block px-3.5 py-2.5 rounded-xl hover:bg-blue-50/80 group/sub transition-colors">
+                                <div class="text-xs font-bold text-slate-800 group-hover/sub:text-[#1677d2] transition-colors">Semua Top Produk</div>
+                                <div class="text-[10px] text-slate-400 font-normal">Katalog produk rating tertinggi</div>
+                            </a>
+                            <a href="#top-toys" class="block px-3.5 py-2.5 rounded-xl hover:bg-blue-50/80 group/sub transition-colors">
+                                <div class="text-xs font-bold text-slate-800 group-hover/sub:text-[#1677d2] transition-colors">Top 7 Pilihan Beranda</div>
+                                <div class="text-[10px] text-slate-400 font-normal">7 produk terpopuler di beranda</div>
+                            </a>
+                            <div class="my-1 border-t border-slate-100"></div>
+                            <a href="https://toyspixels.com/topproduk?tipe=mainan" class="block px-3.5 py-2 rounded-xl hover:bg-blue-50/80 group/sub transition-colors">
+                                <span class="text-xs font-semibold text-slate-700 group-hover/sub:text-[#1677d2]">Top Mainan Terpopuler</span>
+                            </a>
+                            <a href="https://toyspixels.com/topproduk?tipe=teknologi" class="block px-3.5 py-2 rounded-xl hover:bg-blue-50/80 group/sub transition-colors">
+                                <span class="text-xs font-semibold text-slate-700 group-hover/sub:text-[#1677d2]">Top Gadget &amp; Teknologi</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3. KATEGORI (8 TURUNAN SUB MENU RESMI TAHAP 4 & TAHAP 8) -->
+                <div class="relative group py-2">
+                    <a href="#kategori" class="hover:text-[#E3FF73] transition-colors">KATEGORI</a>
+                    <div class="absolute -left-28 sm:-left-36 lg:-left-24 top-full pt-2 w-[580px] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 pointer-events-none group-hover:pointer-events-auto">
+                        <div class="bg-white rounded-2xl shadow-2xl border border-slate-200/90 p-4 text-[#0B1A30]">
+                            <div class="grid grid-cols-2 gap-3">
+                                
+                                <!-- Kolom 1: Mainan & Hobi -->
+                                <div>
+                                    <div class="px-3 py-1 text-[11px] font-black tracking-wider text-slate-400 uppercase border-b border-slate-100 pb-1.5 mb-1.5">
+                                        MAINAN &amp; HOBI
+                                    </div>
+                                    <div class="flex flex-col gap-1">
+                                        <a href="https://toyspixels.com/kidstoys" class="block p-2.5 rounded-xl hover:bg-blue-50/80 group/sub transition-colors">
+                                            <div class="text-xs font-bold text-slate-800 group-hover/sub:text-[#1677d2] transition-colors truncate">Kids &amp; Educational Toys</div>
+                                            <div class="text-[10px] text-slate-400 truncate">Mainan edukatif &amp; balok susun</div>
+                                        </a>
+                                        <a href="https://toyspixels.com/collectibles" class="block p-2.5 rounded-xl hover:bg-blue-50/80 group/sub transition-colors">
+                                            <div class="text-xs font-bold text-slate-800 group-hover/sub:text-[#1677d2] transition-colors truncate">Collectibles &amp; Hobbies</div>
+                                            <div class="text-[10px] text-slate-400 truncate">Action figure, gunpla &amp; diecast</div>
+                                        </a>
+                                        <a href="https://toyspixels.com/gamespuzzles" class="block p-2.5 rounded-xl hover:bg-blue-50/80 group/sub transition-colors">
+                                            <div class="text-xs font-bold text-slate-800 group-hover/sub:text-[#1677d2] transition-colors truncate">Games &amp; Puzzles</div>
+                                            <div class="text-[10px] text-slate-400 truncate">Board game &amp; teka-teki logika</div>
+                                        </a>
+                                        <a href="https://toyspixels.com/outdoorrc" class="block p-2.5 rounded-xl hover:bg-blue-50/80 group/sub transition-colors">
+                                            <div class="text-xs font-bold text-slate-800 group-hover/sub:text-[#1677d2] transition-colors truncate">Outdoor &amp; RC Play</div>
+                                            <div class="text-[10px] text-slate-400 truncate">Mobil remote, drone &amp; outdoor</div>
+                                        </a>
+                                    </div>
+                                </div>
+
+                                <!-- Kolom 2: Gadget & Teknologi -->
+                                <div>
+                                    <div class="px-3 py-1 text-[11px] font-black tracking-wider text-slate-400 uppercase border-b border-slate-100 pb-1.5 mb-1.5">
+                                        GADGET &amp; TEKNOLOGI
+                                    </div>
+                                    <div class="flex flex-col gap-1">
+                                        <a href="https://toyspixels.com/mobiletablets" class="block p-2.5 rounded-xl hover:bg-blue-50/80 group/sub transition-colors">
+                                            <div class="text-xs font-bold text-slate-800 group-hover/sub:text-[#1677d2] transition-colors truncate">Mobile &amp; Tablets</div>
+                                            <div class="text-[10px] text-slate-400 truncate">Smartphone, tablet &amp; aksesoris</div>
+                                        </a>
+                                        <a href="https://toyspixels.com/gadgetswearables" class="block p-2.5 rounded-xl hover:bg-blue-50/80 group/sub transition-colors">
+                                            <div class="text-xs font-bold text-slate-800 group-hover/sub:text-[#1677d2] transition-colors truncate">Gadgets &amp; Wearables</div>
+                                            <div class="text-[10px] text-slate-400 truncate">Smartwatch, TWS audio &amp; band</div>
+                                        </a>
+                                        <a href="https://toyspixels.com/computersaccessories" class="block p-2.5 rounded-xl hover:bg-blue-50/80 group/sub transition-colors">
+                                            <div class="text-xs font-bold text-slate-800 group-hover/sub:text-[#1677d2] transition-colors truncate">Computers &amp; Accessories</div>
+                                            <div class="text-[10px] text-slate-400 truncate">Laptop, keyboard &amp; peripheral</div>
+                                        </a>
+                                        <a href="https://toyspixels.com/gamingentertainment" class="block p-2.5 rounded-xl hover:bg-blue-50/80 group/sub transition-colors">
+                                            <div class="text-xs font-bold text-slate-800 group-hover/sub:text-[#1677d2] transition-colors truncate">Gaming &amp; Entertainment</div>
+                                            <div class="text-[10px] text-slate-400 truncate">Konsol game, controller &amp; VR</div>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Bottom Link -->
+                            <div class="mt-3 pt-2.5 border-t border-slate-100 flex items-center justify-between px-2">
+                                <span class="text-[11px] text-slate-400 font-semibold">8 Kategori Resmi ToysPixel</span>
+                                <a href="#kategori" class="text-xs font-bold text-[#1677d2] hover:text-[#0f5ca8] flex items-center gap-1 transition-colors">
+                                    <span>Lihat Semua Kategori di Beranda</span>
+                                    <span>➔</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 4. SEMUA PRODUK / KATALOG (TAHAP 5) -->
+                <div class="relative group py-2">
+                    <a href="#all-products" class="hover:text-[#E3FF73] transition-colors">SEMUA PRODUK</a>
+                    <div class="absolute -left-10 top-full pt-2 w-72 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 pointer-events-none group-hover:pointer-events-auto">
+                        <div class="bg-white rounded-2xl shadow-2xl border border-slate-200/90 p-2.5 text-[#0B1A30]">
+                            <a href="https://toyspixels.com/semuaproduk" class="block px-3.5 py-2.5 rounded-xl hover:bg-blue-50/80 group/sub transition-colors">
+                                <div class="text-xs font-bold text-slate-800 group-hover/sub:text-[#1677d2] transition-colors">Semua Produk (12)</div>
+                                <div class="text-[10px] text-slate-400 font-normal">Koleksi gabungan seluruh mainan &amp; gadget</div>
+                            </a>
+                            <a href="https://toyspixels.com/katalogmainan" class="block px-3.5 py-2.5 rounded-xl hover:bg-blue-50/80 group/sub transition-colors">
+                                <div class="text-xs font-bold text-slate-800 group-hover/sub:text-[#1677d2] transition-colors">Katalog Mainan (6)</div>
+                                <div class="text-[10px] text-slate-400 font-normal">Khusus mainan anak, lego &amp; hobi</div>
+                            </a>
+                            <a href="https://toyspixels.com/katalogteknologi" class="block px-3.5 py-2.5 rounded-xl hover:bg-blue-50/80 group/sub transition-colors">
+                                <div class="text-xs font-bold text-slate-800 group-hover/sub:text-[#1677d2] transition-colors">Katalog Teknologi (6)</div>
+                                <div class="text-[10px] text-slate-400 font-normal">Khusus gadget &amp; perangkat teknologi</div>
+                            </a>
+                            <div class="my-1 border-t border-slate-100"></div>
+                            <a href="#all-products" class="flex items-center justify-between px-3.5 py-2 rounded-xl hover:bg-blue-50/80 text-xs font-bold text-[#1677d2] transition-colors">
+                                <span>Katalog Pilihan di Beranda</span>
+                                <span>➔</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 5. NEWS & REVIEW (TAHAP 6) -->
+                <div class="relative group py-2">
+                    <a href="#news-review" class="hover:text-[#E3FF73] transition-colors">NEWS &amp; REVIEW</a>
+                    <div class="absolute -right-4 top-full pt-2 w-72 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 pointer-events-none group-hover:pointer-events-auto">
+                        <div class="bg-white rounded-2xl shadow-2xl border border-slate-200/90 p-2.5 text-[#0B1A30]">
+                            <a href="https://toyspixels.com/allnews" class="block px-3.5 py-2.5 rounded-xl hover:bg-blue-50/80 group/sub transition-colors">
+                                <div class="text-xs font-bold text-slate-800 group-hover/sub:text-[#1677d2] transition-colors">Semua Berita &amp; Review</div>
+                                <div class="text-[10px] text-slate-400 font-normal">Semua ulasan artikel terkurasi</div>
+                            </a>
+                            <a href="https://toyspixels.com/newsmainan" class="block px-3.5 py-2.5 rounded-xl hover:bg-blue-50/80 group/sub transition-colors">
+                                <div class="text-xs font-bold text-slate-800 group-hover/sub:text-[#1677d2] transition-colors">Berita Mainan &amp; Hobi</div>
+                                <div class="text-[10px] text-slate-400 font-normal">Review lego, figure &amp; diecast</div>
+                            </a>
+                            <a href="https://toyspixels.com/newsteknologi" class="block px-3.5 py-2.5 rounded-xl hover:bg-blue-50/80 group/sub transition-colors">
+                                <div class="text-xs font-bold text-slate-800 group-hover/sub:text-[#1677d2] transition-colors">Berita Gadget &amp; Teknologi</div>
+                                <div class="text-[10px] text-slate-400 font-normal">Review smartphone, console &amp; gadget</div>
+                            </a>
+                            <div class="my-1 border-t border-slate-100"></div>
+                            <a href="#news-review" class="flex items-center justify-between px-3.5 py-2 rounded-xl hover:bg-blue-50/80 text-xs font-bold text-[#1677d2] transition-colors">
+                                <span>Artikel Terkini di Beranda</span>
+                                <span>➔</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 6. FAQ -->
+                <a href="#faq" class="hover:text-[#E3FF73] py-2 transition-colors">FAQ</a>
             </nav>
 
             <!-- Right: Vibrant Neon Lime Pill Button (Matching tahap 2.png) -->
@@ -644,27 +804,101 @@
             </div>
         </div>
 
-        <!-- Sleek Dropdown Navigation Drawer for Mobile -->
-        <div id="navMenuDrawer" class="hidden md:hidden border-t border-white/20 bg-[#1264b3]/98 backdrop-blur-xl px-4 py-4 transition-all">
-            <div class="max-w-7xl mx-auto flex flex-col gap-2.5 text-xs sm:text-sm font-extrabold text-white">
-                <a href="#hero-section" onclick="toggleNavDrawer()" class="py-1.5 hover:text-[#E3FF73] flex items-center gap-2">
-                    <span>🏠</span> HOME
-                </a>
-                <a href="https://toyspixels.com/topproduk" class="py-1.5 hover:text-[#E3FF73] flex items-center gap-2">
-                    <span>⭐</span> TOP PRODUK
-                </a>
-                <a href="#kategori" onclick="toggleNavDrawer()" class="py-1.5 hover:text-[#E3FF73] flex items-center gap-2">
-                    <span>🧩</span> KATEGORI PRODUK
-                </a>
-                <a href="#all-products" onclick="toggleNavDrawer()" class="py-1.5 hover:text-[#E3FF73] flex items-center gap-2">
-                    <span>📦</span> SEMUA PRODUK
-                </a>
-                <a href="#news-review" onclick="toggleNavDrawer()" class="py-1.5 hover:text-[#E3FF73] flex items-center gap-2">
-                    <span>📰</span> NEWS & REVIEW
-                </a>
-                <a href="#faq" onclick="toggleNavDrawer()" class="py-1.5 hover:text-[#E3FF73] flex items-center gap-2">
-                    <span>❓</span> FAQ
-                </a>
+        <!-- Sleek Dropdown Navigation Drawer for Mobile (Tahap 8 without icons) -->
+        <div id="navMenuDrawer" class="hidden md:hidden border-t border-white/20 bg-[#1264b3]/98 backdrop-blur-xl px-4 py-4 transition-all max-h-[80vh] overflow-y-auto">
+            <div class="max-w-7xl mx-auto flex flex-col gap-2 text-xs sm:text-sm font-extrabold text-white">
+                
+                <!-- HOME -->
+                <div class="border-b border-white/10 pb-2">
+                    <a href="#hero-section" onclick="toggleNavDrawer()" class="py-1.5 hover:text-[#E3FF73] flex items-center justify-between">
+                        <span>HOME</span>
+                        <span class="text-[11px] text-white/60 font-semibold">Beranda</span>
+                    </a>
+                </div>
+
+                <!-- TOP PRODUK ACCORDION -->
+                <div class="border-b border-white/10 pb-2">
+                    <button type="button" onclick="toggleSubDrawer('sub-top-produk')" class="w-full py-1.5 flex items-center justify-between text-left hover:text-[#E3FF73] transition-colors">
+                        <span>TOP PRODUK</span>
+                        <svg id="sub-top-produk-arrow" class="w-4 h-4 transition-transform duration-200" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5"/></svg>
+                    </button>
+                    <div id="sub-top-produk" class="hidden pl-3 pt-1.5 flex flex-col gap-1.5 text-xs text-white/90 font-medium">
+                        <a href="https://toyspixels.com/topproduk" class="py-1 hover:text-[#E3FF73]">Semua Top Produk</a>
+                        <a href="#top-toys" onclick="toggleNavDrawer()" class="py-1 hover:text-[#E3FF73]">Top 7 Pilihan Beranda</a>
+                        <a href="https://toyspixels.com/topproduk?tipe=mainan" class="py-1 hover:text-[#E3FF73]">Top Mainan Terpopuler</a>
+                        <a href="https://toyspixels.com/topproduk?tipe=teknologi" class="py-1 hover:text-[#E3FF73]">Top Gadget &amp; Teknologi</a>
+                    </div>
+                </div>
+
+                <!-- KATEGORI ACCORDION (8 KATEGORI LENGKAP) -->
+                <div class="border-b border-white/10 pb-2">
+                    <button type="button" onclick="toggleSubDrawer('sub-kategori')" class="w-full py-1.5 flex items-center justify-between text-left text-[#E3FF73] hover:text-white transition-colors">
+                        <span>KATEGORI (8 KATEGORI)</span>
+                        <svg id="sub-kategori-arrow" class="w-4 h-4 transition-transform duration-200" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5"/></svg>
+                    </button>
+                    <div id="sub-kategori" class="hidden pl-3 pt-2 flex flex-col gap-2 text-xs text-white/90 font-medium">
+                        <!-- Group 1: Mainan & Hobi -->
+                        <div class="text-[10px] font-black uppercase tracking-wider text-[#E3FF73] pt-1">Mainan &amp; Hobi</div>
+                        <div class="pl-2 flex flex-col gap-1.5">
+                            <a href="https://toyspixels.com/kidstoys" class="py-1 hover:text-[#E3FF73]">Kids &amp; Educational Toys</a>
+                            <a href="https://toyspixels.com/collectibles" class="py-1 hover:text-[#E3FF73]">Collectibles &amp; Hobbies</a>
+                            <a href="https://toyspixels.com/gamespuzzles" class="py-1 hover:text-[#E3FF73]">Games &amp; Puzzles</a>
+                            <a href="https://toyspixels.com/outdoorrc" class="py-1 hover:text-[#E3FF73]">Outdoor &amp; RC Play</a>
+                        </div>
+                        <!-- Group 2: Gadget & Teknologi -->
+                        <div class="text-[10px] font-black uppercase tracking-wider text-[#E3FF73] pt-2 border-t border-white/10">Gadget &amp; Teknologi</div>
+                        <div class="pl-2 flex flex-col gap-1.5">
+                            <a href="https://toyspixels.com/mobiletablets" class="py-1 hover:text-[#E3FF73]">Mobile &amp; Tablets</a>
+                            <a href="https://toyspixels.com/gadgetswearables" class="py-1 hover:text-[#E3FF73]">Gadgets &amp; Wearables</a>
+                            <a href="https://toyspixels.com/computersaccessories" class="py-1 hover:text-[#E3FF73]">Computers &amp; Accessories</a>
+                            <a href="https://toyspixels.com/gamingentertainment" class="py-1 hover:text-[#E3FF73]">Gaming &amp; Entertainment</a>
+                        </div>
+                        <a href="#kategori" onclick="toggleNavDrawer()" class="mt-1 py-1.5 px-3 rounded-lg bg-white/15 hover:bg-white/25 text-[#E3FF73] font-bold text-center flex items-center justify-center gap-1">
+                            <span>Lihat Bagian Kategori di Beranda</span> ➔
+                        </a>
+                    </div>
+                </div>
+
+                <!-- SEMUA PRODUK ACCORDION -->
+                <div class="border-b border-white/10 pb-2">
+                    <button type="button" onclick="toggleSubDrawer('sub-semua-produk')" class="w-full py-1.5 flex items-center justify-between text-left hover:text-[#E3FF73] transition-colors">
+                        <span>SEMUA PRODUK</span>
+                        <svg id="sub-semua-produk-arrow" class="w-4 h-4 transition-transform duration-200" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5"/></svg>
+                    </button>
+                    <div id="sub-semua-produk" class="hidden pl-3 pt-1.5 flex flex-col gap-1.5 text-xs text-white/90 font-medium">
+                        <a href="https://toyspixels.com/semuaproduk" class="py-1 hover:text-[#E3FF73]">Semua Produk (12)</a>
+                        <a href="https://toyspixels.com/katalogmainan" class="py-1 hover:text-[#E3FF73]">Katalog Mainan (6)</a>
+                        <a href="https://toyspixels.com/katalogteknologi" class="py-1 hover:text-[#E3FF73]">Katalog Teknologi (6)</a>
+                        <a href="#all-products" onclick="toggleNavDrawer()" class="py-1 hover:text-[#E3FF73]">Pilihan di Beranda</a>
+                    </div>
+                </div>
+
+                <!-- NEWS & REVIEW ACCORDION -->
+                <div class="border-b border-white/10 pb-2">
+                    <button type="button" onclick="toggleSubDrawer('sub-news')" class="w-full py-1.5 flex items-center justify-between text-left hover:text-[#E3FF73] transition-colors">
+                        <span>NEWS &amp; REVIEW</span>
+                        <svg id="sub-news-arrow" class="w-4 h-4 transition-transform duration-200" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5"/></svg>
+                    </button>
+                    <div id="sub-news" class="hidden pl-3 pt-1.5 flex flex-col gap-1.5 text-xs text-white/90 font-medium">
+                        <a href="https://toyspixels.com/allnews" class="py-1 hover:text-[#E3FF73]">Semua Berita &amp; Review</a>
+                        <a href="https://toyspixels.com/newsmainan" class="py-1 hover:text-[#E3FF73]">Berita Mainan &amp; Hobi</a>
+                        <a href="https://toyspixels.com/newsteknologi" class="py-1 hover:text-[#E3FF73]">Berita Gadget &amp; Teknologi</a>
+                        <a href="#news-review" onclick="toggleNavDrawer()" class="py-1 hover:text-[#E3FF73]">Berita di Beranda</a>
+                    </div>
+                </div>
+
+                <!-- FAQ -->
+                <div>
+                    <a href="#faq" onclick="toggleNavDrawer()" class="py-1.5 hover:text-[#E3FF73] flex items-center justify-between">
+                        <span>FAQ</span>
+                        <span class="text-[11px] text-white/60 font-semibold">Tanya Jawab</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+                        <span class="text-[11px] text-white/60 font-semibold">Tanya Jawab</span>
+                    </a>
+                </div>
             </div>
         </div>
     </header>
@@ -2704,6 +2938,18 @@
             const drawer = document.getElementById('navMenuDrawer');
             if (drawer) {
                 drawer.classList.toggle('hidden');
+            }
+        }
+
+        // Sub Drawer Toggle for Mobile Accordions (Tahap 8)
+        function toggleSubDrawer(id) {
+            const el = document.getElementById(id);
+            const arrow = document.getElementById(id + '-arrow');
+            if (el) {
+                el.classList.toggle('hidden');
+            }
+            if (arrow) {
+                arrow.classList.toggle('rotate-180');
             }
         }
 

@@ -1422,8 +1422,9 @@
     </section>
 
     <!-- ============================================================== -->
-    <!-- TAHAP 6: NEWS & REVIEW (2 KATEGORI: MAINAN & TEKNOLOGI)        -->
-    <!-- 3 Kotak Mainan & 3 Kotak Teknologi                            -->
+    <!-- ============================================================== -->
+    <!-- TAHAP 6: NEWS & REVIEW (3 KATEGORI: SEMUA, MAINAN & TEKNOLOGI)   -->
+    <!-- Kategori 1: Semua (tag: allnews), Mainan, Teknologi               -->
     <!-- Tombol Lihat Selengkapnya & Link ke Halaman Spesifik           -->
     <!-- ============================================================== -->
     <section id="artikel" data-section="news-review" class="py-16 sm:py-20 bg-[#FAF5EE] border-b border-[#E8DFD0]">
@@ -1442,20 +1443,59 @@
                 </p>
             </div>
 
-            <!-- 2 Kategori Saja: Mainan dan Teknologi (Tanpa Icon dan Tanpa Tulisan Kategori) -->
+            <!-- 3 Kategori: Semua, Mainan, dan Teknologi (Tanpa Icon dan Tanpa Tulisan Kategori) -->
             <div class="flex justify-center mb-10">
                 <div class="inline-flex p-1.5 bg-slate-200/80 rounded-full text-xs sm:text-sm font-extrabold shadow-inner">
-                    <button type="button" onclick="switchNewsTab('mainan')" id="tabBtnNewsMainan" class="px-7 sm:px-9 py-2.5 rounded-full bg-[#1677d2] text-white shadow-sm transition-all duration-200">
+                    <button type="button" onclick="switchNewsTab('all')" id="tabBtnNewsAll" class="px-6 sm:px-8 py-2.5 rounded-full bg-[#1677d2] text-white shadow-sm transition-all duration-200">
+                        Semua
+                    </button>
+                    <button type="button" onclick="switchNewsTab('mainan')" id="tabBtnNewsMainan" class="px-6 sm:px-8 py-2.5 rounded-full bg-transparent text-slate-700 hover:text-[#1677d2] transition-all duration-200">
                         Mainan
                     </button>
-                    <button type="button" onclick="switchNewsTab('teknologi')" id="tabBtnNewsTeknologi" class="px-7 sm:px-9 py-2.5 rounded-full bg-transparent text-slate-700 hover:text-[#1677d2] transition-all duration-200">
+                    <button type="button" onclick="switchNewsTab('teknologi')" id="tabBtnNewsTeknologi" class="px-6 sm:px-8 py-2.5 rounded-full bg-transparent text-slate-700 hover:text-[#1677d2] transition-all duration-200">
                         Teknologi
                     </button>
                 </div>
             </div>
 
+            <!-- Blog List: Kategori Semua News (Tag: allnews - Seluruh 6 Kotak News) -->
+            <div id="newsContentAll" class="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-7">
+                @php
+                    $listAll = (isset($newsAll) && count($newsAll)) ? $newsAll : \App\Services\NewsService::byTag('allnews');
+                @endphp
+                @foreach($listAll as $item)
+                <div class="bg-white rounded-3xl p-6 border border-slate-200/90 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.06)] hover:shadow-xl transition-all duration-300 flex flex-col justify-between group" data-tag="allnews">
+                    <div>
+                        <div class="relative aspect-[16/10] w-full rounded-2xl overflow-hidden bg-slate-100 mb-5 border border-slate-100">
+                            <img src="{{ $item['image'] }}" alt="{{ $item['title'] }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                            <span class="absolute top-3 left-3 px-3 py-1 rounded-full bg-[#0B1A30]/85 text-[#E3FF73] text-[10px] font-black tracking-wider uppercase backdrop-blur-sm">
+                                #allnews
+                            </span>
+                        </div>
+                        <div class="text-xs text-slate-500 font-medium mb-2.5 flex items-center gap-2">
+                            <span>{{ $item['date'] }}</span>
+                            <span>•</span>
+                            <span>{{ $item['read_time'] }}</span>
+                        </div>
+                        <h3 class="font-extrabold text-base sm:text-lg text-[#0B1A30] line-clamp-2 group-hover:text-[#1677d2] transition-colors leading-snug">
+                            {{ $item['title'] }}
+                        </h3>
+                        <p class="text-slate-600 text-xs sm:text-sm mt-3 line-clamp-3 leading-relaxed">
+                            {{ $item['summary'] }}
+                        </p>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-slate-100">
+                        <button type="button" onclick="openArticleModal('{{ addslashes($item['title']) }}', '{{ $item['date'] }}', '{{ $item['image'] }}', '{{ addslashes($item['content']) }}', '{{ $item['category_url'] ?? 'https://toyspixels.com/allnews' }}')" class="inline-flex items-center gap-1.5 text-xs sm:text-sm font-extrabold text-[#1677d2] group-hover:text-[#0B1A30] transition-colors">
+                            <span>Lihat Selengkapnya</span>
+                            <span class="group-hover:translate-x-1 transition-transform">➔</span>
+                        </button>
+                    </div>
+                </div>
+                @endforeach
+            </div>
+
             <!-- Blog List: Kategori Mainan (3 Kotak News) -->
-            <div id="newsContentMainan" class="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-7">
+            <div id="newsContentMainan" class="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-7 hidden">
                 @php
                     $listMainan = (isset($newsMainan) && count($newsMainan)) ? $newsMainan : \App\Services\NewsService::byTag('newsmainan');
                 @endphp
@@ -1527,8 +1567,16 @@
             </div>
 
             <!-- Tombol di Bawah Kotak: Link Menuju Pages Spesifik Kategori (Bukan General) -->
+            <!-- Ketika memilih Semua News: lari ke pages toyspixels.com/allnews -->
+            <div id="newsCtaAll" class="mt-12 sm:mt-14 text-center">
+                <a href="https://toyspixels.com/allnews" data-local-href="{{ url('/allnews') }}" class="inline-flex items-center gap-3 px-8 sm:px-10 py-4 rounded-full bg-[#0B1A30] hover:bg-[#1677d2] text-white font-extrabold text-xs sm:text-sm shadow-lg hover:shadow-2xl transition-all hover:-translate-y-0.5 active:translate-y-0 group tracking-wide">
+                    <span>LIHAT SELURUH BERITA & REVIEW</span>
+                    <span class="w-7 h-7 rounded-full bg-white/20 group-hover:bg-white text-white group-hover:text-[#0B1A30] flex items-center justify-center text-xs font-black transition-all group-hover:translate-x-1">➔</span>
+                </a>
+            </div>
+
             <!-- Ketika memilih News Mainan: lari ke pages toyspixels.com/newsmainan -->
-            <div id="newsCtaMainan" class="mt-12 sm:mt-14 text-center">
+            <div id="newsCtaMainan" class="mt-12 sm:mt-14 text-center hidden">
                 <a href="https://toyspixels.com/newsmainan" data-local-href="{{ url('/newsmainan') }}" class="inline-flex items-center gap-3 px-8 sm:px-10 py-4 rounded-full bg-[#0B1A30] hover:bg-[#1677d2] text-white font-extrabold text-xs sm:text-sm shadow-lg hover:shadow-2xl transition-all hover:-translate-y-0.5 active:translate-y-0 group tracking-wide">
                     <span>LIHAT SELURUH BERITA & REVIEW MAINAN</span>
                     <span class="w-7 h-7 rounded-full bg-white/20 group-hover:bg-white text-white group-hover:text-[#0B1A30] flex items-center justify-center text-xs font-black transition-all group-hover:translate-x-1">➔</span>
@@ -1858,6 +1906,11 @@
                         News & Panduan
                     </h4>
                     <ul class="space-y-2.5 text-slate-400 font-medium">
+                        <li>
+                            <a href="https://toyspixels.com/allnews" class="hover:text-[#E3FF73] transition-colors flex items-center gap-2">
+                                Portal Semua News
+                            </a>
+                        </li>
                         <li>
                             <a href="https://toyspixels.com/newsmainan" class="hover:text-[#E3FF73] transition-colors flex items-center gap-2">
                                 Portal News Mainan
@@ -2571,40 +2624,58 @@
         });
 
         // ==============================================================
-        // TAHAP 6: SWITCH NEWS TAB (MAINAN VS TEKNOLOGI)
+        // TAHAP 6: SWITCH NEWS TAB (SEMUA VS MAINAN VS TEKNOLOGI)
         // ==============================================================
         function switchNewsTab(tab) {
+            const allContent = document.getElementById('newsContentAll');
             const mainanContent = document.getElementById('newsContentMainan');
             const teknoContent = document.getElementById('newsContentTeknologi');
+            const allCta = document.getElementById('newsCtaAll');
             const mainanCta = document.getElementById('newsCtaMainan');
             const teknoCta = document.getElementById('newsCtaTeknologi');
+            const btnAll = document.getElementById('tabBtnNewsAll');
             const btnMainan = document.getElementById('tabBtnNewsMainan');
             const btnTekno = document.getElementById('tabBtnNewsTeknologi');
 
-            if (tab === 'mainan' || tab === 'toys') {
+            const activeClass = 'px-6 sm:px-8 py-2.5 rounded-full bg-[#1677d2] text-white shadow-sm transition-all duration-200';
+            const inactiveClass = 'px-6 sm:px-8 py-2.5 rounded-full bg-transparent text-slate-700 hover:text-[#1677d2] transition-all duration-200';
+
+            if (tab === 'all' || tab === 'semua' || tab === 'allnews') {
+                if (allContent) allContent.classList.remove('hidden');
+                if (mainanContent) mainanContent.classList.add('hidden');
+                if (teknoContent) teknoContent.classList.add('hidden');
+
+                if (allCta) allCta.classList.remove('hidden');
+                if (mainanCta) mainanCta.classList.add('hidden');
+                if (teknoCta) teknoCta.classList.add('hidden');
+
+                if (btnAll) btnAll.className = activeClass;
+                if (btnMainan) btnMainan.className = inactiveClass;
+                if (btnTekno) btnTekno.className = inactiveClass;
+            } else if (tab === 'mainan' || tab === 'toys' || tab === 'newsmainan') {
+                if (allContent) allContent.classList.add('hidden');
                 if (mainanContent) mainanContent.classList.remove('hidden');
                 if (teknoContent) teknoContent.classList.add('hidden');
+
+                if (allCta) allCta.classList.add('hidden');
                 if (mainanCta) mainanCta.classList.remove('hidden');
                 if (teknoCta) teknoCta.classList.add('hidden');
-                
-                if (btnMainan) {
-                    btnMainan.className = 'px-7 sm:px-9 py-2.5 rounded-full bg-[#1677d2] text-white shadow-sm transition-all duration-200';
-                }
-                if (btnTekno) {
-                    btnTekno.className = 'px-7 sm:px-9 py-2.5 rounded-full bg-transparent text-slate-700 hover:text-[#1677d2] transition-all duration-200';
-                }
+
+                if (btnAll) btnAll.className = inactiveClass;
+                if (btnMainan) btnMainan.className = activeClass;
+                if (btnTekno) btnTekno.className = inactiveClass;
             } else {
+                if (allContent) allContent.classList.add('hidden');
                 if (mainanContent) mainanContent.classList.add('hidden');
                 if (teknoContent) teknoContent.classList.remove('hidden');
+
+                if (allCta) allCta.classList.add('hidden');
                 if (mainanCta) mainanCta.classList.add('hidden');
                 if (teknoCta) teknoCta.classList.remove('hidden');
 
-                if (btnTekno) {
-                    btnTekno.className = 'px-7 sm:px-9 py-2.5 rounded-full bg-[#1677d2] text-white shadow-sm transition-all duration-200';
-                }
-                if (btnMainan) {
-                    btnMainan.className = 'px-7 sm:px-9 py-2.5 rounded-full bg-transparent text-slate-700 hover:text-[#1677d2] transition-all duration-200';
-                }
+                if (btnAll) btnAll.className = inactiveClass;
+                if (btnMainan) btnMainan.className = inactiveClass;
+                if (btnTekno) btnTekno.className = activeClass;
             }
         }
         window.switchBlogTab = switchNewsTab;

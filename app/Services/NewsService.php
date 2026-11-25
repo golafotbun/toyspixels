@@ -7,12 +7,13 @@ use Illuminate\Support\Collection;
 class NewsService
 {
     /**
-     * Kumpulan artikel News & Review Tahap 6.
-     * Kategori Mainan ber-tag: newsmainan
-     * Kategori Teknologi ber-tag: newsteknologi
+     * Kumpulan artikel News & Review Tahap 6 (3 Kategori).
+     * Kategori 1: Semua News ber-tag: allnews (seluruh 6 artikel)
+     * Kategori 2: Mainan ber-tag: newsmainan (3 artikel mainan)
+     * Kategori 3: Teknologi ber-tag: newsteknologi (3 artikel teknologi)
      */
     protected static array $articles = [
-        // Kategori Mainan (tag: newsmainan)
+        // Kategori Mainan (tag: newsmainan, tags: allnews & newsmainan)
         [
             'id' => 1,
             'slug' => 'top-7-mainan-edukasi-anak',
@@ -21,6 +22,7 @@ class NewsService
             'read_time' => '5 Menit Baca',
             'category_name' => 'Mainan',
             'tag' => 'newsmainan',
+            'tags' => ['allnews', 'newsmainan'],
             'category_url' => 'https://toyspixels.com/newsmainan',
             'image' => 'https://images.unsplash.com/photo-1516627145497-ae6968895b74?w=600&auto=format&fit=crop&q=80',
             'summary' => 'Mengembangkan potensi anak melalui balok susun, magnetic tiles, dan puzzle interaktif yang merangsang daya pikir serta koordinasi motorik halus sejak usia dini.',
@@ -34,6 +36,7 @@ class NewsService
             'read_time' => '7 Menit Baca',
             'category_name' => 'Mainan',
             'tag' => 'newsmainan',
+            'tags' => ['allnews', 'newsmainan'],
             'category_url' => 'https://toyspixels.com/newsmainan',
             'image' => 'https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?w=600&auto=format&fit=crop&q=80',
             'summary' => 'Kupas tuntas skala, tingkat kerumitan perakitan, dan kualitas artikulasi model kit Bandai agar Anda memilih grade yang tepat sesuai keahlian.',
@@ -47,13 +50,14 @@ class NewsService
             'read_time' => '4 Menit Baca',
             'category_name' => 'Mainan',
             'tag' => 'newsmainan',
+            'tags' => ['allnews', 'newsmainan'],
             'category_url' => 'https://toyspixels.com/newsmainan',
             'image' => 'https://images.unsplash.com/photo-1566576912321-d58ddd743088?w=600&auto=format&fit=crop&q=80',
             'summary' => 'Eksplorasi tren seni figur vinyl modern, daya tarik karakter Labubu, Skullpanda & Dimoo, serta sensasi unboxing figur rahasia edisi terbatas.',
             'content' => 'Art toys bukan lagi sekadar mainan anak-anak, melainkan bagian dari seni kontemporer dan kultur pop modern. Konsep blind box memberikan sensasi kejutan yang adiktif saat membuka kemasan, terutama mengejar varian Secret yang langka. Figur seperti Labubu The Monsters karya Kasing Lung dan Skullpanda karya Xiongmao membuktikan bahwa perpaduan desain artistik dan estetika visual mampu menciptakan komunitas kolektor yang sangat loyal di seluruh dunia.',
         ],
 
-        // Kategori Teknologi (tag: newsteknologi)
+        // Kategori Teknologi (tag: newsteknologi, tags: allnews & newsteknologi)
         [
             'id' => 4,
             'slug' => 'review-smartphone-flagship-2026',
@@ -62,6 +66,7 @@ class NewsService
             'read_time' => '6 Menit Baca',
             'category_name' => 'Teknologi',
             'tag' => 'newsteknologi',
+            'tags' => ['allnews', 'newsteknologi'],
             'category_url' => 'https://toyspixels.com/newsteknologi',
             'image' => 'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=600&auto=format&fit=crop&q=80',
             'summary' => 'Ulasan mendalam performa chipset fabrikasi 3nm, integrasi kecerdasan buatan on-device, dan ketahanan baterai untuk komputasi harian intensif.',
@@ -75,6 +80,7 @@ class NewsService
             'read_time' => '5 Menit Baca',
             'category_name' => 'Teknologi',
             'tag' => 'newsteknologi',
+            'tags' => ['allnews', 'newsteknologi'],
             'category_url' => 'https://toyspixels.com/newsteknologi',
             'image' => 'https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=600&auto=format&fit=crop&q=80',
             'summary' => 'Pilihan laptop terbaik untuk mahasiswa dan pekerja remote dengan SSD NVMe cepat, layar IPS akurat, dan ketahanan baterai hingga 12 jam.',
@@ -88,6 +94,7 @@ class NewsService
             'read_time' => '4 Menit Baca',
             'category_name' => 'Teknologi',
             'tag' => 'newsteknologi',
+            'tags' => ['allnews', 'newsteknologi'],
             'category_url' => 'https://toyspixels.com/newsteknologi',
             'image' => 'https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=600&auto=format&fit=crop&q=80',
             'summary' => 'Memilih jenis switch keyboard mekanikal, monitor arm fleksibel, serta mouse vertikal nirkabel guna mencegah ketegangan sendi saat bekerja.',
@@ -100,6 +107,12 @@ class NewsService
         return collect(self::$articles);
     }
 
+    /**
+     * Filter artikel berdasarkan tag:
+     * - allnews / all / semua : seluruh 6 artikel
+     * - newsmainan : 3 artikel mainan
+     * - newsteknologi : 3 artikel teknologi
+     */
     public static function byTag(string $tag): Collection
     {
         $normalized = strtolower(trim($tag));
@@ -107,11 +120,42 @@ class NewsService
             $normalized = 'newsmainan';
         }
 
+        if ($normalized === 'all' || $normalized === 'allnews' || $normalized === 'semua') {
+            return self::all();
+        }
+
         return self::all()->filter(function ($item) use ($normalized) {
             $itemTag = strtolower($item['tag'] ?? '');
+            $itemTags = array_map('strtolower', $item['tags'] ?? []);
 
-            return $itemTag === $normalized || ($normalized === 'newsmainan' && $itemTag === 'newsmaianan');
+            return $itemTag === $normalized
+                || in_array($normalized, $itemTags)
+                || ($normalized === 'newsmainan' && ($itemTag === 'newsmaianan' || in_array('newsmaianan', $itemTags)));
         })->values();
+    }
+
+    /**
+     * Helper khusus: Ambil seluruh artikel ber-tag allnews.
+     */
+    public static function allNews(): Collection
+    {
+        return self::byTag('allnews');
+    }
+
+    /**
+     * Helper khusus: Ambil artikel mainan ber-tag newsmainan.
+     */
+    public static function newsMainan(): Collection
+    {
+        return self::byTag('newsmainan');
+    }
+
+    /**
+     * Helper khusus: Ambil artikel teknologi ber-tag newsteknologi.
+     */
+    public static function newsTeknologi(): Collection
+    {
+        return self::byTag('newsteknologi');
     }
 
     public static function findBySlug(string $slug): ?array

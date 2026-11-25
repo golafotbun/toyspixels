@@ -9,10 +9,11 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     $topProduk = TopProdukService::topSeven();
     $katalogProduk = KatalogService::all();
+    $newsAll = NewsService::byTag('allnews');
     $newsMainan = NewsService::byTag('newsmainan');
     $newsTeknologi = NewsService::byTag('newsteknologi');
 
-    return view('welcome', compact('topProduk', 'katalogProduk', 'newsMainan', 'newsTeknologi'));
+    return view('welcome', compact('topProduk', 'katalogProduk', 'newsAll', 'newsMainan', 'newsTeknologi'));
 })->name('home');
 
 Route::get('/topproduk', function () {
@@ -97,7 +98,21 @@ Route::get('/katalog/technology', function () {
     return redirect()->route('katalogteknologi');
 });
 
-// Tahap 6 News & Review Routes (newsmainan & newsteknologi)
+// Tahap 6 News & Review Routes (3 Kategori: allnews, newsmainan, newsteknologi)
+Route::get('/allnews', function () {
+    $articles = NewsService::byTag('allnews');
+
+    return view('news-all', compact('articles'));
+})->name('allnews');
+
+Route::get('/news', function () {
+    return redirect()->route('allnews');
+})->name('news');
+
+Route::get('/news/all', function () {
+    return redirect()->route('allnews');
+});
+
 Route::get('/newsmainan', function () {
     $articles = NewsService::byTag('newsmainan');
 

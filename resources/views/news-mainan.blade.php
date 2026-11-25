@@ -112,8 +112,11 @@
                 Panduan komprehensif, ulasan mendalam, dan tren terbaru seputar mainan edukasi anak, Gunpla, diecast, LEGO, dan art toys dari para antusias terpercaya.
             </p>
 
-            <!-- Category Switcher Pill in Page -->
-            <div class="mt-8 inline-flex p-1.5 bg-black/20 backdrop-blur-md rounded-full text-xs sm:text-sm font-extrabold">
+            <!-- Category Switcher Pill in Page (3 Kategori: Semua, Mainan, Teknologi) -->
+            <div class="mt-8 inline-flex p-1.5 bg-black/20 backdrop-blur-md rounded-full text-xs sm:text-sm font-extrabold gap-1">
+                <a href="{{ url('/allnews') }}" class="px-6 py-2 rounded-full text-white/80 hover:text-white transition-colors">
+                    Semua
+                </a>
                 <span class="px-6 py-2 rounded-full bg-white text-[#1677d2] shadow-sm">
                     Mainan
                 </span>

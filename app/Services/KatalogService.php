@@ -20,6 +20,7 @@ class KatalogService
             'id' => 13,
             'slug' => 'post-1',
             'title' => 'SONY PS5 Playstation 5 Disc Digital GARANSI RESMI SONY INDONESIA Bonus Bundle Banyak Games',
+            'display_title' => 'Sony PS5 Playstation 5 Disc',
             'subtitle' => 'Konsol PS5 Garansi Resmi Sony Indonesia dengan Garansi 1 Tahun Full Spare Part & Servis, Gratis Refill Seumur Hidup, serta Bonus Bundle 400+ Games termasuk EA FC 26 & Game Story Blockbuster',
             'category_name' => 'Collectibles & Hobbies',
             'category_slug' => 'collectibles',
@@ -421,6 +422,7 @@ class KatalogService
     public static function all(): Collection
     {
         return collect(self::$products)->map(function ($item) {
+            $item['display_title'] = $item['display_title'] ?? \Illuminate\Support\Str::words($item['title'], 5, '');
             $item['shopee_url'] = $item['shopee_url'] ?? $item['affiliate_url'];
             return $item;
         });
@@ -435,6 +437,7 @@ class KatalogService
 
         foreach (self::$products as $product) {
             if ($product['slug'] === $normalized) {
+                $product['display_title'] = $product['display_title'] ?? \Illuminate\Support\Str::words($product['title'], 5, '');
                 $product['shopee_url'] = $product['shopee_url'] ?? $product['affiliate_url'];
                 return $product;
             }

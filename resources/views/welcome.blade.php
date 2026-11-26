@@ -1218,8 +1218,8 @@
                                             #1
                                         </div>
                                     </div>
-                                    <h3 class="text-2xl sm:text-3xl font-extrabold tracking-tight mt-5 leading-tight text-white">
-                                        {{ $prod['title'] }}
+                                    <h3 class="text-2xl sm:text-3xl font-extrabold tracking-tight mt-5 leading-tight text-white line-clamp-2" title="{{ $prod['title'] }}">
+                                        {{ $prod['display_title'] ?? \Illuminate\Support\Str::words($prod['title'], 5, '') }}
                                     </h3>
                                     <p class="text-xs sm:text-sm mt-2 leading-relaxed text-blue-100 line-clamp-2 font-medium">
                                         {{ $prod['subtitle'] }}
@@ -1253,8 +1253,8 @@
                                             #{{ $idx + 1 }}
                                         </div>
                                     </div>
-                                    <h3 class="text-2xl sm:text-3xl font-extrabold tracking-tight mt-5 leading-tight text-[#0A1628]">
-                                        {{ $prod['title'] }}
+                                    <h3 class="text-2xl sm:text-3xl font-extrabold tracking-tight mt-5 leading-tight text-[#0A1628] line-clamp-2" title="{{ $prod['title'] }}">
+                                        {{ $prod['display_title'] ?? \Illuminate\Support\Str::words($prod['title'], 5, '') }}
                                     </h3>
                                     <p class="text-xs sm:text-sm mt-2 leading-relaxed text-slate-600 line-clamp-2 font-medium">
                                         {{ $prod['subtitle'] }}
@@ -1579,7 +1579,7 @@
                             <span>{{ $prod['category_name'] }}</span>
                         </a>
                         <h3 class="font-bold text-sm sm:text-base text-[#0B1A30] line-clamp-1 group-hover:text-[#1677d2] transition-colors leading-snug" title="{{ $prod['title'] }}">
-                            {{ $prod['title'] }}
+                            {{ $prod['display_title'] ?? \Illuminate\Support\Str::words($prod['title'], 5, '') }}
                         </h3>
                         <div class="mt-2">
                             <span class="text-base sm:text-lg font-black text-[#0B1A30]">Rp {{ $prod['price'] }}</span>

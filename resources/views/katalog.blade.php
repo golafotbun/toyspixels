@@ -392,9 +392,9 @@
                         </a>
 
                         <!-- Product Title -->
-                        <h3 class="font-extrabold text-base text-[#0B1A30] group-hover:text-[#1677d2] transition-colors leading-snug line-clamp-2">
+                        <h3 class="font-extrabold text-base text-[#0B1A30] group-hover:text-[#1677d2] transition-colors leading-snug line-clamp-2" title="{{ $prod['title'] }}">
                             <a href="{{ url('/post/' . $prod['slug']) }}">
-                                {{ $prod['title'] }}
+                                {{ $prod['display_title'] ?? \Illuminate\Support\Str::words($prod['title'], 5, '') }}
                             </a>
                         </h3>
 

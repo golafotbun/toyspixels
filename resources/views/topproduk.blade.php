@@ -386,8 +386,8 @@
                                         #1
                                     </div>
                                 </div>
-                                <h3 class="text-2xl sm:text-3xl font-extrabold tracking-tight mt-5 leading-tight text-white">
-                                    {{ $prod['title'] }}
+                                <h3 class="text-2xl sm:text-3xl font-extrabold tracking-tight mt-5 leading-tight text-white line-clamp-2" title="{{ $prod['title'] }}">
+                                    {{ $prod['display_title'] ?? \Illuminate\Support\Str::words($prod['title'], 5, '') }}
                                 </h3>
                                 <p class="text-xs sm:text-sm mt-2 leading-relaxed text-blue-100 line-clamp-2 font-medium">
                                     {{ $prod['subtitle'] }}
@@ -421,8 +421,8 @@
                                         #{{ $idx + 1 }}
                                     </div>
                                 </div>
-                                <h3 class="text-2xl sm:text-3xl font-extrabold tracking-tight mt-5 leading-tight text-[#0A1628]">
-                                    {{ $prod['title'] }}
+                                <h3 class="text-2xl sm:text-3xl font-extrabold tracking-tight mt-5 leading-tight text-[#0A1628] line-clamp-2" title="{{ $prod['title'] }}">
+                                    {{ $prod['display_title'] ?? \Illuminate\Support\Str::words($prod['title'], 5, '') }}
                                 </h3>
                                 <p class="text-xs sm:text-sm mt-2 leading-relaxed text-slate-600 line-clamp-2 font-medium">
                                     {{ $prod['subtitle'] }}

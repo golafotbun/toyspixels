@@ -16,6 +16,7 @@ class PostService
             'slug' => 'post-1',
             'aliases' => ['1', 'post-1', 'post1', 'produk-1'],
             'title' => 'SONY PS5 Playstation 5 Disc Digital GARANSI RESMI SONY INDONESIA Bonus Bundle Banyak Games',
+            'display_title' => 'Sony PS5 Playstation 5 Disc',
             'subtitle' => 'Konsol PS5 Garansi Resmi Sony Indonesia dengan Garansi 1 Tahun Full Spare Part & Servis, Gratis Refill Seumur Hidup, serta Bonus Bundle 400+ Games termasuk EA FC 26 & Game Story Blockbuster',
             'category_name' => 'Collectibles & Hobbies',
             'category_slug' => 'collectibles',

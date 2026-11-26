@@ -345,7 +345,9 @@
                                 <img src="{{ asset($rel['image']) }}" alt="{{ $rel['title'] }}" class="w-full h-full object-contain rounded-lg">
                             </div>
                             <span class="text-[10px] font-black text-[#1677d2] uppercase">{{ $rel['category_name'] }}</span>
-                            <h4 class="font-extrabold text-sm text-[#0B1A30] mt-1 line-clamp-1">{{ $rel['title'] }}</h4>
+                            <h4 class="font-extrabold text-sm text-[#0B1A30] mt-1 line-clamp-1" title="{{ $rel['title'] }}">
+                                {{ $rel['display_title'] ?? \Illuminate\Support\Str::words($rel['title'], 5, '') }}
+                            </h4>
                             <p class="text-xs text-slate-500 mt-1 line-clamp-1">{{ $rel['subtitle'] }}</p>
                         </div>
                         <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between">

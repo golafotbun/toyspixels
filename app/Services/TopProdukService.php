@@ -233,6 +233,7 @@ class TopProdukService
                 'id' => $p['id'],
                 'slug' => $p['slug'],
                 'title' => $p['title'],
+                'display_title' => $p['display_title'] ?? \Illuminate\Support\Str::words($p['title'], 5, ''),
                 'subtitle' => $p['subtitle'],
                 'age' => $p['age'] ?? 'Gaming 12+',
                 'type' => $p['type'] ?? 'Gaming Console',
@@ -264,6 +265,7 @@ class TopProdukService
             $tags = array_map('strtolower', $p['tags'] ?? []);
             return in_array('topproduk', $tags) || in_array('top produk', $tags) || $tag === 'top produk' || $tag === 'topproduk';
         })->map(function ($p) {
+            $p['display_title'] = $p['display_title'] ?? \Illuminate\Support\Str::words($p['title'], 5, '');
             if ($p['slug'] === 'post-1') {
                 $p['detail_url'] = url('/post/' . $p['slug']);
             }

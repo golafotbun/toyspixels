@@ -2812,8 +2812,8 @@
                     // Pilihan Mainan: Memunculkan artikel khusus yang memiliki tag mainan
                     shouldShow = tagList.includes('mainan') || itemGroup === 'mainan';
                 } else if (target === 'technology' || target === 'teknologi') {
-                    // Pilihan Technology: Memunculkan artikel khusus yang memiliki tag technology
-                    shouldShow = tagList.includes('technology') || tagList.includes('teknologi') || itemGroup === 'technology';
+                    // Pilihan Technology: Memunculkan artikel khusus yang memiliki tag technology / gadget
+                    shouldShow = tagList.includes('technology') || tagList.includes('teknologi') || tagList.includes('katalogteknologi') || tagList.includes('produkteknologi') || tagList.includes('gadget') || tagList.includes('gaming') || itemGroup === 'technology';
                 } else {
                     shouldShow = tagList.includes(target) || itemGroup === target;
                 }

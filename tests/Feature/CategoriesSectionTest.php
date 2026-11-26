@@ -150,13 +150,26 @@ class CategoriesSectionTest extends TestCase
         $response = $this->get('/kidstoys');
         $response->assertStatus(200);
         $response->assertSee('data-tag="kidstoys"', escape: false);
-        $response->assertDontSee('data-tag="collectibles"', escape: false);
+        $response->assertSee('Snapzy Mobil RC Off Road 4WD');
+        $response->assertSee('Bandai HGBF 1/144 Wing Zero Honoo');
         $response->assertDontSee('data-tag="gamingentertainment"', escape: false);
+
+        $response = $this->get('/collectibles');
+        $response->assertStatus(200);
+        $response->assertSee('data-tag="collectibles"', escape: false);
+        $response->assertSee('Snapzy Mobil RC Off Road 4WD');
+        $response->assertSee('Bandai HGBF 1/144 Wing Zero Honoo');
+        $response->assertSee('SONY PS5 Playstation 5');
+
+        $response = $this->get('/outdoorrc');
+        $response->assertStatus(200);
+        $response->assertSee('data-tag="outdoorrc"', escape: false);
+        $response->assertSee('Snapzy Mobil RC Off Road 4WD');
 
         $response = $this->get('/gamingentertainment');
         $response->assertStatus(200);
         $response->assertSee('data-tag="gamingentertainment"', escape: false);
+        $response->assertSee('SONY PS5 Playstation 5');
         $response->assertDontSee('data-tag="kidstoys"', escape: false);
-        $response->assertDontSee('data-tag="collectibles"', escape: false);
     }
 }

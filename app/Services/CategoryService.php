@@ -24,6 +24,36 @@ class CategoryService
             'description' => 'Koleksi mainan edukatif terbaik untuk melatih motorik halus, logika berhitung, balok susun kreatif, puzzle angka & huruf, serta mainan sensori interaktif yang aman untuk tumbuh kembang anak.',
             'products' => [
                 [
+                    'name' => 'Bandai HGBF 1/144 Wing Zero Honoo ORI BANDAI Gundam New Ori',
+                    'slug' => 'post-3',
+                    'tag' => 'kidstoys',
+                    'tags' => ['topproduk', 'top produk', 'kidstoys', 'collectibles', 'semuaproduk', 'katalogmainan', 'mainan', 'semua'],
+                    'specs' => 'Original Bandai Namco Jepang • Skala 1/144 • Sayap Api Transparan Spektakuler • Twin Buster Rifle',
+                    'price' => 'Rp 888.888',
+                    'rating' => '5.0',
+                    'sold' => '407 Terjual',
+                    'image' => 'images/toys/post-3/1.webp',
+                    'shopee_url' => 'https://s.shopee.co.id/4B1p83lRaY',
+                    'affiliate_url' => 'https://s.shopee.co.id/4B1p83lRaY',
+                    'tokopedia_url' => 'https://tokopedia.com',
+                    'detail_url' => 'https://toyspixels.com/post/post-3',
+                ],
+                [
+                    'name' => 'Snapzy Mobil RC Off Road 4WD 2.4GHz Lampu LED Semprotan Kabut Rechargeable',
+                    'slug' => 'post-2',
+                    'tag' => 'kidstoys',
+                    'tags' => ['topproduk', 'top produk', 'kidstoys', 'collectibles', 'outdoorrc', 'semuaproduk', 'katalogmainan', 'mainan', 'semua'],
+                    'specs' => 'Sistem 4WD Off-Road • Remote 2.4GHz Jarak 50m • Efek Semprotan Kabut • Lampu LED • Baterai USB Rechargeable',
+                    'price' => 'Rp 212.000',
+                    'rating' => '4.8',
+                    'sold' => '1.0rb+',
+                    'image' => 'images/toys/post-2/1.webp',
+                    'shopee_url' => 'https://s.shopee.co.id/9zzc37VEVr',
+                    'affiliate_url' => 'https://s.shopee.co.id/9zzc37VEVr',
+                    'tokopedia_url' => 'https://tokopedia.com',
+                    'detail_url' => 'https://toyspixels.com/post/post-2',
+                ],
+                [
                     'name' => 'LEGO Classic Bricks & Animals Creative Box',
                     'tag' => 'kidstoys',
                     'tags' => ['semua', 'mainan', 'kidstoys'],
@@ -85,6 +115,36 @@ class CategoryService
             'accent_color' => '#1677d2',
             'description' => 'Kurasi action figures original, Master Grade Gunpla Bandai Jepang, vinyl designer toys Pop Mart, diecast Hot Wheels premium, dan memorabilia langka untuk hobi dan investasi kolektor sejati.',
             'products' => [
+                [
+                    'name' => 'Bandai HGBF 1/144 Wing Zero Honoo ORI BANDAI Gundam New Ori',
+                    'slug' => 'post-3',
+                    'tag' => 'collectibles',
+                    'tags' => ['topproduk', 'top produk', 'kidstoys', 'collectibles', 'semuaproduk', 'katalogmainan', 'mainan', 'semua'],
+                    'specs' => 'Original Bandai Namco Jepang • Skala 1/144 • Sayap Api Transparan Spektakuler • Twin Buster Rifle',
+                    'price' => 'Rp 888.888',
+                    'rating' => '5.0',
+                    'sold' => '407 Terjual',
+                    'image' => 'images/toys/post-3/1.webp',
+                    'shopee_url' => 'https://s.shopee.co.id/4B1p83lRaY',
+                    'affiliate_url' => 'https://s.shopee.co.id/4B1p83lRaY',
+                    'tokopedia_url' => 'https://tokopedia.com',
+                    'detail_url' => 'https://toyspixels.com/post/post-3',
+                ],
+                [
+                    'name' => 'Snapzy Mobil RC Off Road 4WD 2.4GHz Lampu LED Semprotan Kabut Rechargeable',
+                    'slug' => 'post-2',
+                    'tag' => 'collectibles',
+                    'tags' => ['topproduk', 'top produk', 'kidstoys', 'collectibles', 'outdoorrc', 'semuaproduk', 'katalogmainan', 'mainan', 'semua'],
+                    'specs' => 'Sistem 4WD Off-Road • Remote 2.4GHz Jarak 50m • Efek Semprotan Kabut • Lampu LED • Baterai USB Rechargeable',
+                    'price' => 'Rp 212.000',
+                    'rating' => '4.8',
+                    'sold' => '1.0rb+',
+                    'image' => 'images/toys/post-2/1.webp',
+                    'shopee_url' => 'https://s.shopee.co.id/9zzc37VEVr',
+                    'affiliate_url' => 'https://s.shopee.co.id/9zzc37VEVr',
+                    'tokopedia_url' => 'https://tokopedia.com',
+                    'detail_url' => 'https://toyspixels.com/post/post-2',
+                ],
                 [
                     'name' => 'Sony PlayStation 5 Console Gaming & Collectible Edition',
                     'slug' => 'post-1',
@@ -239,6 +299,21 @@ class CategoryService
             'accent_color' => '#1677d2',
             'description' => 'Jajaran mobil remote control 4WD off-road berkecepatan tinggi, drone quadcopter ringkas berkamera, blaster olahraga luar ruangan, dan mainan petualangan outdoor seru segala cuaca.',
             'products' => [
+                [
+                    'name' => 'Snapzy Mobil RC Off Road 4WD 2.4GHz Lampu LED Semprotan Kabut Rechargeable',
+                    'slug' => 'post-2',
+                    'tag' => 'outdoorrc',
+                    'tags' => ['topproduk', 'top produk', 'kidstoys', 'collectibles', 'outdoorrc', 'semuaproduk', 'katalogmainan', 'mainan', 'semua'],
+                    'specs' => 'Sistem 4WD Off-Road • Remote 2.4GHz Jarak 50m • Efek Semprotan Kabut • Lampu LED • Baterai USB Rechargeable',
+                    'price' => 'Rp 212.000',
+                    'rating' => '4.8',
+                    'sold' => '1.0rb+',
+                    'image' => 'images/toys/post-2/1.webp',
+                    'shopee_url' => 'https://s.shopee.co.id/9zzc37VEVr',
+                    'affiliate_url' => 'https://s.shopee.co.id/9zzc37VEVr',
+                    'tokopedia_url' => 'https://tokopedia.com',
+                    'detail_url' => 'https://toyspixels.com/post/post-2',
+                ],
                 [
                     'name' => 'RC Rock Crawler 4WD Waterproof Off-Road 1/16',
                     'tag' => 'outdoorrc',
@@ -573,11 +648,43 @@ class CategoryService
         foreach (self::$categories as $key => $category) {
             if ($key === $normalized || $category['slug'] === $normalized || in_array($normalized, $category['aliases'] ?? [])) {
                 $targetTag = $category['tag'] ?? $category['slug'];
+                $matchTags = array_unique(array_merge([$targetTag, $category['slug']], $category['aliases'] ?? []));
 
-                // Filter validasi ketat: pastikan produk yang masuk ke kategori ini strictly ber-tag sesuai kategori
-                $category['products'] = collect($category['products'])->filter(function ($product) use ($targetTag) {
-                    return ($product['tag'] ?? null) === $targetTag || in_array($targetTag, $product['tags'] ?? []);
-                })->values()->all();
+                // 1. Ambil post dari PostService yang ber-tag sesuai kategori ini
+                $customProducts = PostService::all()->filter(function ($p) use ($matchTags) {
+                    $pTags = array_map('strtolower', $p['tags'] ?? []);
+                    $pCat = strtolower($p['category_slug'] ?? '');
+                    return !empty(array_intersect($matchTags, $pTags)) || in_array($pCat, $matchTags);
+                })->map(function ($p) use ($targetTag) {
+                    return [
+                        'name' => $p['title'],
+                        'slug' => $p['slug'],
+                        'tag' => $targetTag,
+                        'tags' => array_merge($p['tags'] ?? [], ['semua', 'mainan']),
+                        'specs' => $p['subtitle'] ?? $p['summary'] ?? '',
+                        'price' => str_starts_with($p['price'], 'Rp') ? $p['price'] : 'Rp ' . $p['price'],
+                        'rating' => $p['rating'] ?? '5.0',
+                        'sold' => $p['sold'] ?? '1.0rb+',
+                        'image' => $p['image'],
+                        'shopee_url' => $p['affiliate_url'] ?? $p['shopee_url'] ?? '',
+                        'affiliate_url' => $p['affiliate_url'] ?? $p['shopee_url'] ?? '',
+                        'tokopedia_url' => $p['tokopedia_url'] ?? 'https://tokopedia.com',
+                        'detail_url' => url('/post/' . $p['slug']),
+                    ];
+                });
+
+                // 2. Filter produk bawaan di kategori
+                $existingProducts = collect($category['products'])->filter(function ($product) use ($matchTags) {
+                    $prodTag = strtolower($product['tag'] ?? '');
+                    $prodTags = array_map('strtolower', $product['tags'] ?? []);
+                    return in_array($prodTag, $matchTags) || !empty(array_intersect($matchTags, $prodTags));
+                });
+
+                // 3. Gabungkan: post kustom di posisi paling depan, hilangkan duplikat slug/name
+                $category['products'] = $customProducts->concat($existingProducts)
+                    ->unique(fn($prod) => $prod['slug'] ?? $prod['name'])
+                    ->values()
+                    ->all();
 
                 return $category;
             }
@@ -594,15 +701,20 @@ class CategoryService
         $normalized = strtolower(trim($tag));
 
         $results = collect();
-        foreach (self::$categories as $category) {
-            foreach ($category['products'] as $product) {
-                if (($product['tag'] ?? null) === $normalized || in_array($normalized, $product['tags'] ?? [])) {
-                    $results->push($product);
+        foreach (self::$categories as $key => $category) {
+            $cat = self::findBySlug($key);
+            if ($cat) {
+                foreach ($cat['products'] as $product) {
+                    $prodTag = strtolower($product['tag'] ?? '');
+                    $prodTags = array_map('strtolower', $product['tags'] ?? []);
+                    if ($prodTag === $normalized || in_array($normalized, $prodTags)) {
+                        $results->push($product);
+                    }
                 }
             }
         }
 
-        return $results;
+        return $results->unique(fn($p) => $p['slug'] ?? $p['name'])->values();
     }
 
     /**

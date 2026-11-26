@@ -249,11 +249,12 @@
                     <p class="font-semibold text-slate-900 text-base sm:text-lg">
                         {{ $post['summary'] }}
                     </p>
-                    <p>
-                        {{ $post['content'] }}
-                    </p>
+                    <div class="text-slate-700 leading-relaxed space-y-4">
+                        {!! $post['content'] !!}
+                    </div>
                 </div>
 
+                @if(($post['slug'] ?? '') !== 'post-1' && ($post['id'] ?? null) != 1)
                 <!-- Bottom Action Buttons (Clean & Non-Duplicate) -->
                 <div class="mt-10 pt-6 border-t border-slate-200 flex flex-col sm:flex-row items-center justify-between gap-4">
                     <a href="{{ $post['affiliate_url'] }}" target="_blank" rel="noopener nofollow" class="w-full sm:w-auto px-7 py-3.5 rounded-full bg-[#EE4D2D] hover:bg-[#d83f21] text-white font-black text-xs sm:text-sm shadow-md transition-all text-center flex items-center justify-center gap-2">
@@ -269,6 +270,7 @@
                         </a>
                     </div>
                 </div>
+                @endif
 
             </article>
 

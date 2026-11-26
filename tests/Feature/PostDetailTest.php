@@ -70,6 +70,14 @@ class PostDetailTest extends TestCase
 
         // Verify duplicate bottom specifications block has been removed so it is not written twice
         $response->assertDontSee('KETERANGAN & SPESIFIKASI ARTIKEL');
+
+        // Verify Shopee specifications & bonus bundles are displayed cleanly in the post
+        $response->assertSee('GARANSI RESMI SONY INDONESIA');
+        $response->assertSee('EA FC 26');
+        $response->assertSee('Kota Surabaya');
+
+        // Verify for Post 1, the bottom action buttons are omitted so it stays completely clean
+        $response->assertDontSee('Beli Langsung di Shopee Official');
     }
 
     /**

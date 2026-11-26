@@ -39,7 +39,7 @@ class TopToysPageTest extends TestCase
 
         // Verify #1 is the latest product (Post 1) with blue card, correct details & price
         $this->assertStringContainsString('#1', $tahap3Html);
-        $this->assertStringContainsString('Sony PlayStation 5', $tahap3Html);
+        $this->assertStringContainsString('SONY PS5 Playstation 5', $tahap3Html);
         $this->assertStringContainsString('Rp 14.630.000', $tahap3Html);
 
         // Verify top products include Gundam Barbatos with correct details & price

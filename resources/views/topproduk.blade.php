@@ -35,8 +35,6 @@
                             navyLight: '#132847',
                             primary: '#1677d2',
                             primaryHover: '#1264b3',
-                            green: '#00C853',
-                            greenHover: '#00B048',
                             lime: '#E3FF73',
                             cream: '#FAF5EE',
                             warmBeige: '#F6F2E9',
@@ -80,13 +78,13 @@
         }
     </style>
 </head>
-<body class="bg-[#FAF5EE] text-[#0A1628] font-sans antialiased selection:bg-[#00C853] selection:text-white">
+<body class="bg-[#FAF5EE] text-[#0A1628] font-sans antialiased selection:bg-[#E3FF73] selection:text-[#0B1A30]">
 
     <!-- Top Notice Bar (Official Portal Info) -->
     <div class="bg-[#0B1A30] text-slate-200 text-xs py-2 px-4 border-b border-slate-800">
         <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-2">
             <div class="flex items-center gap-2">
-                <span class="inline-block w-2 h-2 rounded-full bg-[#00C853] animate-pulse"></span>
+                <span class="inline-block w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
                 <span>Portal Resmi: <strong>Daftar Kurasi Top Produk &amp; Top Toys Pilihan</strong></span>
             </div>
             <div class="flex items-center gap-4 text-[11px]">
@@ -112,22 +110,22 @@
                 </div>
             </a>
 
-            <!-- Center: Navigation Links (Matching pages top produk.jpg style) -->
+            <!-- Center: Navigation Links -->
             <nav class="hidden md:flex items-center gap-7 lg:gap-9 text-xs lg:text-sm font-extrabold tracking-wider text-slate-700">
-                <a href="{{ url('/') }}" class="hover:text-[#00C853] transition-colors">HOME</a>
-                <a href="https://toyspixels.com/topproduk" class="text-[#00C853] font-black border-b-2 border-[#00C853] pb-1 transition-colors">TOP PRODUK</a>
-                <a href="{{ url('/') }}#kategori" class="hover:text-[#00C853] transition-colors">KATEGORI</a>
-                <a href="{{ url('/katalog') }}" class="hover:text-[#00C853] transition-colors">KATALOG</a>
-                <a href="{{ url('/') }}#news-review" class="hover:text-[#00C853] transition-colors">NEWS &amp; REVIEW</a>
-                <a href="{{ url('/') }}#faq" class="hover:text-[#00C853] transition-colors">FAQ</a>
+                <a href="{{ url('/') }}" class="hover:text-[#1677d2] transition-colors">HOME</a>
+                <a href="https://toyspixels.com/topproduk" class="text-[#1677d2] font-black border-b-2 border-[#1677d2] pb-1 transition-colors">TOP PRODUK</a>
+                <a href="{{ url('/') }}#kategori" class="hover:text-[#1677d2] transition-colors">KATEGORI</a>
+                <a href="{{ url('/katalog') }}" class="hover:text-[#1677d2] transition-colors">KATALOG</a>
+                <a href="{{ url('/') }}#news-review" class="hover:text-[#1677d2] transition-colors">NEWS &amp; REVIEW</a>
+                <a href="{{ url('/') }}#faq" class="hover:text-[#1677d2] transition-colors">FAQ</a>
             </nav>
 
-            <!-- Right: Vibrant Green Pill Button (Persis Download Button di Referensi) -->
+            <!-- Right: Brand Blue Pill Button -->
             <div class="flex items-center gap-3">
                 <a href="{{ url('/katalog') }}" class="hidden sm:inline-block text-xs font-extrabold text-slate-600 hover:text-slate-900 transition-colors uppercase tracking-wider">
                     Semua Produk
                 </a>
-                <a href="#koleksi-produk" class="bg-[#00C853] hover:bg-[#00B048] text-white font-extrabold text-xs sm:text-sm px-5 sm:px-6 py-2.5 rounded-full shadow-[0_4px_18px_rgba(0,200,83,0.35)] hover:shadow-[0_6px_22px_rgba(0,200,83,0.5)] hover:-translate-y-0.5 active:translate-y-0 transition-all flex items-center gap-2 tracking-wide uppercase">
+                <a href="#koleksi-produk" class="bg-[#1677d2] hover:bg-[#1264b3] text-white font-extrabold text-xs sm:text-sm px-5 sm:px-6 py-2.5 rounded-full shadow-[0_4px_18px_rgba(22,119,210,0.35)] hover:shadow-[0_6px_22px_rgba(22,119,210,0.5)] hover:-translate-y-0.5 active:translate-y-0 transition-all flex items-center gap-2 tracking-wide uppercase">
                     <span>LIHAT PRODUK</span>
                     <span class="text-sm">➔</span>
                 </a>
@@ -144,22 +142,22 @@
         <!-- Mobile Nav Menu Drawer -->
         <div id="topProdukNavDrawer" class="hidden md:hidden border-t border-slate-200 bg-white/98 backdrop-blur-xl px-4 py-4 transition-all">
             <div class="max-w-7xl mx-auto flex flex-col gap-2.5 text-xs sm:text-sm font-extrabold text-slate-800">
-                <a href="{{ url('/') }}" class="py-1.5 hover:text-[#00C853] flex items-center gap-2">
+                <a href="{{ url('/') }}" class="py-1.5 hover:text-[#1677d2] flex items-center gap-2">
                     <span>🏠</span> HOME
                 </a>
-                <a href="https://toyspixels.com/topproduk" class="py-1.5 text-[#00C853] flex items-center gap-2">
+                <a href="https://toyspixels.com/topproduk" class="py-1.5 text-[#1677d2] flex items-center gap-2">
                     <span>⭐</span> TOP PRODUK
                 </a>
-                <a href="{{ url('/') }}#kategori" class="py-1.5 hover:text-[#00C853] flex items-center gap-2">
+                <a href="{{ url('/') }}#kategori" class="py-1.5 hover:text-[#1677d2] flex items-center gap-2">
                     <span>🧩</span> KATEGORI PRODUK
                 </a>
-                <a href="{{ url('/katalog') }}" class="py-1.5 hover:text-[#00C853] flex items-center gap-2">
+                <a href="{{ url('/katalog') }}" class="py-1.5 hover:text-[#1677d2] flex items-center gap-2">
                     <span>📦</span> KATALOG LENGKAP
                 </a>
-                <a href="{{ url('/') }}#news-review" class="py-1.5 hover:text-[#00C853] flex items-center gap-2">
+                <a href="{{ url('/') }}#news-review" class="py-1.5 hover:text-[#1677d2] flex items-center gap-2">
                     <span>📰</span> NEWS &amp; REVIEW
                 </a>
-                <a href="{{ url('/') }}#faq" class="py-1.5 hover:text-[#00C853] flex items-center gap-2">
+                <a href="{{ url('/') }}#faq" class="py-1.5 hover:text-[#1677d2] flex items-center gap-2">
                     <span>❓</span> FAQ
                 </a>
             </div>
@@ -174,31 +172,30 @@
     <section class="relative overflow-hidden pt-10 sm:pt-14 pb-14 sm:pb-20 bg-gradient-to-b from-[#FAF5EE] via-[#FCFAF5] to-[#F5EFE6]">
         
         <!-- Soft Ambient Glow Orbs in Background -->
-        <div class="absolute -top-24 left-1/4 w-[500px] h-[500px] bg-emerald-200/20 rounded-full blur-3xl pointer-events-none"></div>
-        <div class="absolute top-1/3 right-10 w-[450px] h-[450px] bg-amber-200/20 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="absolute -top-24 left-1/4 w-[500px] h-[500px] bg-sky-200/20 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="absolute top-1/3 right-10 w-[450px] h-[450px] bg-blue-200/20 rounded-full blur-3xl pointer-events-none"></div>
 
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
             
-            <!-- Top Pill Badge (Persis: Best App for kids education di referensi) -->
+            <!-- Top Pill Badge -->
             <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white border border-slate-200/90 text-slate-800 text-xs sm:text-sm font-bold shadow-sm mb-6 hover:shadow-md transition-shadow">
                 <span class="text-base">🎉</span>
                 <span>Kurasi Mainan &amp; Gadget Pilihan Terbaik</span>
             </div>
 
-            <!-- Headline H1 (Persis Typography: SAFE WEB FOR KIDS TO LEARN AND GROW) -->
-            <!-- Kata "TOP TOYS" diberi warna Hijau (#00C853) persis kata "KIDS" di referensi -->
-            <h1 class="text-3xl sm:text-5xl md:text-6xl lg:text-[4.2rem] font-black text-[#111827] tracking-tight uppercase leading-[1.08] max-w-5xl mx-auto">
-                KOLEKSI PRODUK <span class="text-[#00C853] inline-block">TOP TOYS</span> UNTUK<br class="hidden sm:inline"> EDUKASI &amp; KOLEKSI
+            <!-- Headline H1 -->
+            <h1 class="text-3xl sm:text-5xl md:text-6xl lg:text-[4.2rem] font-black text-[#0B1A30] tracking-tight uppercase leading-[1.08] max-w-5xl mx-auto">
+                KOLEKSI PRODUK <span class="text-[#1677d2] inline-block">TOP TOYS</span> UNTUK<br class="hidden sm:inline"> EDUKASI &amp; KOLEKSI
             </h1>
 
-            <!-- Subtitle (Persis: With Built In Parental Controls And Monitoring) -->
+            <!-- Subtitle -->
             <p class="mt-4 sm:mt-5 text-sm sm:text-base md:text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-medium">
                 Rekomendasi mainan edukatif, action figures, diecast, dan gadget hobi dengan ulasan terlengkap serta link toko resmi terverifikasi di Shopee &amp; Tokopedia.
             </p>
 
-            <!-- Green Pill CTA Button (Persis: Download App di referensi) -->
+            <!-- Pill CTA Button -->
             <div class="mt-6 sm:mt-8 flex justify-center">
-                <a href="#koleksi-produk" class="inline-flex items-center gap-2.5 px-8 sm:px-10 py-3.5 sm:py-4 rounded-full bg-[#00C853] hover:bg-[#00B048] text-white font-extrabold text-sm sm:text-base shadow-[0_10px_25px_-5px_rgba(0,200,83,0.45)] hover:shadow-[0_15px_30px_-5px_rgba(0,200,83,0.6)] hover:-translate-y-0.5 active:translate-y-0 transition-all">
+                <a href="#koleksi-produk" class="inline-flex items-center gap-2.5 px-8 sm:px-10 py-3.5 sm:py-4 rounded-full bg-[#0B1A30] hover:bg-[#1677d2] text-white font-extrabold text-sm sm:text-base shadow-[0_10px_25px_-5px_rgba(11,26,48,0.35)] hover:shadow-[0_15px_30px_-5px_rgba(22,119,210,0.45)] hover:-translate-y-0.5 active:translate-y-0 transition-all">
                     <span>Jelajahi Produk Pilihan</span>
                     <span class="text-lg">↓</span>
                 </a>
@@ -225,18 +222,18 @@
 
                     <!-- CARD 1: Gundam Barbatos (Far Left - Tilted Left -6deg) -->
                     <div class="shrink-0 w-52 sm:w-56 md:w-52 lg:w-56 hanging-card relative md:[transform:rotate(-6deg)_translateY(12px)]">
-                        <!-- Green Clothespin / Clip (Persis Klip Hijau di referensi) -->
-                        <div class="absolute -top-4 sm:-top-5 left-1/2 -translate-x-1/2 w-5 sm:w-6 h-8 sm:h-9 bg-[#00C853] rounded-md shadow-md flex items-center justify-center z-20 border border-emerald-400">
+                        <!-- Clothespin / Clip -->
+                        <div class="absolute -top-4 sm:-top-5 left-1/2 -translate-x-1/2 w-5 sm:w-6 h-8 sm:h-9 bg-[#1677d2] rounded-md shadow-md flex items-center justify-center z-20 border border-blue-400">
                             <div class="w-2 h-2 rounded-full bg-white/90 shadow-inner"></div>
                         </div>
                         <!-- White Polaroid Frame -->
-                        <a href="{{ url('/topproduk/gundam-barbatos') }}" class="block bg-white rounded-3xl p-3 sm:p-3.5 shadow-[0_15px_35px_rgba(0,0,0,0.1)] border border-slate-200/90 hover:border-[#00C853] transition-colors text-left group">
+                        <a href="{{ url('/post/gundam-barbatos') }}" class="block bg-white rounded-3xl p-3 sm:p-3.5 shadow-[0_15px_35px_rgba(0,0,0,0.1)] border border-slate-200/90 hover:border-[#1677d2] transition-colors text-left group">
                             <div class="w-full aspect-[4/3] rounded-2xl overflow-hidden bg-slate-900 relative">
                                 <img src="{{ asset('images/toys/gundam.jpg') }}" alt="Gundam Barbatos" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                                <span class="absolute top-2 left-2 bg-[#00C853] text-white text-[9px] font-black px-2 py-0.5 rounded-full uppercase tracking-wider shadow">#1 TOP</span>
+                                <span class="absolute top-2 left-2 bg-[#1677d2] text-white text-[9px] font-black px-2 py-0.5 rounded-full uppercase tracking-wider shadow">#2 TOP</span>
                             </div>
                             <div class="mt-3 px-1">
-                                <h3 class="font-extrabold text-sm sm:text-base text-slate-900 group-hover:text-[#00C853] transition-colors leading-tight">
+                                <h3 class="font-extrabold text-sm sm:text-base text-slate-900 group-hover:text-[#1677d2] transition-colors leading-tight">
                                     Gundam Barbatos
                                 </h3>
                                 <p class="text-[11px] sm:text-xs text-slate-500 mt-1 truncate">
@@ -248,18 +245,18 @@
 
                     <!-- CARD 2: Tamiya Avante 4WD (Mid Left - Tilted Left -3deg) -->
                     <div class="shrink-0 w-52 sm:w-56 md:w-52 lg:w-56 hanging-card relative md:[transform:rotate(-3deg)_translateY(28px)]">
-                        <!-- Green Clothespin / Clip -->
-                        <div class="absolute -top-4 sm:-top-5 left-1/2 -translate-x-1/2 w-5 sm:w-6 h-8 sm:h-9 bg-[#00C853] rounded-md shadow-md flex items-center justify-center z-20 border border-emerald-400">
+                        <!-- Clothespin / Clip -->
+                        <div class="absolute -top-4 sm:-top-5 left-1/2 -translate-x-1/2 w-5 sm:w-6 h-8 sm:h-9 bg-[#1677d2] rounded-md shadow-md flex items-center justify-center z-20 border border-blue-400">
                             <div class="w-2 h-2 rounded-full bg-white/90 shadow-inner"></div>
                         </div>
                         <!-- White Polaroid Frame -->
-                        <a href="{{ url('/topproduk/tamiya-avante-4wd') }}" class="block bg-white rounded-3xl p-3 sm:p-3.5 shadow-[0_15px_35px_rgba(0,0,0,0.1)] border border-slate-200/90 hover:border-[#00C853] transition-colors text-left group">
+                        <a href="{{ url('/post/tamiya-avante-4wd') }}" class="block bg-white rounded-3xl p-3 sm:p-3.5 shadow-[0_15px_35px_rgba(0,0,0,0.1)] border border-slate-200/90 hover:border-[#1677d2] transition-colors text-left group">
                             <div class="w-full aspect-[4/3] rounded-2xl overflow-hidden bg-slate-900 relative">
                                 <img src="{{ asset('images/toys/tamiya.jpg') }}" alt="Tamiya Avante 4WD" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                                <span class="absolute top-2 left-2 bg-blue-600 text-white text-[9px] font-black px-2 py-0.5 rounded-full uppercase tracking-wider shadow">#2 TOP</span>
+                                <span class="absolute top-2 left-2 bg-blue-600 text-white text-[9px] font-black px-2 py-0.5 rounded-full uppercase tracking-wider shadow">#3 TOP</span>
                             </div>
                             <div class="mt-3 px-1">
-                                <h3 class="font-extrabold text-sm sm:text-base text-slate-900 group-hover:text-[#00C853] transition-colors leading-tight">
+                                <h3 class="font-extrabold text-sm sm:text-base text-slate-900 group-hover:text-[#1677d2] transition-colors leading-tight">
                                     Tamiya Avante 4WD
                                 </h3>
                                 <p class="text-[11px] sm:text-xs text-slate-500 mt-1 truncate">
@@ -271,19 +268,19 @@
 
                     <!-- CARD 3: PlayStation 5 Slim (Center - Straight 0deg, hanging lowest) -->
                     <div class="shrink-0 w-52 sm:w-56 md:w-52 lg:w-56 hanging-card relative md:[transform:rotate(0deg)_translateY(38px)]">
-                        <!-- Green Clothespin / Clip -->
-                        <div class="absolute -top-4 sm:-top-5 left-1/2 -translate-x-1/2 w-5 sm:w-6 h-8 sm:h-9 bg-[#00C853] rounded-md shadow-md flex items-center justify-center z-20 border border-emerald-400">
+                        <!-- Clothespin / Clip -->
+                        <div class="absolute -top-4 sm:-top-5 left-1/2 -translate-x-1/2 w-5 sm:w-6 h-8 sm:h-9 bg-[#1677d2] rounded-md shadow-md flex items-center justify-center z-20 border border-blue-400">
                             <div class="w-2 h-2 rounded-full bg-white/90 shadow-inner"></div>
                         </div>
                         <!-- White Polaroid Frame -->
-                        <a href="{{ url('/topproduk/playstation-5-slim') }}" class="block bg-white rounded-3xl p-3 sm:p-3.5 shadow-[0_18px_40px_rgba(0,0,0,0.13)] border-2 border-[#00C853]/60 hover:border-[#00C853] transition-colors text-left group">
+                        <a href="{{ url('/post/post-1') }}" class="block bg-white rounded-3xl p-3 sm:p-3.5 shadow-[0_18px_40px_rgba(0,0,0,0.13)] border-2 border-[#1677d2]/60 hover:border-[#1677d2] transition-colors text-left group">
                             <div class="w-full aspect-[4/3] rounded-2xl overflow-hidden bg-slate-900 relative">
-                                <img src="{{ asset('images/toys/playstation.jpg') }}" alt="PlayStation 5 Slim" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                                <span class="absolute top-2 left-2 bg-[#00C853] text-white text-[9px] font-black px-2 py-0.5 rounded-full uppercase tracking-wider shadow">#3 TOP</span>
+                                <img src="{{ asset('images/toys/playstation.jpg') }}" alt="PlayStation 5" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                                <span class="absolute top-2 left-2 bg-[#1677d2] text-white text-[9px] font-black px-2 py-0.5 rounded-full uppercase tracking-wider shadow">#1 TOP</span>
                             </div>
                             <div class="mt-3 px-1">
-                                <h3 class="font-extrabold text-sm sm:text-base text-slate-900 group-hover:text-[#00C853] transition-colors leading-tight">
-                                    PlayStation 5 Slim
+                                <h3 class="font-extrabold text-sm sm:text-base text-slate-900 group-hover:text-[#1677d2] transition-colors leading-tight">
+                                    PlayStation 5
                                 </h3>
                                 <p class="text-[11px] sm:text-xs text-slate-500 mt-1 truncate">
                                     Next-Gen Console 4K 120FPS
@@ -294,18 +291,18 @@
 
                     <!-- CARD 4: Pop Mart Labubu (Mid Right - Tilted Right +3deg) -->
                     <div class="shrink-0 w-52 sm:w-56 md:w-52 lg:w-56 hanging-card relative md:[transform:rotate(3deg)_translateY(28px)]">
-                        <!-- Green Clothespin / Clip -->
-                        <div class="absolute -top-4 sm:-top-5 left-1/2 -translate-x-1/2 w-5 sm:w-6 h-8 sm:h-9 bg-[#00C853] rounded-md shadow-md flex items-center justify-center z-20 border border-emerald-400">
+                        <!-- Clothespin / Clip -->
+                        <div class="absolute -top-4 sm:-top-5 left-1/2 -translate-x-1/2 w-5 sm:w-6 h-8 sm:h-9 bg-[#1677d2] rounded-md shadow-md flex items-center justify-center z-20 border border-blue-400">
                             <div class="w-2 h-2 rounded-full bg-white/90 shadow-inner"></div>
                         </div>
                         <!-- White Polaroid Frame -->
-                        <a href="{{ url('/topproduk/pop-mart-labubu') }}" class="block bg-white rounded-3xl p-3 sm:p-3.5 shadow-[0_15px_35px_rgba(0,0,0,0.1)] border border-slate-200/90 hover:border-[#00C853] transition-colors text-left group">
+                        <a href="{{ url('/post/pop-mart-labubu') }}" class="block bg-white rounded-3xl p-3 sm:p-3.5 shadow-[0_15px_35px_rgba(0,0,0,0.1)] border border-slate-200/90 hover:border-[#1677d2] transition-colors text-left group">
                             <div class="w-full aspect-[4/3] rounded-2xl overflow-hidden bg-slate-900 relative">
                                 <img src="{{ asset('images/toys/labubu.jpg') }}" alt="Pop Mart Labubu" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
                                 <span class="absolute top-2 left-2 bg-pink-500 text-white text-[9px] font-black px-2 py-0.5 rounded-full uppercase tracking-wider shadow">#4 TOP</span>
                             </div>
                             <div class="mt-3 px-1">
-                                <h3 class="font-extrabold text-sm sm:text-base text-slate-900 group-hover:text-[#00C853] transition-colors leading-tight">
+                                <h3 class="font-extrabold text-sm sm:text-base text-slate-900 group-hover:text-[#1677d2] transition-colors leading-tight">
                                     Pop Mart Labubu
                                 </h3>
                                 <p class="text-[11px] sm:text-xs text-slate-500 mt-1 truncate">
@@ -317,18 +314,18 @@
 
                     <!-- CARD 5: Hot Wheels GT-R R34 (Far Right - Tilted Right +6deg) -->
                     <div class="shrink-0 w-52 sm:w-56 md:w-52 lg:w-56 hanging-card relative md:[transform:rotate(6deg)_translateY(12px)]">
-                        <!-- Green Clothespin / Clip -->
-                        <div class="absolute -top-4 sm:-top-5 left-1/2 -translate-x-1/2 w-5 sm:w-6 h-8 sm:h-9 bg-[#00C853] rounded-md shadow-md flex items-center justify-center z-20 border border-emerald-400">
+                        <!-- Clothespin / Clip -->
+                        <div class="absolute -top-4 sm:-top-5 left-1/2 -translate-x-1/2 w-5 sm:w-6 h-8 sm:h-9 bg-[#1677d2] rounded-md shadow-md flex items-center justify-center z-20 border border-blue-400">
                             <div class="w-2 h-2 rounded-full bg-white/90 shadow-inner"></div>
                         </div>
                         <!-- White Polaroid Frame -->
-                        <a href="{{ url('/topproduk/hot-wheels-gtr-r34') }}" class="block bg-white rounded-3xl p-3 sm:p-3.5 shadow-[0_15px_35px_rgba(0,0,0,0.1)] border border-slate-200/90 hover:border-[#00C853] transition-colors text-left group">
+                        <a href="{{ url('/post/hot-wheels-gtr-r34') }}" class="block bg-white rounded-3xl p-3 sm:p-3.5 shadow-[0_15px_35px_rgba(0,0,0,0.1)] border border-slate-200/90 hover:border-[#1677d2] transition-colors text-left group">
                             <div class="w-full aspect-[4/3] rounded-2xl overflow-hidden bg-slate-900 relative">
                                 <img src="{{ asset('images/toys/hotwheels.jpg') }}" alt="Hot Wheels GT-R R34" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
                                 <span class="absolute top-2 left-2 bg-red-600 text-white text-[9px] font-black px-2 py-0.5 rounded-full uppercase tracking-wider shadow">#5 TOP</span>
                             </div>
                             <div class="mt-3 px-1">
-                                <h3 class="font-extrabold text-sm sm:text-base text-slate-900 group-hover:text-[#00C853] transition-colors leading-tight">
+                                <h3 class="font-extrabold text-sm sm:text-base text-slate-900 group-hover:text-[#1677d2] transition-colors leading-tight">
                                     Hot Wheels GT-R R34
                                 </h3>
                                 <p class="text-[11px] sm:text-xs text-slate-500 mt-1 truncate">
@@ -368,36 +365,9 @@
     <!-- Top Toys Card Structure, Badges, Typography, Price, Photo,     -->
     <!-- Floating 'Lihat Selengkapnya' Button & Brand Blue / White Theme -->
     <!-- ============================================================== -->
-    <section id="koleksi-produk" class="py-16 sm:py-24 bg-[#FAF5EE] border-t border-b border-[#E8DFD0] relative overflow-hidden">
+    <section id="koleksi-produk" class="py-12 sm:py-16 bg-[#FAF5EE] border-t border-b border-[#E8DFD0] relative overflow-hidden">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             
-            <!-- SECTION HEADER: Title & Breadcrumbs persis layout home page -->
-            <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-10 sm:mb-12">
-                <div class="max-w-2xl">
-                    <div class="text-xs text-slate-500 font-bold flex items-center gap-2 mb-3">
-                        <a href="{{ url('/') }}" class="hover:text-[#1677d2]">Beranda</a>
-                        <span>/</span>
-                        <span class="text-[#0A1628] font-bold">Top Produk</span>
-                    </div>
-                    <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#1677d2]/10 text-[#1677d2] text-xs font-black tracking-wider uppercase mb-3">
-                        DAFTAR LENGKAP TOP PRODUK PILIHAN
-                    </span>
-                    <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-[#0A1628] tracking-tight leading-tight">
-                        Mainan Paling Populer &amp;<br>
-                        <span class="text-[#1677d2]">Paling Banyak Dibeli</span>
-                    </h2>
-                    <p class="text-slate-600 text-sm sm:text-base mt-3 leading-relaxed font-medium">
-                        Daftar lengkap seluruh artikel dengan tag <strong>Top Produk</strong> pilihan terbaik dengan rating tertinggi dan ulasan terpercaya.
-                    </p>
-                </div>
-                
-                <!-- Status Badge -->
-                <div class="flex items-center gap-2 text-xs font-bold text-slate-700 bg-white px-4 py-2.5 rounded-full border border-slate-200/90 shadow-sm shrink-0 self-start sm:self-end">
-                    <span class="w-2.5 h-2.5 rounded-full bg-[#1677d2] animate-pulse"></span>
-                    <span>Menampilkan Seluruh <strong>{{ count($posts) }} Top Produk</strong></span>
-                </div>
-            </div>
-
             <!-- PRODUCT CARDS (SAMA PERSIS DENGAN KARTU PRODUK DI HOME PAGE) -->
             <!-- Card 1: Blue Theme (#1677d2 + Lime #E3FF73)                    -->
             <!-- Cards 2-9: White Theme (bg-white + Blue Badge + Slate-900)     -->
@@ -517,7 +487,7 @@
                 </div>
                 <div class="flex items-center gap-6 text-xs font-bold text-slate-400">
                     <a href="{{ url('/') }}" class="hover:text-white transition-colors">Beranda</a>
-                    <a href="https://toyspixels.com/topproduk" class="text-[#00C853] hover:text-white transition-colors">Top Produk</a>
+                    <a href="https://toyspixels.com/topproduk" class="text-[#E3FF73] hover:text-white transition-colors">Top Produk</a>
                     <a href="{{ url('/') }}#kategori" class="hover:text-white transition-colors">Kategori</a>
                     <a href="{{ url('/katalog') }}" class="hover:text-white transition-colors">Katalog</a>
                     <a href="{{ url('/') }}#faq" class="hover:text-white transition-colors">FAQ</a>

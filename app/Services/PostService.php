@@ -172,6 +172,143 @@ class PostService
                 'tags' => 'topproduk, collectibles, gamespuzzles, gaming, semuaproduk, katalogmainan, katalogteknologi',
             ],
         ],
+        [
+            'id' => 2,
+            'slug' => 'post-2',
+            'aliases' => ['2', 'post-2', 'post2', 'produk-2', 'snapzy-rc-offroad', 'snapzy-mobil-rc-off-road-4wd'],
+            'title' => 'Snapzy Mobil RC Off Road 4WD 2.4GHz Lampu LED Semprotan Kabut Rechargeable',
+            'display_title' => 'Snapzy Mobil RC Off Road 4WD',
+            'subtitle' => 'Mobil RC Off Road 4WD dari Snapzy dengan Desain Sporty, Ban Besar Bertekstur, Lampu LED Keren, Efek Semprotan Kabut Realistis, serta Baterai Isi Ulang USB Siap Panjat Segala Medan',
+            'category_name' => 'Kids & Educational Toys',
+            'category_slug' => 'kidstoys',
+            'category_url' => 'https://toyspixels.com/kidstoys',
+            'age' => '6 - 14 Tahun',
+            'type' => 'Mobil RC 4WD',
+            'age_type' => '6 - 14 Tahun/Mobil RC 4WD',
+            'price' => '212.000',
+            'raw_price' => 212000,
+            'original_price' => 'Rp 261.000',
+            'discount_badge' => 'POTONGAN Rp2RB | 19% OFF',
+            'rating' => '4.8',
+            'sold' => '1.0rb+',
+            'reviews_count' => '811',
+            'warranty' => 'Garansi Produsen 1 Bulan',
+            'image' => 'images/toys/post-2/1.webp',
+            'thumbnail' => 'images/toys/post-2/1.webp',
+            'gallery' => [
+                'images/toys/post-2/1.webp',
+                'images/toys/post-2/2.webp',
+                'images/toys/post-2/3.webp',
+            ],
+            'affiliate_url' => 'https://s.shopee.co.id/9zzc37VEVr',
+            'shopee_url' => 'https://s.shopee.co.id/9zzc37VEVr',
+            'tokopedia_url' => 'https://tokopedia.com',
+            'tag' => 'topproduk',
+            'tags' => [
+                'topproduk',
+                'kidstoys',
+                'collectibles',
+                'outdoorrc',
+                'semuaproduk',
+                'katalogmainan',
+            ],
+            'post_date' => '2026-11-26',
+            'summary' => 'Mobil RC Off Road 4WD dari Snapzy hadir dengan desain sporty, ban besar bertekstur, lampu LED, dan efek semprotan kabut realistis yang membuat permainan semakin seru. Menggunakan remote control 2.4GHz responsif dan mudah dikendalikan hingga jarak 50 meter dengan baterai isi ulang USB praktis.',
+            'content' => '<div class="space-y-6 text-slate-700 leading-relaxed">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 not-prose my-4">
+        <div class="p-4 rounded-2xl bg-blue-50/70 border border-blue-200">
+            <h4 class="font-black text-[#1677d2] text-sm flex items-center gap-2 mb-1.5">
+                <span>💨</span> Fitur Semprotan Kabut (Spray Effect)
+            </h4>
+            <p class="text-xs text-slate-600 leading-relaxed">
+                Tersedia efek semprotan kabut uap air realistis dari knalpot belakang. Cukup isi air bersih dengan botol pengisi kecil yang disediakan!
+            </p>
+        </div>
+        <div class="p-4 rounded-2xl bg-amber-50/70 border border-amber-200">
+            <h4 class="font-black text-amber-700 text-sm flex items-center gap-2 mb-1.5">
+                <span>⚡</span> Sistem 4WD Panjat Segala Medan
+            </h4>
+            <p class="text-xs text-slate-600 leading-relaxed">
+                Empat roda bergerak aktif membantu mobil lebih stabil, lincah, dan tangguh di aspal, rumput, tanah berpasir, hingga jalanan berbatu.
+            </p>
+        </div>
+        <div class="p-4 rounded-2xl bg-emerald-50/70 border border-emerald-200">
+            <h4 class="font-black text-emerald-700 text-sm flex items-center gap-2 mb-1.5">
+                <span>💡</span> Lampu Headlight LED Keren
+            </h4>
+            <p class="text-xs text-slate-600 leading-relaxed">
+                Dilengkapi efek lampu LED depan yang terang dan atraktif untuk keseruan balapan siang maupun malam hari.
+            </p>
+        </div>
+        <div class="p-4 rounded-2xl bg-purple-50/70 border border-purple-200">
+            <h4 class="font-black text-purple-700 text-sm flex items-center gap-2 mb-1.5">
+                <span>🔋</span> Baterai Rechargeable USB Praktis
+            </h4>
+            <p class="text-xs text-slate-600 leading-relaxed">
+                Menggunakan baterai 3.7V 800mAh isi ulang tahan hingga 40 menit bermain, mudah di-charge menggunakan kabel USB yang disertakan.
+            </p>
+        </div>
+    </div>
+
+    <div>
+        <h3 class="text-lg font-black text-[#0B1A30] mb-3 flex items-center gap-2">
+            <span>📦</span> Kelengkapan Paket Produk
+        </h3>
+        <ul class="list-disc list-inside space-y-1.5 text-sm text-slate-600 bg-slate-50 p-4 rounded-2xl border border-slate-200">
+            <li><strong>1x</strong> Mobil RC Off-Road 4WD Snapzy (Varian Warna Pilihan)</li>
+            <li><strong>1x</strong> Remote Control 2.4GHz Responsif (Jangkauan hingga 50m)</li>
+            <li><strong>1x</strong> Baterai Mobil 3.7V 800mAh Rechargeable</li>
+            <li><strong>1x</strong> Kabel USB Charging Praktis</li>
+            <li><strong>1x</strong> Botol Kecil Pengisi Air Spray Kabut</li>
+            <li><strong>1x</strong> Buku Panduan &amp; Kotak Box Kemasan Original Snapzy</li>
+        </ul>
+    </div>
+
+    <div>
+        <h3 class="text-lg font-black text-[#0B1A30] mb-3 flex items-center gap-2">
+            <span>⚙️</span> Spesifikasi Teknis Produk
+        </h3>
+        <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 text-xs font-mono">
+            <div class="p-3 rounded-xl bg-slate-50 border border-slate-200">
+                <span class="text-slate-400 block text-[10px] uppercase font-bold">Merek</span>
+                <span class="font-black text-slate-800">Snapzy Official</span>
+            </div>
+            <div class="p-3 rounded-xl bg-slate-50 border border-slate-200">
+                <span class="text-slate-400 block text-[10px] uppercase font-bold">Sistem Gerak</span>
+                <span class="font-black text-slate-800">4WD Off-Road</span>
+            </div>
+            <div class="p-3 rounded-xl bg-slate-50 border border-slate-200">
+                <span class="text-slate-400 block text-[10px] uppercase font-bold">Frekuensi</span>
+                <span class="font-black text-slate-800">2.4GHz Wireless</span>
+            </div>
+            <div class="p-3 rounded-xl bg-slate-50 border border-slate-200">
+                <span class="text-slate-400 block text-[10px] uppercase font-bold">Kecepatan</span>
+                <span class="font-black text-emerald-600">Hingga 25 km/jam</span>
+            </div>
+            <div class="p-3 rounded-xl bg-slate-50 border border-slate-200">
+                <span class="text-slate-400 block text-[10px] uppercase font-bold">Jarak Kendali</span>
+                <span class="font-black text-slate-800">Hingga 50 Meter</span>
+            </div>
+            <div class="p-3 rounded-xl bg-slate-50 border border-slate-200">
+                <span class="text-slate-400 block text-[10px] uppercase font-bold">Waktu Main</span>
+                <span class="font-black text-slate-800">Hingga 40 Menit</span>
+            </div>
+            <div class="p-3 rounded-xl bg-slate-50 border border-slate-200">
+                <span class="text-slate-400 block text-[10px] uppercase font-bold">Dimensi Mobil</span>
+                <span class="font-black text-slate-800">22 x 16.5 x 10 cm</span>
+            </div>
+            <div class="p-3 rounded-xl bg-slate-50 border border-slate-200">
+                <span class="text-slate-400 block text-[10px] uppercase font-bold">Rekomendasi Usia</span>
+                <span class="font-black text-slate-800">6 - 14 Tahun</span>
+            </div>
+            <div class="p-3 rounded-xl bg-slate-50 border border-slate-200">
+                <span class="text-slate-400 block text-[10px] uppercase font-bold">Dikirim Dari</span>
+                <span class="font-black text-slate-800">Kab. Tangerang</span>
+            </div>
+        </div>
+    </div>
+</div>',
+        ],
     ];
 
     /**

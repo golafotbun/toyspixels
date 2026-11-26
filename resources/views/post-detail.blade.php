@@ -169,7 +169,7 @@
                                 <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
                             </div>
                             <span class="font-extrabold text-slate-900">{{ $post['rating'] ?? '4.9' }}</span>
-                            <span class="text-slate-500 font-medium">Based on <span class="text-slate-800 underline decoration-slate-300 font-semibold">{{ $post['sold'] ?? '1,1RB' }} Penilaian</span></span>
+                            <span class="text-slate-500 font-medium">Based on <span class="text-slate-800 underline decoration-slate-300 font-semibold">{{ $post['reviews_count'] ?? $post['sold'] ?? '1,1RB' }} Penilaian</span></span>
                         </div>
 
                         <!-- Harga & Badge Diskon (Persis post produk.jpg) -->
@@ -226,7 +226,7 @@
                                     </svg>
                                 </div>
                                 <div class="text-[11px] sm:text-xs font-bold leading-tight">
-                                    Garansi Resmi<br class="hidden sm:inline"> 1 Tahun
+                                    {{ $post['warranty'] ?? 'Garansi Resmi 1 Tahun' }}
                                 </div>
                             </div>
                         </div>
@@ -253,8 +253,8 @@
                             @endforeach
                         </div>
 
-                        @if(!in_array($post['slug'] ?? '', ['post-1', 'post1']))
-                        <!-- Spesifikasi Ringkas untuk Produk Lainnya (Post 1 sudah dihilangkan) -->
+                        @if(!in_array($post['slug'] ?? '', ['post-1', 'post-2', 'post1', 'post2']))
+                        <!-- Spesifikasi Ringkas untuk Produk Lainnya (Post 1 & Post 2 sudah dihilangkan) -->
                         <div class="mt-6 pt-5 border-t border-slate-100 text-xs font-mono space-y-2 text-slate-600">
                             <div class="flex items-start justify-between border-b border-slate-100 pb-1.5">
                                 <span class="text-slate-400 font-bold uppercase text-[10px]">Kategori:</span>
@@ -312,7 +312,7 @@
                     </div>
                 </div>
 
-                @if(($post['slug'] ?? '') !== 'post-1' && ($post['id'] ?? null) != 1)
+                @if(!in_array($post['slug'] ?? '', ['post-1', 'post-2', 'post1', 'post2']) && ($post['id'] ?? null) != 1 && ($post['id'] ?? null) != 2)
                 <!-- Bottom Action Buttons for other posts -->
                 <div class="mt-10 pt-6 border-t border-slate-200 flex flex-col sm:flex-row items-center justify-between gap-4">
                     <a href="{{ $post['affiliate_url'] }}" target="_blank" rel="noopener nofollow" class="w-full sm:w-auto px-7 py-3.5 rounded-full bg-[#EE4D2D] hover:bg-[#d83f21] text-white font-black text-xs sm:text-sm shadow-md transition-all text-center flex items-center justify-center gap-2">

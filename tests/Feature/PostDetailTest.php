@@ -90,31 +90,64 @@ class PostDetailTest extends TestCase
         $this->assertNotNull($postById);
         $this->assertEquals(1, $postById['id']);
 
-        $this->assertCount(1, PostService::filterByTag('topproduk'));
+        $post2BySlug = PostService::findBySlug('post-2');
+        $this->assertNotNull($post2BySlug);
+        $this->assertEquals(2, $post2BySlug['id']);
+        $this->assertEquals('https://s.shopee.co.id/9zzc37VEVr', $post2BySlug['affiliate_url']);
+
+        $this->assertCount(2, PostService::filterByTag('topproduk'));
         $this->assertCount(1, PostService::filterByTag('gaming'));
-        $this->assertCount(1, PostService::filterByTag('collectibles'));
+        $this->assertCount(2, PostService::filterByTag('collectibles'));
         $this->assertCount(1, PostService::filterByTag('gamespuzzles'));
-        $this->assertCount(1, PostService::filterByTag('semuaproduk'));
-        $this->assertCount(1, PostService::filterByTag('katalogmainan'));
+        $this->assertCount(2, PostService::filterByTag('semuaproduk'));
+        $this->assertCount(2, PostService::filterByTag('katalogmainan'));
         $this->assertCount(1, PostService::filterByTag('katalogteknologi'));
+        $this->assertCount(1, PostService::filterByTag('kidstoys'));
+        $this->assertCount(1, PostService::filterByTag('outdoorrc'));
     }
 
     /**
-     * Test /topproduk/post-1 redirects to /post/post-1 and top produk cards link directly to post-1.
+     * Test /topproduk/post-1 and /topproduk/post-2 redirects to /post/{slug}.
      */
     public function test_topproduk_links_directly_to_post_detail(): void
     {
         $response = $this->get('/topproduk/post-1');
         $response->assertRedirect('/post/post-1');
 
+        $response2 = $this->get('/topproduk/post-2');
+        $response2->assertRedirect('/post/post-2');
+
         $homeResponse = $this->get('/');
         $homeResponse->assertStatus(200);
         $homeContent = $homeResponse->getContent();
         $this->assertStringContainsString('href="http://localhost:8000/post/post-1"', $homeContent);
+        $this->assertStringContainsString('href="http://localhost:8000/post/post-2"', $homeContent);
 
         $topResponse = $this->get('/topproduk');
         $topResponse->assertStatus(200);
         $topContent = $topResponse->getContent();
         $this->assertStringContainsString('href="http://localhost:8000/post/post-1"', $topContent);
+        $this->assertStringContainsString('href="http://localhost:8000/post/post-2"', $topContent);
+    }
+
+    /**
+     * Test Post 2 detail page loads correctly with all required elements.
+     */
+    public function test_post_2_detail_page_loads_cleanly(): void
+    {
+        $response = $this->get('/post/post-2');
+        $response->assertStatus(200);
+        $response->assertSee('Snapzy Mobil RC Off Road 4WD');
+        $response->assertSee('212.000');
+        $response->assertSee('Rp 261.000');
+        $response->assertSee('https://s.shopee.co.id/9zzc37VEVr');
+        $response->assertSee('811 Penilaian');
+        $response->assertSee('Garansi Produsen 1 Bulan');
+        $response->assertSee('Fitur Semprotan Kabut');
+        $response->assertSee('Sistem 4WD Panjat Segala Medan');
+        $response->assertSee('images/toys/post-2/1.webp');
+        $response->assertSee('images/toys/post-2/2.webp');
+        $response->assertSee('images/toys/post-2/3.webp');
+        $response->assertDontSee('Beli Langsung di Shopee Official');
     }
 }

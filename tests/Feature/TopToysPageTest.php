@@ -37,8 +37,13 @@ class TopToysPageTest extends TestCase
         $this->assertStringNotContainsString('-24%', $tahap3Html, 'Tahap 3 tidak boleh memiliki badge diskon');
         $this->assertStringNotContainsString('line-through', $tahap3Html, 'Tahap 3 tidak boleh memiliki harga coret');
 
-        // Verify #1 is the latest product (Post 1) with blue card, correct details & price
+        // Verify #1 is the latest product (Post 2) with blue card, correct details & price
         $this->assertStringContainsString('#1', $tahap3Html);
+        $this->assertStringContainsString('Snapzy Mobil RC Off Road', $tahap3Html);
+        $this->assertStringContainsString('Rp 212.000', $tahap3Html);
+
+        // Verify #2 is Post 1 (PS5)
+        $this->assertStringContainsString('#2', $tahap3Html);
         $this->assertStringContainsString('SONY PS5 Playstation 5', $tahap3Html);
         $this->assertStringContainsString('Rp 14.630.000', $tahap3Html);
 
@@ -51,7 +56,7 @@ class TopToysPageTest extends TestCase
 
         // Verify 7 products exist and rank up to #7
         $this->assertStringContainsString('#7', $tahap3Html);
-        $this->assertStringContainsString('Beyblade X Stadium', $tahap3Html);
+        $this->assertStringContainsString('Hot Wheels GT-R R34', $tahap3Html);
         // Ensure #8 is NOT in the homepage slider (as only top 7 are shown)
         $this->assertStringNotContainsString('#8', $tahap3Html);
     }
@@ -65,6 +70,8 @@ class TopToysPageTest extends TestCase
 
         $response->assertStatus(200);
         $response->assertSee('Top Produk');
+        $response->assertSee('Snapzy Mobil RC Off Road');
+        $response->assertSee('SONY PS5 Playstation 5');
         $response->assertSee('Gundam Barbatos');
         $response->assertSee('Tamiya Avante 4WD');
         $response->assertSee('PlayStation 5 Slim');

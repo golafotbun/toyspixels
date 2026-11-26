@@ -107,7 +107,7 @@
             <!-- HEADER PEMBELIAN PRODUK (PERSIS REFERENSI post produk.jpg)      -->
             <!-- Foto besar di atas, foto kecil selanjutnya di bawah            -->
             <!-- ============================================================== -->
-            <section class="bg-white rounded-3xl p-6 sm:p-10 shadow-sm border border-slate-200/80 mb-10">
+            <section class="bg-white rounded-3xl p-6 sm:p-10 shadow-sm border border-slate-100 mb-10">
                 <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
                     
                     <!-- KOLOM KIRI: Galeri Foto Produk (Besar di Atas, Thumbnail di Bawah) -->
@@ -120,22 +120,12 @@
                             $gallery = array_values(array_unique(array_filter($gallery)));
                         @endphp
 
-                        <!-- Foto Utama Besar (Di Atas) -->
-                        <div class="w-full aspect-square rounded-3xl bg-[#ECEEF0] flex items-center justify-center p-6 sm:p-10 relative overflow-hidden group border border-slate-200/60 shadow-inner">
-                            <!-- Badge Shopee Official / 100% Original -->
-                            <div class="absolute top-4 left-4 flex items-center gap-2 z-10">
-                                <span class="bg-[#EE4D2D] text-white text-[10px] font-black uppercase px-2.5 py-1 rounded-md tracking-wider shadow">
-                                    Shopee Official
-                                </span>
-                                <span class="bg-[#0B1A30] text-[#E3FF73] text-[10px] font-black uppercase px-2.5 py-1 rounded-md shadow">
-                                    100% Original
-                                </span>
-                            </div>
-
+                        <!-- Foto Utama Besar (Di Atas - Bersih Tanpa Overlay Badge) -->
+                        <div class="w-full aspect-square rounded-3xl bg-[#F0F2F5] flex items-center justify-center p-6 sm:p-10 relative overflow-hidden group">
                             <img id="mainProductDisplay" 
                                  src="{{ asset($gallery[0] ?? 'images/toys/ps5/1.webp') }}" 
                                  alt="{{ $post['title'] }}" 
-                                 class="max-h-full max-w-full object-contain transition-all duration-300 drop-shadow-md group-hover:scale-105">
+                                 class="max-h-full max-w-full object-contain transition-all duration-300 drop-shadow-sm group-hover:scale-105">
                         </div>
 
                         <!-- Foto Kecil / Thumbnail Selanjutnya (Di Bawah Foto Besar) -->
@@ -144,7 +134,7 @@
                             @foreach($gallery as $index => $thumb)
                             <button type="button" 
                                     onclick="switchGalleryImage(this, '{{ asset($thumb) }}')" 
-                                    class="gallery-thumbnail-btn w-20 h-20 sm:w-24 sm:h-24 rounded-2xl bg-[#ECEEF0] p-2 flex items-center justify-center border-2 transition-all cursor-pointer shrink-0 {{ $index === 0 ? 'border-black ring-1 ring-black' : 'border-transparent hover:border-slate-300 opacity-70 hover:opacity-100' }}">
+                                    class="gallery-thumbnail-btn w-20 h-20 sm:w-24 sm:h-24 rounded-2xl bg-[#F0F2F5] p-2 flex items-center justify-center border transition-all cursor-pointer shrink-0 {{ $index === 0 ? 'border-slate-900' : 'border-transparent hover:border-slate-300 opacity-70 hover:opacity-100' }}">
                                 <img src="{{ asset($thumb) }}" alt="Thumbnail {{ $index + 1 }}" class="max-h-full max-w-full object-contain rounded-lg">
                             </button>
                             @endforeach
@@ -154,6 +144,20 @@
 
                     <!-- KOLOM KANAN: Detail Informasi Pembelian & CTA -->
                     <div class="lg:col-span-6 flex flex-col justify-start">
+                        <!-- Badge & Kategori di Atas Judul Produk -->
+                        <div class="flex flex-wrap items-center gap-2 mb-3">
+                            <span class="bg-[#EE4D2D] text-white text-[11px] font-black uppercase px-2.5 py-1 rounded-md tracking-wider shadow-sm flex items-center gap-1.5">
+                                <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M19 6h-2c0-2.76-2.24-5-5-5S7 3.24 7 6H5c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-7-3c1.66 0 3 1.34 3 3H9c0-1.66 1.34-3 3-3zm7 17H5V8h14v12z"/></svg>
+                                <span>Shopee Official</span>
+                            </span>
+                            <span class="bg-[#0B1A30] text-[#E3FF73] text-[11px] font-black uppercase px-2.5 py-1 rounded-md shadow-sm">
+                                100% Original
+                            </span>
+                            <a href="{{ $post['category_url'] }}" class="text-xs font-bold text-[#1677d2] hover:underline uppercase tracking-wider ml-1">
+                                {{ $post['category_name'] }}
+                            </a>
+                        </div>
+
                         <!-- Judul Produk -->
                         <h1 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-slate-900 tracking-tight leading-tight">
                             {{ $post['title'] }}
@@ -227,23 +231,30 @@
                             </div>
                         </div>
 
-                        <!-- Tombol Pembelian (Add to Cart & Buy Now) -->
-                        <div class="flex flex-col gap-3">
-                            <!-- Tombol 1: Dark Blue (Add to Cart / Beli di Shopee) -->
+                        <!-- Tombol Pembelian: Cuma 1 Link Tombol Beli Langsung -->
+                        <div class="mt-2">
                             <a href="{{ $post['affiliate_url'] }}" target="_blank" rel="noopener nofollow" 
                                class="w-full py-4 px-6 rounded-2xl bg-[#0C4A85] hover:bg-[#093967] text-white font-extrabold text-sm sm:text-base tracking-wide text-center flex items-center justify-center gap-2 shadow-[0_6px_20px_rgba(12,74,133,0.25)] hover:shadow-[0_8px_25px_rgba(12,74,133,0.35)] hover:-translate-y-0.5 active:translate-y-0 transition-all group">
-                                <span>Add to Cart (Beli Langsung di Shopee)</span>
-                                <span class="group-hover:translate-x-1 transition-transform">➔</span>
-                            </a>
-
-                            <!-- Tombol 2: Black (Buy Now) -->
-                            <a href="{{ $post['tokopedia_url'] ?? $post['affiliate_url'] }}" target="_blank" rel="noopener nofollow" 
-                               class="w-full py-4 px-6 rounded-2xl bg-black hover:bg-slate-800 text-white font-extrabold text-sm sm:text-base tracking-wide text-center flex items-center justify-center gap-2 shadow-md hover:-translate-y-0.5 active:translate-y-0 transition-all">
-                                <span>Buy Now</span>
+                                <span>Beli Langsung di Shopee</span>
+                                <span class="group-hover:translate-x-1 transition-transform text-lg">➔</span>
                             </a>
                         </div>
 
-                        <!-- Spesifikasi Singkat & Tags -->
+                        <!-- Tags Produk -->
+                        <div class="mt-5 pt-4 border-t border-slate-100 flex flex-wrap items-center gap-1.5">
+                            <span class="text-xs font-bold text-slate-400 mr-1">Tags:</span>
+                            @php
+                                $tagsList = is_array($post['tags'] ?? null) ? $post['tags'] : array_map('trim', explode(',', $post['tags'] ?? 'topproduk'));
+                            @endphp
+                            @foreach($tagsList as $tag)
+                            <span class="px-2.5 py-0.5 rounded-full bg-slate-100 text-slate-600 text-[11px] font-bold border border-slate-200/80">
+                                #{{ $tag }}
+                            </span>
+                            @endforeach
+                        </div>
+
+                        @if(!in_array($post['slug'] ?? '', ['post-1', 'post1']))
+                        <!-- Spesifikasi Ringkas untuk Produk Lainnya (Post 1 sudah dihilangkan) -->
                         <div class="mt-6 pt-5 border-t border-slate-100 text-xs font-mono space-y-2 text-slate-600">
                             <div class="flex items-start justify-between border-b border-slate-100 pb-1.5">
                                 <span class="text-slate-400 font-bold uppercase text-[10px]">Kategori:</span>
@@ -267,17 +278,12 @@
                                     {{ $post['affiliate_url'] }}
                                 </a>
                             </div>
-                            <div class="pt-1">
-                                <span class="text-slate-400 font-bold uppercase text-[10px] block mb-1">Tags:</span>
-                                <div class="flex flex-wrap gap-1.5">
-                                    @php
-                                        $tagsList = is_array($post['tags'] ?? null) ? $post['tags'] : array_map('trim', explode(',', $post['tags'] ?? 'topproduk'));
-                                    @endphp
-                                    @foreach($tagsList as $tag)
-                                    <span class="px-2 py-0.5 rounded bg-slate-100 text-slate-700 text-[10px] font-bold border border-slate-200">
-                                        #{{ $tag }}
-                                    </span>
-                                    @endforeach
+                        </div>
+                        @endif
+
+                    </div>
+                </div>
+            </section>
                                 </div>
                             </div>
                         </div>
@@ -412,12 +418,12 @@
 
             // Update border aktif pada thumbnail
             document.querySelectorAll('.gallery-thumbnail-btn').forEach(el => {
-                el.classList.remove('border-black', 'ring-1', 'ring-black');
+                el.classList.remove('border-slate-900');
                 el.classList.add('border-transparent', 'opacity-70');
             });
 
             btn.classList.remove('border-transparent', 'opacity-70');
-            btn.classList.add('border-black', 'ring-1', 'ring-black');
+            btn.classList.add('border-slate-900');
         }
     </script>
 

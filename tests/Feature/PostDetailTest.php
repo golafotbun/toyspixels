@@ -59,12 +59,9 @@ class PostDetailTest extends TestCase
             $response->assertSee($tag);
         }
 
-        // Verify specifications in the top banner spot
-        $response->assertSee('Kategori:');
-        $response->assertSee('Judul:');
-        $response->assertSee('Keterangan Judul:');
-        $response->assertSee('Harga:');
-        $response->assertSee('Beli Langsung:');
+        // Verify redundant specification block has been removed from Post 1 as requested
+        $response->assertDontSee('Keterangan Judul:');
+        $response->assertDontSee('Buy Now');
         $response->assertSee('Tags:');
 
         // Verify duplicate bottom specifications block has been removed so it is not written twice

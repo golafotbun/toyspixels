@@ -23,7 +23,7 @@ class PostDetailTest extends TestCase
     }
 
     /**
-     * Test Post 1 top banner spot contains photo, price, affiliate link, and detail specs.
+     * Test Post 1 purchase header contains gallery photos (PS5), price, affiliate link, and detail specs.
      */
     public function test_post_1_has_top_banner_spot_with_specs_photo_price_and_affiliate_link(): void
     {
@@ -31,14 +31,13 @@ class PostDetailTest extends TestCase
 
         $response->assertStatus(200);
 
-        // Verify Top Banner Spot and photo
-        $response->assertSee('SPOTLIGHT PRODUK #1', escape: false);
+        // Verify gallery images and Shopee official badge
+        $response->assertSee('images/toys/ps5/1.webp');
         $response->assertSee('images/toys/playstation.jpg');
         $response->assertSee('Shopee Official');
 
-        // Verify Price in banner
+        // Verify Price in header
         $response->assertSee('14.630.000');
-        $response->assertSee('HARGA PENAWARAN RESMI');
 
         // Verify Affiliate link
         $response->assertSee('https://s.shopee.co.id/Lp4WI31xi');

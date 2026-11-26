@@ -10,7 +10,7 @@
     <!-- OpenGraph & Social SEO -->
     <meta property="og:title" content="{{ $post['title'] }} — toyspixels.com">
     <meta property="og:description" content="{{ $post['subtitle'] }}">
-    <meta property="og:image" content="{{ asset($post['image']) }}">
+    <meta property="og:image" content="{{ asset($post['image'] ?? $post['thumbnail'] ?? '') }}">
     <meta property="og:type" content="article">
     <link rel="canonical" href="https://toyspixels.com/post/{{ $post['slug'] }}">
 
@@ -147,7 +147,7 @@
                             <div class="absolute top-3 right-3 bg-[#0B1A30] text-[#E3FF73] text-[10px] font-black uppercase px-2 py-0.5 rounded-md border border-white/10">
                                 100% Original
                             </div>
-                            <img src="{{ asset($post['image']) }}" alt="{{ $post['title'] }}" class="max-h-full max-w-full object-contain group-hover:scale-105 transition-transform duration-500">
+                            <img src="{{ asset($post['image'] ?? $post['thumbnail'] ?? '') }}" alt="{{ $post['title'] }}" class="max-h-full max-w-full object-contain group-hover:scale-105 transition-transform duration-500">
                         </div>
                         <p class="text-[11px] text-slate-300 mt-2 font-medium">
                             *Foto produk resmi marketplace Shopee Indonesia
@@ -164,15 +164,23 @@
                                 {{ $post['subtitle'] }}
                             </p>
 
-                            <!-- Box Spesifikasi Banner Atas (Copy Spesifikasi) -->
+                            <!-- Box Spesifikasi Banner Atas (Semua Keterangan Produk di Atas Post) -->
                             <div class="mt-4 p-4 rounded-xl bg-black/40 border border-white/15 text-xs font-mono space-y-2">
                                 <div class="flex items-start justify-between border-b border-white/10 pb-1.5">
                                     <span class="text-slate-400 font-bold uppercase text-[10px]">Kategori:</span>
                                     <a href="{{ $post['category_url'] }}" class="text-[#E3FF73] hover:underline font-extrabold text-right">{{ $post['category_name'] }}</a>
                                 </div>
                                 <div class="flex items-start justify-between border-b border-white/10 pb-1.5">
+                                    <span class="text-slate-400 font-bold uppercase text-[10px]">Judul:</span>
+                                    <span class="text-white font-bold text-right max-w-xs truncate">{{ $post['title'] }}</span>
+                                </div>
+                                <div class="flex items-start justify-between border-b border-white/10 pb-1.5">
+                                    <span class="text-slate-400 font-bold uppercase text-[10px]">Keterangan Judul:</span>
+                                    <span class="text-slate-200 font-medium text-right max-w-xs line-clamp-1 font-sans">{{ $post['subtitle'] }}</span>
+                                </div>
+                                <div class="flex items-start justify-between border-b border-white/10 pb-1.5">
                                     <span class="text-slate-400 font-bold uppercase text-[10px]">Harga:</span>
-                                    <span class="text-[#E3FF73] font-black text-base sm:text-lg text-right">Rp {{ $post['price'] }}</span>
+                                    <span class="text-[#E3FF73] font-black text-base sm:text-lg text-right">{{ str_starts_with($post['price'], 'Rp') ? $post['price'] : 'Rp ' . $post['price'] }}</span>
                                 </div>
                                 <div class="flex items-start justify-between border-b border-white/10 pb-1.5">
                                     <span class="text-slate-400 font-bold uppercase text-[10px]">Beli Langsung:</span>
@@ -183,7 +191,10 @@
                                 <div class="pt-1">
                                     <span class="text-slate-400 font-bold uppercase text-[10px] block mb-1">Tags:</span>
                                     <div class="flex flex-wrap gap-1.5">
-                                        @foreach($post['tags'] as $tag)
+                                        @php
+                                            $tagsList = is_array($post['tags'] ?? null) ? $post['tags'] : array_map('trim', explode(',', $post['tags'] ?? 'topproduk'));
+                                        @endphp
+                                        @foreach($tagsList as $tag)
                                         <span class="px-2 py-0.5 rounded bg-emerald-400/20 text-emerald-300 text-[10px] font-bold border border-emerald-400/30">
                                             #{{ $tag }}
                                         </span>
@@ -198,7 +209,7 @@
                             <div>
                                 <span class="text-[10px] uppercase tracking-widest text-slate-300 font-black block">HARGA PENAWARAN RESMI</span>
                                 <div class="text-2xl sm:text-3xl font-black text-[#E3FF73]">
-                                    Rp {{ $post['price'] }}
+                                    {{ str_starts_with($post['price'], 'Rp') ? $post['price'] : 'Rp ' . $post['price'] }}
                                 </div>
                             </div>
                             <a href="{{ $post['affiliate_url'] }}" target="_blank" rel="noopener nofollow" class="w-full sm:w-auto px-7 py-3.5 rounded-full bg-[#E3FF73] hover:bg-[#d6f556] text-[#0B1A30] font-black text-xs sm:text-sm shadow-xl transition-all hover:scale-105 active:scale-95 text-center flex items-center justify-center gap-2 group">
@@ -243,60 +254,18 @@
                     </p>
                 </div>
 
-                <!-- ============================================================== -->
-                <!-- SPESIFIKASI & KETERANGAN ARTIKEL DI BAWAH ARTIKEL              -->
-                <!-- Format Sesuai Instruksi User:                                  -->
-                <!-- Kategori, Judul, Keterangan Judul, harga, beli langsung, tags  -->
-                <!-- ============================================================== -->
-                <div class="mt-10 p-6 sm:p-8 rounded-2xl bg-[#0B1A30] text-white border-2 border-[#1677d2] shadow-xl">
-                    <div class="flex items-center justify-between pb-4 mb-5 border-b border-slate-700">
-                        <div>
-                            <span class="text-[11px] font-black text-[#E3FF73] uppercase tracking-widest block mb-0.5">KETERANGAN &amp; SPESIFIKASI ARTIKEL</span>
-                            <h3 class="text-lg sm:text-xl font-extrabold text-white">Detail Format Post Resmi</h3>
-                        </div>
-                        <div class="text-xs font-bold text-slate-300 bg-white/10 px-3 py-1.5 rounded-lg border border-white/20">
-                            Terverifikasi
-                        </div>
-                    </div>
-
-                    <dl class="space-y-3.5 text-xs sm:text-sm font-mono">
-                        <div class="flex flex-col sm:flex-row sm:items-baseline py-1.5 border-b border-slate-800">
-                            <dt class="sm:w-48 font-bold text-slate-400 uppercase tracking-wider text-[11px]">Kategori</dt>
-                            <dd class="font-black text-white text-sm sm:text-base">: {{ $post['category_name'] }}</dd>
-                        </div>
-                        <div class="flex flex-col sm:flex-row sm:items-baseline py-1.5 border-b border-slate-800">
-                            <dt class="sm:w-48 font-bold text-slate-400 uppercase tracking-wider text-[11px]">Judul</dt>
-                            <dd class="font-extrabold text-[#E3FF73] text-sm sm:text-base">: {{ $post['title'] }}</dd>
-                        </div>
-                        <div class="flex flex-col sm:flex-row sm:items-baseline py-1.5 border-b border-slate-800">
-                            <dt class="sm:w-48 font-bold text-slate-400 uppercase tracking-wider text-[11px]">Keterangan Judul</dt>
-                            <dd class="font-medium text-slate-200 leading-snug font-sans">: {{ $post['subtitle'] }}</dd>
-                        </div>
-                        <div class="flex flex-col sm:flex-row sm:items-baseline py-1.5 border-b border-slate-800">
-                            <dt class="sm:w-48 font-bold text-slate-400 uppercase tracking-wider text-[11px]">harga</dt>
-                            <dd class="font-black text-[#E3FF73] text-xl sm:text-2xl">: {{ $post['price'] }}</dd>
-                        </div>
-                        <div class="flex flex-col sm:flex-row sm:items-baseline py-1.5 border-b border-slate-800">
-                            <dt class="sm:w-48 font-bold text-slate-400 uppercase tracking-wider text-[11px]">beli langsung</dt>
-                            <dd class="font-medium text-sky-300 break-all">: <a href="{{ $post['affiliate_url'] }}" target="_blank" rel="noopener nofollow" class="underline hover:text-white">{{ $post['affiliate_url'] }}</a></dd>
-                        </div>
-                        <div class="flex flex-col sm:flex-row sm:items-baseline py-1.5">
-                            <dt class="sm:w-48 font-bold text-slate-400 uppercase tracking-wider text-[11px]">tags</dt>
-                            <dd class="font-bold text-emerald-300">: {{ implode(', ', $post['tags']) }}</dd>
-                        </div>
-                    </dl>
-
-                    <!-- Tombol Beli Langsung di Bawah Artikel -->
-                    <div class="mt-6 pt-5 border-t border-slate-700 flex flex-col sm:flex-row items-center gap-3">
-                        <a href="{{ $post['affiliate_url'] }}" target="_blank" rel="noopener nofollow" class="w-full sm:w-auto px-7 py-3 rounded-xl bg-[#1677d2] hover:bg-[#125ea7] text-white font-extrabold text-xs shadow-md transition-all text-center flex items-center justify-center gap-2">
-                            <span>Beli Langsung di Shopee</span>
-                            <span>➔</span>
+                <!-- Bottom Action Buttons (Clean & Non-Duplicate) -->
+                <div class="mt-10 pt-6 border-t border-slate-200 flex flex-col sm:flex-row items-center justify-between gap-4">
+                    <a href="{{ $post['affiliate_url'] }}" target="_blank" rel="noopener nofollow" class="w-full sm:w-auto px-7 py-3.5 rounded-full bg-[#EE4D2D] hover:bg-[#d83f21] text-white font-black text-xs sm:text-sm shadow-md transition-all text-center flex items-center justify-center gap-2">
+                        <span>Beli Langsung di Shopee Official</span>
+                        <span>➔</span>
+                    </a>
+                    <div class="flex items-center gap-2 w-full sm:w-auto">
+                        <a href="{{ url('/') }}" class="w-1/2 sm:w-auto px-5 py-3 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-extrabold text-xs text-center transition-colors">
+                            ← Beranda
                         </a>
-                        <a href="{{ $post['category_url'] }}" class="w-full sm:w-auto px-5 py-3 rounded-xl bg-white/10 hover:bg-white/20 text-white font-bold text-xs text-center border border-white/20 transition-all">
-                            Kategori: {{ $post['category_name'] }}
-                        </a>
-                        <a href="https://toyspixels.com/semuaproduk" class="w-full sm:w-auto px-5 py-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-bold transition-all text-center">
-                            ← Kembali ke Katalog
+                        <a href="https://toyspixels.com/semuaproduk" class="w-1/2 sm:w-auto px-5 py-3 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-extrabold text-xs text-center transition-colors">
+                            Semua Produk →
                         </a>
                     </div>
                 </div>

@@ -106,7 +106,7 @@ class CatalogSectionTest extends TestCase
     }
 
     /**
-     * Test post detail article page loads with required specifications format at the bottom.
+     * Test post detail article page loads with required specifications format in top banner.
      */
     public function test_post_detail_page_has_required_spec_format(): void
     {
@@ -115,15 +115,14 @@ class CatalogSectionTest extends TestCase
         $response->assertStatus(200);
         $response->assertSee('Gundam PG Unleashed RX-78-2');
         $response->assertSee('Collectibles & Hobbies');
-        $response->assertSee('Kategori');
-        $response->assertSee('Judul');
-        $response->assertSee('Keterangan Judul');
-        $response->assertSee('harga');
+        $response->assertSee('Kategori:');
+        $response->assertSee('Judul:');
+        $response->assertSee('Keterangan Judul:');
+        $response->assertSee('Harga:');
         $response->assertSee('3.250.000');
-        $response->assertSee('beli langsung');
+        $response->assertSee('Beli Langsung:');
         $response->assertSee('https://shopee.co.id/gundam-pg-unleashed-rx78-2');
-        $response->assertSee('tags');
-        $response->assertSee('semua, mainan, collectibles');
+        $response->assertSee('Tags:');
         $response->assertSee('Beli Langsung di Shopee');
     }
 

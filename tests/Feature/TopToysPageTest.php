@@ -77,28 +77,28 @@ class TopToysPageTest extends TestCase
     }
 
     /**
-     * Test the single top produk detail article page contains the required specification format at the bottom.
+     * Test the single top produk detail page redirects to /post/{slug} and displays unified top banner specifications.
      */
-    public function test_topproduk_detail_page_has_specifications_at_bottom(): void
+    public function test_topproduk_detail_page_redirects_and_displays_top_banner_specifications(): void
     {
         $response = $this->get('/topproduk/gundam-barbatos');
+        $response->assertRedirect('/post/gundam-barbatos');
 
-        $response->assertStatus(200);
-        $response->assertSee('Gundam Barbatos');
+        $postResponse = $this->get('/post/gundam-barbatos');
+        $postResponse->assertStatus(200);
+        $postResponse->assertSee('Gundam Barbatos');
 
-        // Check structured specification box at the bottom of the article
-        $response->assertSee('SPESIFIKASI LENGKAP');
-        $response->assertSee('Umur / Jenis');
-        $response->assertSee('14+/GUNPLA MG');
-        $response->assertSee('Judul');
-        $response->assertSee('Keterangan Judul');
-        $response->assertSee('Gunpla Master 1/100 dengan artikulasi dinamis dan detail mekanik');
-        $response->assertSee('Harga');
-        $response->assertSee('Rp 329.000');
+        // Check structured specification in the top banner spot
+        $postResponse->assertSee('Kategori:');
+        $postResponse->assertSee('Judul:');
+        $postResponse->assertSee('Keterangan Judul:');
+        $postResponse->assertSee('Harga:');
+        $postResponse->assertSee('329.000');
+        $postResponse->assertSee('Beli Langsung:');
+        $postResponse->assertSee('Tags:');
 
-        // Check buy buttons
-        $response->assertSee('Beli di Shopee Official');
-        $response->assertSee('Beli di Tokopedia Official');
+        // Check affiliate buy button
+        $postResponse->assertSee('Beli Langsung di Shopee');
     }
 
     /**

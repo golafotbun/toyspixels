@@ -24,26 +24,54 @@ Route::get('/topproduk', function () {
 })->name('topproduk');
 
 Route::get('/topproduk/{slug}', function (string $slug) {
-    if ($slug === 'post-1' || $slug === '1' || PostService::findBySlug($slug)) {
-        return redirect()->route('post.show', ['slug' => $slug]);
-    }
-
-    $post = TopProdukService::findBySlug($slug);
-    if (! $post) {
-        abort(404);
-    }
-    $relatedPosts = TopProdukService::all()->where('slug', '!==', $slug)->take(3);
-
-    return view('topproduk-detail', compact('post', 'relatedPosts'));
+    return redirect()->route('post.show', ['slug' => $slug]);
 })->name('topproduk.show');
 
 Route::get('/top-toys', function () {
     return redirect()->route('topproduk');
 })->name('top-toys');
 
-// Route Post / Artikel Produk (Tahap 5 Cek Detail & Post 1)
+// Route Post / Artikel Produk (Tahap 5 Cek Detail, Post 1 & Top Produk Unified Display)
 Route::get('/post/{slug}', function (string $slug) {
     $post = PostService::findBySlug($slug) ?? KatalogService::findBySlug($slug);
+
+    if (! $post) {
+        $topPost = TopProdukService::findBySlug($slug);
+        if ($topPost) {
+            $formattedPrice = str_starts_with($topPost['price'], 'Rp') ? trim(substr($topPost['price'], 2)) : $topPost['price'];
+            $post = [
+                'id' => $topPost['id'],
+                'slug' => $topPost['slug'],
+                'title' => $topPost['title'],
+                'subtitle' => $topPost['subtitle'],
+                'category_name' => $topPost['category_name'] ?? $topPost['type'] ?? 'Top Produk',
+                'category_slug' => 'topproduk',
+                'category_url' => url('/topproduk'),
+                'price' => $formattedPrice,
+                'raw_price' => $topPost['raw_price'] ?? 0,
+                'rating' => $topPost['rating'] ?? '4.9',
+                'sold' => $topPost['sold'] ?? '2.0rb+',
+                'image' => $topPost['image'] ?? $topPost['thumbnail'] ?? 'images/toys/gundam.jpg',
+                'thumbnail' => $topPost['thumbnail'] ?? $topPost['image'] ?? 'images/toys/gundam.jpg',
+                'affiliate_url' => $topPost['affiliate_url'] ?? $topPost['shopee_url'] ?? 'https://shopee.co.id',
+                'shopee_url' => $topPost['shopee_url'] ?? 'https://shopee.co.id',
+                'tokopedia_url' => $topPost['tokopedia_url'] ?? 'https://tokopedia.com',
+                'tag' => 'topproduk',
+                'tags' => $topPost['tags'] ?? ['topproduk', 'top produk'],
+                'summary' => $topPost['summary'] ?? $topPost['subtitle'],
+                'content' => $topPost['content'] ?? $topPost['subtitle'],
+                'specs' => [
+                    'Kategori' => $topPost['category_name'] ?? $topPost['type'] ?? 'Top Produk',
+                    'Judul' => $topPost['title'],
+                    'Keterangan Judul' => $topPost['subtitle'],
+                    'harga' => $formattedPrice,
+                    'beli langsung' => $topPost['affiliate_url'] ?? $topPost['shopee_url'] ?? 'https://shopee.co.id',
+                    'tags' => implode(', ', $topPost['tags'] ?? ['topproduk', 'top produk']),
+                ],
+            ];
+        }
+    }
+
     if (! $post) {
         abort(404);
     }

@@ -308,6 +308,165 @@ class PostService
         </div>
     </div>
 </div>',
+            'specs' => [
+                'Kategori' => 'Kids & Educational Toys / Mobil Remote Control',
+                'Judul' => 'Snapzy Mobil RC Off Road 4WD 2.4GHz Lampu LED Semprotan Kabut Rechargeable',
+                'Keterangan Judul' => 'Mobil RC Off Road 4WD dari Snapzy dengan Desain Sporty, Ban Besar Bertekstur, Lampu LED Keren, Efek Semprotan Kabut Realistis, serta Baterai Isi Ulang USB Siap Panjat Segala Medan',
+                'Harga' => 'Rp 212.000',
+                'harga' => '212.000',
+                'Beli Langsung' => 'https://s.shopee.co.id/9zzc37VEVr',
+                'beli langsung' => 'https://s.shopee.co.id/9zzc37VEVr',
+                'tags' => 'topproduk, kidstoys, collectibles, outdoorrc, semuaproduk, katalogmainan',
+            ],
+        ],
+        [
+            'id' => 3,
+            'slug' => 'post-3',
+            'aliases' => ['3', 'post-3', 'post3', 'produk-3', 'wing-zero-honoo', 'bandai-hgbf-wing-zero-honoo'],
+            'title' => 'Bandai HGBF 1/144 Wing Zero Honoo ORI BANDAI Gundam New Ori Mainan Robot Mainan Gundam Hadiah Ulang Tahun Birthday Gift',
+            'display_title' => 'Bandai HGBF Wing Zero Honoo',
+            'subtitle' => 'Model Kit Gunpla HGBF 1/144 Wing Zero Honoo Original Bandai Spirits Jepang dengan Desain Sayap Api Oranye Transparan Ikonik, Persenjataan Twin Buster Rifle, dan Box Kemasan Mulus Terawat',
+            'category_name' => 'Collectibles & Hobbies',
+            'category_slug' => 'collectibles',
+            'category_url' => 'https://toyspixels.com/collectibles',
+            'age' => '15+ / Semua Usia',
+            'type' => 'Gunpla HGBF 1/144',
+            'age_type' => '15+/Gunpla HGBF',
+            'price' => '888.888',
+            'raw_price' => 888888,
+            'original_price' => 'Rp 999.000',
+            'discount_badge' => 'CICILAN 0% | 100% ORI BANDAI',
+            'rating' => '5.0',
+            'sold' => '407 Terjual',
+            'reviews_count' => '7',
+            'warranty' => '100% Original Bandai',
+            'image' => 'images/toys/post-3/1.webp',
+            'thumbnail' => 'images/toys/post-3/1.webp',
+            'gallery' => [
+                'images/toys/post-3/1.webp',
+                'images/toys/post-3/2.webp',
+                'images/toys/post-3/3.webp',
+                'images/toys/post-3/4.webp',
+            ],
+            'affiliate_url' => 'https://s.shopee.co.id/4B1p83lRaY',
+            'shopee_url' => 'https://s.shopee.co.id/4B1p83lRaY',
+            'tokopedia_url' => 'https://tokopedia.com',
+            'tag' => 'topproduk',
+            'tags' => [
+                'topproduk',
+                'kidstoys',
+                'collectibles',
+                'semuaproduk',
+                'katalogmainan',
+            ],
+            'post_date' => '2026-11-27',
+            'summary' => 'Model kit Gunpla High Grade Build Fighters (HGBF) 1/144 Wing Gundam Zero Honoo original Bandai Namco Jepang. Dilengkapi part efek sayap api transparan oranye-merah spektakuler, persenjataan buster rifle & tameng api, sistem perakitan snap-fit presisi tanpa lem, kondisi barang baru gres dan box mulus.',
+            'content' => '<div class="space-y-6 text-slate-700 leading-relaxed">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 not-prose my-4">
+        <div class="p-4 rounded-2xl bg-orange-50/70 border border-orange-200">
+            <h4 class="font-black text-orange-600 text-sm flex items-center gap-2 mb-1.5">
+                <span>🔥</span> Desain Sayap Api Honoo Custom
+            </h4>
+            <p class="text-xs text-slate-600 leading-relaxed">
+                Varian modifikasi api khusus karya Yuusei Kousaka dari serial Gundam Build Fighters Honoo dengan sayap api transparan oranye spektakuler dan artikulasi dinamis.
+            </p>
+        </div>
+        <div class="p-4 rounded-2xl bg-blue-50/70 border border-blue-200">
+            <h4 class="font-black text-[#1677d2] text-sm flex items-center gap-2 mb-1.5">
+                <span>⚔️</span> Persenjataan Twin Buster Rifle &amp; Shield
+            </h4>
+            <p class="text-xs text-slate-600 leading-relaxed">
+                Dilengkapi Twin Buster Rifle berkekuatan tinggi yang dapat digabungkan atau dipisah, Hyper Beam Saber efek api, dan tameng pelindung bergaya lidah api.
+            </p>
+        </div>
+        <div class="p-4 rounded-2xl bg-emerald-50/70 border border-emerald-200">
+            <h4 class="font-black text-emerald-700 text-sm flex items-center gap-2 mb-1.5">
+                <span>🛡️</span> 100% Original Bandai Spirits Japan
+            </h4>
+            <p class="text-xs text-slate-600 leading-relaxed">
+                Produk resmi berlisensi Bandai Namco dengan cetakan runner polistirena presisi tinggi, teknologi snap-fit tanpa memerlukan lem, serta artikulasi poliket kokoh.
+            </p>
+        </div>
+        <div class="p-4 rounded-2xl bg-purple-50/70 border border-purple-200">
+            <h4 class="font-black text-purple-700 text-sm flex items-center gap-2 mb-1.5">
+                <span>📦</span> Barang Baru &amp; Kondisi Box Mulus
+            </h4>
+            <p class="text-xs text-slate-600 leading-relaxed">
+                Unit 100% baru gres bersegel, part plastik runner di dalam plastik utuh belum dirakit, serta kondisi box luar mulus sangat aman untuk kolektor gunpla.
+            </p>
+        </div>
+    </div>
+
+    <div>
+        <h3 class="text-lg font-black text-[#0B1A30] mb-3 flex items-center gap-2">
+            <span>📦</span> Isi Dalam Box Kemasan (Fullset Bandai)
+        </h3>
+        <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 text-xs sm:text-sm text-slate-700">
+            <ul class="space-y-2 list-disc list-inside">
+                <li><strong>1x Set Runner Plastik</strong> Model Kit HGBF 1/144 Wing Gundam Zero Honoo (Multi-Color Mold)</li>
+                <li><strong>1x Clear Flame Effect Parts</strong> Part Efek Sayap &amp; Bilah Api Oranye Transparan</li>
+                <li><strong>1x Set Persenjataan:</strong> Twin Buster Rifle, Beam Saber &amp; Perisai Shield Honoo</li>
+                <li><strong>1x Lembar Foil Sticker / Marking Seal</strong> Detail Warna &amp; Mata Kamera Sensor</li>
+                <li><strong>1x Buku Panduan Perakitan Manual</strong> Berwarna Resmi Bandai Jepang</li>
+                <li><strong>1x Box Luar Kemasan</strong> Original Bandai Namco (Kondisi Mulus Terawat)</li>
+            </ul>
+        </div>
+    </div>
+
+    <div>
+        <h3 class="text-lg font-black text-[#0B1A30] mb-3 flex items-center gap-2">
+            <span>⚙️</span> Spesifikasi Teknis Produk
+        </h3>
+        <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 text-xs font-mono">
+            <div class="p-3 rounded-xl bg-slate-50 border border-slate-200">
+                <span class="text-slate-400 block text-[10px] uppercase font-bold">Merek</span>
+                <span class="font-black text-slate-800">Bandai Namco</span>
+            </div>
+            <div class="p-3 rounded-xl bg-slate-50 border border-slate-200">
+                <span class="text-slate-400 block text-[10px] uppercase font-bold">Grade / Lini</span>
+                <span class="font-black text-slate-800">High Grade (HGBF)</span>
+            </div>
+            <div class="p-3 rounded-xl bg-slate-50 border border-slate-200">
+                <span class="text-slate-400 block text-[10px] uppercase font-bold">Skala</span>
+                <span class="font-black text-slate-800">1/144 (~13 cm)</span>
+            </div>
+            <div class="p-3 rounded-xl bg-slate-50 border border-slate-200">
+                <span class="text-slate-400 block text-[10px] uppercase font-bold">Kondisi</span>
+                <span class="font-black text-emerald-600">Baru (Box Mulus)</span>
+            </div>
+            <div class="p-3 rounded-xl bg-slate-50 border border-slate-200">
+                <span class="text-slate-400 block text-[10px] uppercase font-bold">Perakitan</span>
+                <span class="font-black text-slate-800">Snap-fit (Harus Dirakit)</span>
+            </div>
+            <div class="p-3 rounded-xl bg-slate-50 border border-slate-200">
+                <span class="text-slate-400 block text-[10px] uppercase font-bold">Berat Produk</span>
+                <span class="font-black text-slate-800">300 gram</span>
+            </div>
+            <div class="p-3 rounded-xl bg-slate-50 border border-slate-200">
+                <span class="text-slate-400 block text-[10px] uppercase font-bold">Kategori</span>
+                <span class="font-black text-slate-800">Mecha Model &amp; Diecast</span>
+            </div>
+            <div class="p-3 rounded-xl bg-slate-50 border border-slate-200">
+                <span class="text-slate-400 block text-[10px] uppercase font-bold">Rekomendasi Usia</span>
+                <span class="font-black text-slate-800">15+ / Semua Usia</span>
+            </div>
+            <div class="p-3 rounded-xl bg-slate-50 border border-slate-200">
+                <span class="text-slate-400 block text-[10px] uppercase font-bold">Dikirim Dari</span>
+                <span class="font-black text-slate-800">Kota Jakarta Barat</span>
+            </div>
+        </div>
+    </div>
+</div>',
+            'specs' => [
+                'Kategori' => 'Collectibles & Hobbies / Mecha Model & Diecast',
+                'Judul' => 'Bandai HGBF 1/144 Wing Zero Honoo ORI BANDAI Gundam New Ori Mainan Robot Mainan Gundam Hadiah Ulang Tahun Birthday Gift',
+                'Keterangan Judul' => 'Model Kit Gunpla HGBF 1/144 Wing Zero Honoo Original Bandai Spirits Jepang dengan Desain Sayap Api Oranye Transparan Ikonik, Persenjataan Twin Buster Rifle, dan Box Kemasan Mulus Terawat',
+                'Harga' => 'Rp 888.888',
+                'harga' => '888.888',
+                'Beli Langsung' => 'https://s.shopee.co.id/4B1p83lRaY',
+                'beli langsung' => 'https://s.shopee.co.id/4B1p83lRaY',
+                'tags' => 'topproduk, kidstoys, collectibles, semuaproduk, katalogmainan',
+            ],
         ],
     ];
 

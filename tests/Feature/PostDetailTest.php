@@ -95,19 +95,24 @@ class PostDetailTest extends TestCase
         $this->assertEquals(2, $post2BySlug['id']);
         $this->assertEquals('https://s.shopee.co.id/9zzc37VEVr', $post2BySlug['affiliate_url']);
 
-        $this->assertCount(2, PostService::filterByTag('topproduk'));
+        $post3BySlug = PostService::findBySlug('post-3');
+        $this->assertNotNull($post3BySlug);
+        $this->assertEquals(3, $post3BySlug['id']);
+        $this->assertEquals('https://s.shopee.co.id/4B1p83lRaY', $post3BySlug['affiliate_url']);
+
+        $this->assertCount(3, PostService::filterByTag('topproduk'));
         $this->assertCount(1, PostService::filterByTag('gaming'));
-        $this->assertCount(2, PostService::filterByTag('collectibles'));
+        $this->assertCount(3, PostService::filterByTag('collectibles'));
         $this->assertCount(1, PostService::filterByTag('gamespuzzles'));
-        $this->assertCount(2, PostService::filterByTag('semuaproduk'));
-        $this->assertCount(2, PostService::filterByTag('katalogmainan'));
+        $this->assertCount(3, PostService::filterByTag('semuaproduk'));
+        $this->assertCount(3, PostService::filterByTag('katalogmainan'));
         $this->assertCount(1, PostService::filterByTag('katalogteknologi'));
-        $this->assertCount(1, PostService::filterByTag('kidstoys'));
+        $this->assertCount(2, PostService::filterByTag('kidstoys'));
         $this->assertCount(1, PostService::filterByTag('outdoorrc'));
     }
 
     /**
-     * Test /topproduk/post-1 and /topproduk/post-2 redirects to /post/{slug}.
+     * Test /topproduk/post-1, /topproduk/post-2, and /topproduk/post-3 redirects to /post/{slug}.
      */
     public function test_topproduk_links_directly_to_post_detail(): void
     {
@@ -117,17 +122,22 @@ class PostDetailTest extends TestCase
         $response2 = $this->get('/topproduk/post-2');
         $response2->assertRedirect('/post/post-2');
 
+        $response3 = $this->get('/topproduk/post-3');
+        $response3->assertRedirect('/post/post-3');
+
         $homeResponse = $this->get('/');
         $homeResponse->assertStatus(200);
         $homeContent = $homeResponse->getContent();
         $this->assertStringContainsString('href="http://localhost:8000/post/post-1"', $homeContent);
         $this->assertStringContainsString('href="http://localhost:8000/post/post-2"', $homeContent);
+        $this->assertStringContainsString('href="http://localhost:8000/post/post-3"', $homeContent);
 
         $topResponse = $this->get('/topproduk');
         $topResponse->assertStatus(200);
         $topContent = $topResponse->getContent();
         $this->assertStringContainsString('href="http://localhost:8000/post/post-1"', $topContent);
         $this->assertStringContainsString('href="http://localhost:8000/post/post-2"', $topContent);
+        $this->assertStringContainsString('href="http://localhost:8000/post/post-3"', $topContent);
     }
 
     /**
@@ -148,6 +158,27 @@ class PostDetailTest extends TestCase
         $response->assertSee('images/toys/post-2/1.webp');
         $response->assertSee('images/toys/post-2/2.webp');
         $response->assertSee('images/toys/post-2/3.webp');
+        $response->assertDontSee('Beli Langsung di Shopee Official');
+    }
+
+    /**
+     * Test Post 3 detail page loads correctly with all required elements.
+     */
+    public function test_post_3_detail_page_loads_cleanly(): void
+    {
+        $response = $this->get('/post/post-3');
+        $response->assertStatus(200);
+        $response->assertSee('Bandai HGBF 1/144 Wing Zero Honoo');
+        $response->assertSee('888.888');
+        $response->assertSee('https://s.shopee.co.id/4B1p83lRaY');
+        $response->assertSee('7 Penilaian');
+        $response->assertSee('100% Original Bandai');
+        $response->assertSee('Desain Sayap Api Honoo Custom');
+        $response->assertSee('Twin Buster Rifle');
+        $response->assertSee('images/toys/post-3/1.webp');
+        $response->assertSee('images/toys/post-3/2.webp');
+        $response->assertSee('images/toys/post-3/3.webp');
+        $response->assertSee('images/toys/post-3/4.webp');
         $response->assertDontSee('Beli Langsung di Shopee Official');
     }
 }

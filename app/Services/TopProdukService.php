@@ -266,9 +266,7 @@ class TopProdukService
             return in_array('topproduk', $tags) || in_array('top produk', $tags) || $tag === 'top produk' || $tag === 'topproduk';
         })->map(function ($p) {
             $p['display_title'] = $p['display_title'] ?? \Illuminate\Support\Str::words($p['title'], 5, '');
-            if ($p['slug'] === 'post-1') {
-                $p['detail_url'] = url('/post/' . $p['slug']);
-            }
+            $p['detail_url'] = $p['detail_url'] ?? url('/post/' . $p['slug']);
             return $p;
         });
 
